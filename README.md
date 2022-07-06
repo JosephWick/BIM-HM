@@ -6,6 +6,8 @@ The two main files are `BP1_visco_d.m` and `BP1_visco_hm.m`. Each solves the sam
 The `include` directory includes modified versions of ode23 and ode45 that write data to disk to prevent the state vector from exceeding memory limits, as well as `hmmvp`, a tool for implementing hierachical matrices, and `ma2np`, a script that converts between matlab and python numpy arrays. More information on `hmmvp` can be found [here](https://github.com/ambrad/hmmvp), and `ma2np` can be found [here](https://github.com/joe-of-all-trades/mat2np)
 
 # Physical Problem
-The physical problem considered includes a fault -- with parameters matching the SCEC SEAS group's benchmark problem 1 -- and a viscoelastic zone. As can be seen in the below figure, the viscoelastic zone is 200 kilometers wide and stretches from just below the fault (a depth of 40km) to a depth of 200km.
+The physical problem considered includes a fault -- with parameters matching the SCEC SEAS group's benchmark problem 1 -- and a viscoelastic zone. The viscoelastic zone is 200 kilometers wide and stretches from just below the fault (a depth of 40km) to a depth of 200km.
 
-![physProblem1 2](https://user-images.githubusercontent.com/39248450/177453087-9239cec4-7fed-4414-9b9e-bff9766425ef.png)
+# Code Specifics
+## HMMVP
+
