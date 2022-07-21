@@ -10,6 +10,8 @@ end
 
 % set up h-matrices/kernels
 function r = build()
+  % this function defines the physical problem as well as the key value files
+  % that hmmvp will use
 
   addpaths();
 
@@ -32,7 +34,7 @@ function r = build()
   %   - '_c' suffixed terms refer to the center of patches
   %   - 'hat' suffixed terms refer to a 1D vector that represents a direction
   %         of a 2D or 3D mesh
-  %
+  % 
 
   disp('begin mesh...')
 
