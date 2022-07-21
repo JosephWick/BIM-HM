@@ -110,7 +110,7 @@ function r = build()
   shearY_c = shearY_c;
   shearZ_c = shearZ_c;
   ss.shearY_chat = ss.shearY_chat;
-  ss.x3c = ss.shearZ_chat;
+  ss.shearZ_chat = ss.shearZ_chat;
   ss.polesz = shearZhat;
 
   disp('mesh done.')
@@ -327,12 +327,12 @@ function out = run(b)
   Cp = 1171 ; % specific heat (J/kg/K)
   Rm = 3330 ; % mantle density (kg/m^3)
 
-  Pconf       = Rm*9.8*ss.x3c/1e6;  % Shear zones
+  Pconf       = Rm*9.8*ss.shearZ_chat/1e6;  % Shear zones
   Pconf_fault = Rm*9.8*(ss.faultZ+ss.dz); % Faults
 
   Kappa     = k / (Rm * Cp); % Thermal diffusivity (m^2/s)
   Age_plate = 2e15; % seconds
-  ss.Tprof  = 300+1380*erf(ss.x3c/(sqrt(4* Kappa * Age_plate)));  % Kelvin
+  ss.Tprof  = 300+1380*erf(ss.shearZ_chat/(sqrt(4* Kappa * Age_plate)));  % Kelvin
 
   %% % % % % % % % % % % % % % % % % % % % % % % % % % % %
   %                                                      %
@@ -342,40 +342,40 @@ function out = run(b)
   % Values taken for wet olivine - Hirth, G. and D. Kohlstedt (2003)
 
   % Driving strain rate (1/s)
-  ss.e12p_plate = 1e-14*ones(length(ss.shearY_chat)*length(ss.x3c),1);
-  ss.e13p_plate =      zeros(length(ss.shearY_chat)*length(ss.x3c),1);
+  ss.e12p_plate = 1e-14*ones(length(ss.shearY_chat)*length(ss.shearZ_chat),1);
+  ss.e13p_plate =      zeros(length(ss.shearY_chat)*length(ss.shearZ_chat),1);
 
   % Rheological Parameters
   % Reference Strain Rate (for stress in MPa)
-  ss.Adif = 1e6*ones(length(ss.x3c)*length(ss.shearY_chat),1);
-  ss.Adis = 90 *ones(length(ss.x3c)*length(ss.shearY_chat),1);
+  ss.Adif = 1e6*ones(length(ss.shearZ_chat)*length(ss.shearY_chat),1);
+  ss.Adis = 90 *ones(length(ss.shearZ_chat)*length(ss.shearY_chat),1);
 
   % Power-Law Exponent
-  ss.n = 3.5*ones(length(ss.x3c)*length(ss.shearY_chat),1);
+  ss.n = 3.5*ones(length(ss.shearZ_chat)*length(ss.shearY_chat),1);
 
   % Activation Energy Wet Oliving (J/mol)
-  ss.Qdif = 335e3*ones(length(ss.x3c)*length(ss.shearY_chat),1);
-  ss.Qdis = 480e3*ones(length(ss.x3c)*length(ss.shearY_chat),1);
+  ss.Qdif = 335e3*ones(length(ss.shearZ_chat)*length(ss.shearY_chat),1);
+  ss.Qdis = 480e3*ones(length(ss.shearZ_chat)*length(ss.shearY_chat),1);
 
   % Activation Volume (m^3/mol)
-  ss.Voldif = 4e-6*ones(length(ss.x3c)*length(ss.shearY_chat),1);
-  ss.Voldis = 11e-6*ones(length(ss.x3c)*length(ss.shearY_chat),1);
+  ss.Voldif = 4e-6*ones(length(ss.shearZ_chat)*length(ss.shearY_chat),1);
+  ss.Voldis = 11e-6*ones(length(ss.shearZ_chat)*length(ss.shearY_chat),1);
 
   % Grain size (m)
-  ss.d    = 1e-2*ones(length(ss.x3c)*length(ss.shearY_chat),1);
-  ss.pexp = 3*ones(length(ss.x3c)*length(ss.shearY_chat),1);
+  ss.d    = 1e-2*ones(length(ss.shearZ_chat)*length(ss.shearY_chat),1);
+  ss.pexp = 3*ones(length(ss.shearZ_chat)*length(ss.shearY_chat),1);
 
   % Water fugacity (H/10^6 Si)
-  ss.COH = 1000*ones(length(ss.x3c)*length(ss.shearY_chat),1);
-  ss.r   = 1.2*ones(length(ss.x3c)*length(ss.shearY_chat),1);
+  ss.COH = 1000*ones(length(ss.shearZ_chat)*length(ss.shearY_chat),1);
+  ss.r   = 1.2*ones(length(ss.shearZ_chat)*length(ss.shearY_chat),1);
 
   % Pressure (Pa)
   ss.P = repmat(1e6*Pconf',length(ss.shearY_chat),1);
-  ss.P = reshape(ss.P,[length(ss.shearY_chat)*length(ss.x3c),1]);
+  ss.P = reshape(ss.P,[length(ss.shearY_chat)*length(ss.shearZ_chat),1]);
 
   % Temperature (K)
   Te0 = repmat(ss.Tprof',length(ss.shearY_chat),1);
-  Te0 = reshape(Te0,[length(ss.shearY_chat)*length(ss.x3c),1]);
+  Te0 = reshape(Te0,[length(ss.shearY_chat)*length(ss.shearZ_chat),1]);
 
   % Coefficients for dislocation and diffusion creep
   ss.Const_dis = ss.Adis.*exp(-(ss.Qdis+ss.P.*ss.Voldis)./(8.314.*Te0)).* ...
@@ -399,7 +399,7 @@ function out = run(b)
   ss.dgfF=4;
   ss.dgfS=4;
   %% Initialize State Vector
-  Y0=zeros(ss.M*ss.dgfF+length(ss.shearY_chat)*length(ss.x3c)*ss.dgfS,1);
+  Y0=zeros(ss.M*ss.dgfF+length(ss.shearY_chat)*length(ss.shearZ_chat)*ss.dgfS,1);
 
   % Fault patches
   % state vector is (slip; tau; log(theta Vo / D_rs); log(V / Vo) )
