@@ -555,6 +555,7 @@ end
 function addpaths()
   addpath('include/hmmvp/matlab')
   addpath('ODEsolving')
+  addpath('include/')
 end
 
 % boxcar function
