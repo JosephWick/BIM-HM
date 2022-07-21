@@ -7,7 +7,7 @@ The `include` directory houses modified versions of ode23 and ode45 that write d
 
 # Code Specifics
 ## Usage
-The dense script can be run in a single step, by calling it in a matlab console. The hierarchical version of the simulation is a three step process, requiring first a setup to be ran, then creation and compression of the hierarcical matrices, followed by running the actual simulation. Once kernels have been made, the simulation can be re-run without the first two steps so long as the .hm files remain available and no changes to the physical problem have been made. 
+The dense script can be run in a single step, by calling it in a matlab console. The hierarchical version of the simulation is a three step process, requiring first a setup to be ran, then creation and compression of the hierarcical matrices, followed by running the actual simulation. Once kernels have been made, the simulation can be re-run without the first two steps so long as the .hm files remain available and no changes to the physical problem have been made. In `BP1_visco_hm.m`, the setup and actual simulation are broken into two methods. 
 
 To run the setup, call `b = BP1_visco_hm("build")` in a matlab console. This create the starter files for hmmvp and store in memory the mesh information as the matlab variable `b`. 
 
@@ -70,4 +70,4 @@ One item of note is the size of the hierarchical matrices. In the class declarat
 `virtual Hd* ComputeHd (double eta) { return NewHd(_z, _x, NULL, eta); }`
 `_z` and `_x` are parameters passed into the function by way of key value files. They are also what is used to define the shape of the kernel. Hmmvp takes the length of the first array contained in `_x` for the number of columns in the kernel, and the length of the first array contained in `_z` for the number of rows. 
 
-In the case where you are considering self interaction (e.g. the fault interacting with itself) the kernels are square, and creating properly sized kernels is generally trivial. In the case of rectangular kernels (such as the fault feeling effects of the shear zone), I found it easiest to create a matrix to pass into hmmvp that has no use but for sizing. In the code this is depicted as `_z` or just `Z` in matlab. 
+In the case where you are considering self interaction (e.g. the fault interacting with itself) the kernels are square, and creating properly sized kernels is generally trivial. In the case of rectangular kernels (such as the fault feeling effects of the shear zone), I found it easiest to create a matrix to pass into hmmvp that has no use but for sizing. In the hmmvp kernel-creation code this is depicted as `_z`, and as `Z` in matlab. 
