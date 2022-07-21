@@ -108,7 +108,7 @@ function r = build()
   % convert between naming conventions
   ss.faultZ = faultZ;
   shearY_c = shearY_c;
-  xx3c = shearZ_c;
+  shearZ_c = shearZ_c;
   ss.x2c = ss.shearY_chat;
   ss.x3c = ss.shearZ_chat;
   ss.polesz = shearZhat;
