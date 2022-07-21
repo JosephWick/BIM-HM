@@ -106,7 +106,7 @@ function r = build()
   shearX_c=zeros(size(shearY_c));
 
   % convert between naming conventions
-  faultZ = faultZ;
+  ss.faultZ = faultZ;
   xx2c = shearY_c;
   xx3c = shearZ_c;
   ss.x2c = ss.shearY_chat;
@@ -279,23 +279,23 @@ function out = run(b)
   % - QDBIM style
 
   % reference friction coefficient
-  ss.fo=0.6*ones(size(faultZ));
+  ss.fo=0.6*ones(size(ss.faultZ));
 
   % Dieterich-Ruina R+S frictional parameters (velocity-weakening friction)
-  ss.a=1e-2+Ramp((faultZ-15e3)/3e3)*(0.025-0.01);
-  ss.b=0.015*ones(size(faultZ));
+  ss.a=1e-2+Ramp((ss.faultZ-15e3)/3e3)*(0.025-0.01);
+  ss.b=0.015*ones(size(ss.faultZ));
 
   % effective normal stress (MPa)
-  ss.sigma=50.0*ones(size(faultZ));
+  ss.sigma=50.0*ones(size(ss.faultZ));
 
   % characteristic weakening distance (m)
-  ss.Drs=8e-3*ones(size(faultZ));
+  ss.Drs=8e-3*ones(size(ss.faultZ));
 
   % plate rate (m/s)
-  ss.Vpl=1e-9*ones(size(faultZ));
+  ss.Vpl=1e-9*ones(size(ss.faultZ));
 
   % reference slip rate (m/s)
-  ss.Vo=1e-6*ones(size(faultZ));
+  ss.Vo=1e-6*ones(size(ss.faultZ));
 
   % Radiation damping coefficient
   ss.eta = G./(2*Vs);
@@ -311,12 +311,12 @@ function out = run(b)
   coh = min(9/32*pi*G*ss.Drs(VWp)./ss.b(VWp)./ss.sigma(VWp));
 
   % Estimate of recurrence time ( T ~ 5(b-a)*sigma / G * R/Vpl )
-  Ti = 5*mean((ss.b(VWp)-ss.a(VWp)).*ss.sigma(VWp)).*0.5.*(faultZ(VWp(end))- ...
-    faultZ(VWp(1)))./(G*mean(ss.Vpl(VWp)));
+  Ti = 5*mean((ss.b(VWp)-ss.a(VWp)).*ss.sigma(VWp)).*0.5.*(ss.faultZ(VWp(end))- ...
+    ss.faultZ(VWp(1)))./(G*mean(ss.Vpl(VWp)));
 
   % Print information about discretization
   fprintf('\nGrid size = %.2f (m)\n', ss.dz);
-  fprintf('VW zone = %.2f (km)\n', (faultZ(VWp(end))-faultZ(VWp(1)))/1e3);
+  fprintf('VW zone = %.2f (km)\n', (ss.faultZ(VWp(end))-ss.faultZ(VWp(1)))/1e3);
   fprintf('Critical nucleation size = %.2f (m)\n',hstar);
   fprintf('QS Cohesive zone = %.2f (m)\n',coh);
   fprintf('Est. Recurrence time = %.2f (yr)\n\n', Ti/3.15e7);
@@ -328,7 +328,7 @@ function out = run(b)
   Rm = 3330 ; % mantle density (kg/m^3)
 
   Pconf       = Rm*9.8*ss.x3c/1e6;  % Shear zones
-  Pconf_fault = Rm*9.8*(faultZ+ss.dz); % Faults
+  Pconf_fault = Rm*9.8*(ss.faultZ+ss.dz); % Faults
 
   Kappa     = k / (Rm * Cp); % Thermal diffusivity (m^2/s)
   Age_plate = 2e15; % seconds
