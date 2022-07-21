@@ -111,7 +111,7 @@ function r = build()
   shearZ_c = shearZ_c;
   ss.shearY_chat = ss.shearY_chat;
   ss.shearZ_chat = ss.shearZ_chat;
-  ss.polesz = shearZhat;
+  ss.shearZhat = shearZhat;
 
   disp('mesh done.')
   disp('beginning kernels...')
