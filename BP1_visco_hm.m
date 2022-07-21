@@ -141,7 +141,7 @@ function r = build()
 
   kvf('Write', c.kvf, c, 4);
   disp('run these in a shell:')
-  cmd = ['    ../hmmvp-okada/bin/hmmvpbuild_omp ' c.kvf];
+  cmd = ['    include/hmmvp/bin/hmmvpbuild_omp ' c.kvf];
   disp(cmd)
   r.ff12 = c.write_hmat_filename;
 
@@ -164,7 +164,7 @@ function r = build()
   c.W = W;
 
   kvf('Write', c.kvf, c, 32);
-  cmd = ['    ../hmmvp-okada/bin/hmmvpbuild_omp ' c.kvf];
+  cmd = ['    include/hmmvp/bin/hmmvpbuild_omp ' c.kvf];
   disp(cmd)
   r.ss1212 = c.write_hmat_filename;
 
@@ -175,7 +175,7 @@ function r = build()
   c.kvf = [c.write_hmat_filename '.kvf'];
   % geometry is the same for all shear-shear kernels
   kvf('Write', c.kvf, c, 32);
-  cmd = ['    ../hmmvp-okada/bin/hmmvpbuild_omp ' c.kvf];
+  cmd = ['    include/hmmvp/bin/hmmvpbuild_omp ' c.kvf];
   disp(cmd)
   r.ss1213 = c.write_hmat_filename;
 
@@ -185,7 +185,7 @@ function r = build()
   c.write_hd_filename = '/tmp/BP1v_ss-shear1312-hd';
   c.kvf = [c.write_hmat_filename '.kvf'];
   kvf('Write', c.kvf, c, 32);
-  cmd = ['    ../hmmvp-okada/bin/hmmvpbuild_omp ' c.kvf];
+  cmd = ['    include/hmmvp/bin/hmmvpbuild_omp ' c.kvf];
   disp(cmd)
   r.ss1312 = c.write_hmat_filename;
 
@@ -195,7 +195,7 @@ function r = build()
   c.write_hd_filename = './tmp/BP1v_ss-shear1313-hd';
   c.kvf = [c.write_hmat_filename '.kvf'];
   kvf('Write', c.kvf, c, 32);
-  cmd = ['    ../hmmvp-okada/bin/hmmvpbuild_omp ' c.kvf];
+  cmd = ['    include/hmmvp/bin/hmmvpbuild_omp ' c.kvf];
   disp(cmd)
   r.ss1313 = c.write_hmat_filename;
 
@@ -212,7 +212,7 @@ function r = build()
   c.write_hd_filename = './tmp/BP1v_fs-shear1212-hd';
   c.kvf = [c.write_hmat_filename '.kvf'];
   kvf('Write', c.kvf, c, 32);
-  cmd = ['    ../hmmvp-okada/bin/hmmvpbuild_omp ' c.kvf];
+  cmd = ['    include/hmmvp/bin/hmmvpbuild_omp ' c.kvf];
   disp(cmd)
   r.fs1212 = c.write_hmat_filename;
 
@@ -222,7 +222,7 @@ function r = build()
   c.write_hd_filename = './tmp/BP1v_fs-shear1312-hd';
   c.kvf = [c.write_hmat_filename '.kvf'];
   kvf('Write', c.kvf, c, 32);
-  cmd = ['    ../hmmvp-okada/bin/hmmvpbuild_omp ' c.kvf];
+  cmd = ['    include/hmmvp/bin/hmmvpbuild_omp ' c.kvf];
   disp(cmd)
   r.fs1312 = c.write_hmat_filename;
 
@@ -239,7 +239,7 @@ function r = build()
   c.write_hd_filename = './tmp/BP1v_sf-s12-hd';
   c.kvf = [c.write_hmat_filename '.kvf'];
   kvf('Write', c.kvf, c, 32);
-  cmd = ['    ../hmmvp-okada/bin/hmmvpbuild_omp ' c.kvf];
+  cmd = ['    include/hmmvp/bin/hmmvpbuild_omp ' c.kvf];
   disp(cmd)
   r.sf12 = c.write_hmat_filename;
 
@@ -249,7 +249,7 @@ function r = build()
   c.write_hd_filename = './tmp/BP1v_sf-s13-hd';
   c.kvf = [c.write_hmat_filename '.kvf'];
   kvf('Write', c.kvf, c, 32);
-  cmd = ['    ../hmmvp-okada/bin/hmmvpbuild_omp ' c.kvf];
+  cmd = ['    include/hmmvp/bin/hmmvpbuild_omp ' c.kvf];
   disp(cmd)
   r.sf13 = c.write_hmat_filename;
 
@@ -555,8 +555,9 @@ end
 
 % add paths to hmmvp
 function addpaths()
-  addpath('../hmmvp-okada/matlab')
+  addpath('include/hmmvp/matlab')
   addpath('ODEsolving')
+  addpath('include/')
 end
 
 % boxcar function
