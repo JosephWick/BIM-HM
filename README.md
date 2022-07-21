@@ -44,6 +44,8 @@ gfortran src/hmmvpbuild.cpp external/dc3omp.o src/Hd.o src/Compress.o src/Hmat.o
 ```
 If you want to get rid of the .o files, `make clean` should do the trick
 
+You'll also need to run a matlab script to compile the `.mex` files that hmmvp uses to interface between Matlab and C++. To do so, start a Matlab terminal, navigate to the `include/hmmvp/matlab` directory and run the `make.m` script. 
+
 ### Creating Hierarchical Matrices
 Data is passed between matlab and hmmvp using key value files, denoted with the extension `.kvf`. Strings, numbers and arrays can all be passed through key value files, but for this project we only need to pass along arrays of floats. An example of writing to a key value file is below
 ```
