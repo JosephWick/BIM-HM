@@ -34,7 +34,7 @@ function r = build()
   %   - '_c' suffixed terms refer to the center of patches
   %   - 'hat' suffixed terms refer to a 1D vector that represents a direction
   %         of a 2D or 3D mesh
-  % 
+  %
 
   disp('begin mesh...')
 
@@ -134,10 +134,6 @@ function r = build()
   c.X = [faultX_c; faultY_c; faultZ_c];
   c.L = Lf';
   c.W = Wf';
-
-  clf;
-  imagesc(c.X); colorbar();
-  saveas(gcf, 'figures/X.png')
 
   kvf('Write', c.kvf, c, 4);
   disp('run these in a shell:')
@@ -433,12 +429,12 @@ function out = run(b)
 
   % initialize the function handle with
   % set constitutive parameters
-  yp=@(t,y) odeBP1v_hm2(t,y,ss, hm);
+  yp=@(t,y) odeBP1v_hm(t,y,ss, hm);
   disp('begin solving...')
   tic
   % Solve the system
   options=odeset('Refine',1,'RelTol',3e-7,'InitialStep',1e-3,'MaxStep',3e6);
-  [t,Y]=ode45_2(yp,[0 500*3.15e7],Y0,options);
+  [t,Y]=ode45_2(yp,[0 1*3.15e7],Y0,options);
   disp('done solving.')
   toc
   %%
