@@ -72,4 +72,17 @@ One item of note is the size of the hierarchical matrices. In the class declarat
 `virtual Hd* ComputeHd (double eta) { return NewHd(_z, _x, NULL, eta); }`
 `_z` and `_x` are parameters passed into the function by way of key value files. They are also what is used to define the shape of the kernel. Hmmvp takes the length of the first array contained in `_x` for the number of columns in the kernel, and the length of the first array contained in `_z` for the number of rows. 
 
-In the case where you are considering self interaction (e.g. the fault interacting with itself) the kernels are square, and creating properly sized kernels is generally trivial. In the case of rectangular kernels (such as the fault feeling effects of the shear zone), I found it easiest to create a matrix to pass into hmmvp that is *exclusively* used for sizing. This matrix should be 3xN, where N is the number of mesh patches hmmvp should consider. In the hmmvp kernel-creation code this is depicted as `_z`, and as `Z` in matlab. 
+In the case where you are considering self interaction (e.g. the fault interacting with itself) the kernels are square, and creating properly sized kernels is generally trivial. In the case of rectangular kernels (such as the fault feeling effects of the shear zone), one must make sure the correct input matrices are used for sizing of the hmmvp kernel. 
+
+To create hierarchical matrices, hmmvp will first calculate each value of a normal dense kernel matrix in the method `Eval`, which must be defined in each Green's function class. Each time `Eval` is called, it will be given arguments `i` and `j` which specify the cell number of the element being computed. `i` refers to the receiver (row) and j refers to the source (column). 
+
+The most straightforward way to use hmmvp from the matlab interface is to pass in flattened `ndgrid` arrays. For example, one can define their mesh using one dimensional arrays, then use matlab's ndgrid function to create a 2d grid from the x and y arrays. Then pass flattened versions of the ndgrid output into hmmvp. In matlab that would look like:
+```
+xhat = ...
+yhat = ...
+[X, Y] = ndgrid(xhat, yhat);
+x_for_hmmvp = X(:);
+y_for_hmmvp = Y(:);
+```
+
+For this project, comparison between a direct matlab implementation of the kernels and the hmmvp kernels was the primary goal. To that end, I found it easier to pass the simple 1D mesh defining arrays into hmmvp and then follow the convention used in `BP1_visco_d.m` to correlate physical mesh block and kernel element. As a result, some of the kernels in `BP1_visco_hm.m` pass an array into hmmvp that is only used for sizing. 
