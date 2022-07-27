@@ -5,6 +5,9 @@ The two main files are `BP1_visco_d.m` and `BP1_visco_hm.m`. Each solves the sam
 
 The `include` directory houses modified versions of ode23 and ode45 that write data to disk to prevent the state vector from exceeding memory limits, as well as `hmmvp`, a tool for implementing hierachical matrices, and `ma2np`, a script that converts between matlab and python numpy arrays. More information on `hmmvp` can be found [here](https://github.com/ambrad/hmmvp), and `ma2np` can be found [here](https://github.com/joe-of-all-trades/mat2np)
 
+# Figures
+Both simulations write a number of files to disk, several of which are arrays in the form of python numpy pickles. These pickles are used in the notebook `figures/SSAfigures.ipynb` to create a number of figures comparing the dense and hierarchical simulations. The data written to disk includes the state vector, strain rate of the entire ductile area, strain rate of the center column of the ductile area, and slip rate of the fault. 
+
 # Code Specifics
 ## Usage
 The dense script can be run in a single step, by calling it in a matlab console. The hierarchical version of the simulation is a three step process, requiring first a setup to be ran, then creation and compression of the hierarcical matrices, followed by running the actual simulation. Once kernels have been made, the simulation can be re-run without the first two steps so long as the .hm files remain available and no changes to the physical problem have been made. In `BP1_visco_hm.m`, the setup and actual simulation are broken into two methods. 
