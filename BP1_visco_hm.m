@@ -105,7 +105,7 @@ function r = build()
   shearX = zeros(size(shearY));
   shearX_c=zeros(size(shearY_c));
 
-  % convert between naming conventions
+  % ensure necessary fields make it into `ss`
   ss.faultZ = faultZ;
   shearY_c = shearY_c;
   shearZ_c = shearZ_c;
@@ -155,6 +155,9 @@ function r = build()
   c.X = [shearX_c(:)'; shearY_c(:)'; shearZ_c(:)'];
 
   c.Z = [shearX(:)'; shearY(:)'; shearZ(:)']; % for sizing purposes only
+  % for some kernels, I found it easier to pass in the *_hat arrays rather than
+  % the longer flattened arrays such as shearX_c(:)
+
 
   c.L = L;
   c.W = W;
