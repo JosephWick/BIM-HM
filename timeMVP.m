@@ -27,12 +27,12 @@ function r = build()
     N = Ns(i);
     nstring = string(N);
 
-    Xhat = linspace(0,probDim, N);
-    Yhat = linspace(0,probDim, N);
-    Zhat = linspace(0,probDim, N);
+    Xhat = linspace(0, probDim, N);
+    Yhat = linspace(0, probDim, N);
+    Zhat = linspace(0, probDim, N);
 
     % --- 2D mesh ---
-    [Y, X] = ndgrid(Xhat, Yhat);
+    [Y, X] = ndgrid(Yhat, Xhat);
     Z = zeros(length(X(:)),1);
 
     % --- 2D kvf ---
@@ -59,7 +59,7 @@ function r = build()
     r.kvfs_2d_8(length(r.kvfs_2d_8)+1) = c.write_hmat_filename;
 
     % --- 3D Mesh ---
-    [Z, Y, X] = ndgrid(Xhat, Yhat, Zhat);
+    [Z, Y, X] = ndgrid(Zhat, Yhat, Xhat);
     c.X = (X(:)', Y(:)', Z(:)');
 
     % tolerance 1e-6;
