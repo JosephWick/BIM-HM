@@ -74,8 +74,8 @@ function r = build()
     % tolerance 1e-8;
     c.tol = 1e-8
     c.write_hmat_filename = './tmp/timing_3d_n' + nstring + '_e8';
-    c.write_hd_filename = [c.write_hmat_filename '-hd'];
-    c.kvf = [c.write_hmat_filename '.kvf'];
+    c.write_hd_filename = c.write_hmat_filename + '-hd';
+    c.kvf = c.write_hmat_filename + '.kvf'
     kvf('Write', c.kvf, c, 32);
     cmd = ['    include/hmmvp/bin/hmmvpbuild_omp ' c.kvf];
     disp(cmd)
