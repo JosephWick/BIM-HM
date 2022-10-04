@@ -25,7 +25,7 @@ function r = build()
 
   for i=1:length(Ns)
     N = Ns(i);
-    nstring = string(N)
+    nstring = string(N);
 
     Xhat = linspace(0,probDim, N);
     Yhat = linspace(0,probDim, N);
@@ -33,7 +33,7 @@ function r = build()
 
     % --- 2D mesh ---
     [Y, X] = ndgrid(Xhat, Yhat);
-    Z = zeros(length(X),1);
+    Z = zeros(length(X(:)),1);
 
     % --- 2D kvf ---
     c.X = [X(:)', Y(:)', Z];
@@ -60,6 +60,7 @@ function r = build()
 
     % --- 3D Mesh ---
     [Z, Y, X] = ndgrid(Xhat, Yhat, Zhat);
+    c.X = (X(:)', Y(:)', Z(:)');
 
     % tolerance 1e-6;
     c.tol = 1e-6;
