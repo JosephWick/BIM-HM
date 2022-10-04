@@ -60,8 +60,7 @@ function r = build()
 
     % --- 3D Mesh ---
     [Z, Y, X] = ndgrid(Zhat, Yhat, Xhat);
-    X
-    c.X = (X(:)', Y(:)', Z(:)');
+    c.X = [X(:)', Y(:)', Z(:)'];
 
     % tolerance 1e-6;
     c.tol = 1e-6;
