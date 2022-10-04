@@ -84,7 +84,7 @@ function r = build()
 
 end
 
-function time(b)
+function measure(b)
 
   Ns = b.Ns;
   t_2d_6 = [];
@@ -92,7 +92,7 @@ function time(b)
   t_3d_6 = [];
   t_3d_8 = [];
 
-  
+
 
 end
 
