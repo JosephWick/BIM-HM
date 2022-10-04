@@ -33,7 +33,7 @@ function r = build()
 
     % --- 2D mesh ---
     [Y, X] = ndgrid(Yhat, Xhat);
-    Z = zeros(length(X(:)),1);
+    Z = zeros(size(X(:)'));
 
     % --- 2D kvf ---
     c.X = [X(:)', Y(:)', Z];
