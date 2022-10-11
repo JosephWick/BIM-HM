@@ -14,6 +14,8 @@ function r = build()
   probDim = 200e3; %200km
 
   c.greens_fn = 'shear1212';
+  c.command = 'compress';
+  c.err_method = 'mrem-fro';
 
   r.kvfs_2d_6 = [];
   r.kvfs_2d_8 = [];

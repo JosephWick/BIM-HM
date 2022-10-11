@@ -345,6 +345,10 @@ function out = run(b)
   % Values taken for wet olivine - Hirth, G. and D. Kohlstedt (2003)
 
   % Driving strain rate (1/s)
+
+  % solve for using the epsilon dote
+  %equations 6 and 7 inthe oberleaf
+  % add fcator of plate rate out front
   ss.e12p_plate = 1e-14*ones(length(ss.shearY_chat)*length(ss.shearZ_chat),1);
   ss.e13p_plate =      zeros(length(ss.shearY_chat)*length(ss.shearZ_chat),1);
 
