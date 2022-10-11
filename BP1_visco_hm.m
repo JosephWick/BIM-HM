@@ -349,8 +349,44 @@ function out = run(b)
   % solve for using the epsilon dote
   %equations 6 and 7 inthe oberleaf
   % add fcator of plate rate out front
-  ss.e12p_plate = 1e-14*ones(length(ss.shearY_chat)*length(ss.shearZ_chat),1);
-  ss.e13p_plate =      zeros(length(ss.shearY_chat)*length(ss.shearZ_chat),1);
+  Dv = probW-ss.transition;
+  Df = ss.lambdaZ;
+  n = 3;
+  w=10;
+
+  ss.e12p_plate = zeros(ss.Ny, ss.Nz);
+  ss.e13_plate = zeros(ss.Ny, ss.Nz);
+  for i=1:1:ss.Ny
+    for j = 1:1:ss.Nz
+      x2 = shearY_c(i,j);
+      x3 = shearZ_c(i,j);
+      x2p = x2/(Dv);
+      x3p = (x3-Df)/(Dv);
+
+      summ12 = 0;
+      summ13 = 0;
+      m = 1;
+
+      sterm12 = e12Terms(x2p, x3p, m, n, w);
+      sterm13 = e13Terms(x2p, x3p, m, n, w);
+      while sterm12 > 1e-5 | sterm13 > 1e-5;
+        summ12 += sterm;
+        m+=1;
+        sterm12 = e12Terms(x2p, x3p, m, n, w);
+        sterm13 = e13Terms(x2p, x3p, m, n, w);
+      end
+      ss.e12p_plate = ss.Vpl * (1/2*w + 1/w)*(summ12);
+
+    end
+  end
+
+  for i=1:1:ss.Ny
+    for j=1:1:ss.Nz
+
+    end
+  end
+  %ss.e12p_plate = 1e-14*ones(length(ss.shearY_chat)*length(ss.shearZ_chat),1);
+  %ss.e13p_plate =      zeros(length(ss.shearY_chat)*length(ss.shearZ_chat),1);
 
   % Rheological Parameters
   % Reference Strain Rate (for stress in MPa)
@@ -576,4 +612,22 @@ end
 
 function h = HS(x)
   h = 0+x>=0;
+end
+
+% terms in the summation for e12
+function y = e12Terms(x2p, x3p, m, n, w)
+  t1 = cosh((m*pi*(1-x3p))/(w*n^0.5));
+  t2 = cos((m*pi*x2p)/(w*n^0.5));
+  t3 = cosh((m*pi)/(w*n^0.5));
+
+  y = (t1*t2)/t3;
+end
+
+% terms in the summation for e13
+function y = e13Terms(x2p, x3p, m, n, w)
+  t1 = sinh((m*pi*(1-x3p))/(w*n^0.5));
+  t2 = sin((m*pi*x2p)/(w*n^0.5));
+  t3 = cosh((m*pi)/(w*n^0.5));
+
+  y = (t1*t2)/t3;
 end
