@@ -369,9 +369,9 @@ function out = run(b)
 
       sterm12 = e12Terms(x2p, x3p, m, n, w);
       sterm13 = e13Terms(x2p, x3p, m, n, w);
-      while sterm12 > 1e-5 | sterm13 > 1e-5;
+      while sterm12 > 1e-5 || sterm13 > 1e-5;
         summ12 += sterm;
-        m+=1;
+        m += 1;
         sterm12 = e12Terms(x2p, x3p, m, n, w);
         sterm13 = e13Terms(x2p, x3p, m, n, w);
       end
