@@ -108,8 +108,8 @@ function r = build()
 
   % ensure necessary fields make it into `ss`
   ss.faultZ = faultZ;
-  shearY_c = shearY_c;
-  shearZ_c = shearZ_c;
+  ss.shearY_c = shearY_c;
+  ss.shearZ_c = shearZ_c;
   ss.shearY_chat = ss.shearY_chat;
   ss.shearZ_chat = ss.shearZ_chat;
   ss.shearZhat = shearZhat;
@@ -359,8 +359,8 @@ function out = run(b)
   ss.e13_plate = zeros(ss.Ny, ss.Nz);
   for i=1:1:ss.Ny
     for j = 1:1:ss.Nz
-      x2 = shearY_c(i,j);
-      x3 = shearZ_c(i,j);
+      x2 = ss.shearY_c(i,j);
+      x3 = ss.shearZ_c(i,j);
       x2p = x2/(Dv);
       x3p = (x3-Df)/(Dv);
 
