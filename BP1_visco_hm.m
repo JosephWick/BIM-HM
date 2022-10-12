@@ -10,7 +10,7 @@ end
 
 % set up h-matrices/kernels
 function r = build()
-  % this function defines the physical problem as well as the key value files
+  % this function defines the physical ss.probLem as well as the key value files
   % that hmmvp will use
 
   addpaths();
@@ -39,8 +39,9 @@ function r = build()
   disp('begin mesh...')
 
   % Fault Meshes
-  probL = 200e3;
-  probW = 200e3;
+  ss.probL = 200e3;
+  ss.probW = 200e3;
+
 
   ss.lambdaZ = 40e3; % fault depth extent
   ss.M = 400; %number of fault cells
@@ -349,7 +350,7 @@ function out = run(b)
   % solve for using the epsilon dote
   %equations 6 and 7 inthe oberleaf
   % add fcator of plate rate out front
-  Dv = probW-ss.transition;
+  Dv = ss.probW-ss.transition;
   Df = ss.lambdaZ;
   n = 3;
   w=10;
