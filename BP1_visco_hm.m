@@ -385,6 +385,10 @@ function out = run(b)
     end
   end
 
+  % flatten
+  ss.e12p_plate = ss.e12p_plate(:);
+  ss.e13p_plate = ss.e13p_plate(:);
+
   for i=1:1:ss.Ny
     for j=1:1:ss.Nz
 
