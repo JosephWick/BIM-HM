@@ -624,9 +624,9 @@ function y = e12Terms(x2p, x3p, m, n, w)
   t2 = cos((m*pi*x2p)/(w*n^0.5));
   t3 = cosh((m*pi)/(w*n^0.5));
 
-  size(t1)
-  size(t2)
-  size(t3)
+  t1
+  t2
+  t3
 
   y = (t1*t2)/t3;
 end
