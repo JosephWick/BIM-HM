@@ -374,6 +374,7 @@ function out = run(b)
         summ12 = summ12 + sterm12;
         summ13 = summ13 + sterm13;
         m = m + 1;
+        % sizing issue here, left is 1x1 right is 400x1
         sterm12 = e12Terms(x2p, x3p, m, n, w);
         sterm13 = e13Terms(x2p, x3p, m, n, w);
       end
@@ -622,6 +623,10 @@ function y = e12Terms(x2p, x3p, m, n, w)
   t1 = cosh((m*pi*(1-x3p))/(w*n^0.5));
   t2 = cos((m*pi*x2p)/(w*n^0.5));
   t3 = cosh((m*pi)/(w*n^0.5));
+
+  size(t1)
+  size(t2)
+  size(t3)
 
   y = (t1*t2)/t3;
 end
