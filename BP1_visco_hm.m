@@ -357,7 +357,7 @@ function out = run(b)
   w=10;
 
   ss.e12p_plate = zeros(ss.Ny, ss.Nz);
-  ss.e13_plate = zeros(ss.Ny, ss.Nz);
+  ss.e13p_plate = zeros(ss.Ny, ss.Nz);
   for i=1:1:ss.Ny
     for j = 1:1:ss.Nz
       x2 = ss.shearY_c(i,j);
@@ -380,7 +380,7 @@ function out = run(b)
       end
       % sizing issue here, left is 1x1 right is 400x1
       ss.e12p_plate(i,j) = ss.Vpl_scalar * (1/2*w + 1/w)*(summ12);
-      ss.e13_plate(i,j) = ss.Vpl_scalar * (-1/(w*n^0.5)*(summ13) );
+      ss.e13p_plate(i,j) = ss.Vpl_scalar * (-1/(w*n^0.5)*(summ13) );
 
     end
   end
@@ -437,11 +437,9 @@ function out = run(b)
 
   % Strengh profile
 
-  size(ss.e12p_plate)
-  size(ss.Const_dis)
-
+  %  ?? definition of s130 is adapted from s120
   s120 = (ss.e12p_plate./ss.Const_dis).^(1./ss.n);
-  s130 = zeros(size(s120));
+  s130 = (ss.e13p_plate./ss.Const_dis).^(1./ss.n);
   e120 = zeros(size(s120));
   e130 = zeros(size(s120));
 
