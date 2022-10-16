@@ -297,6 +297,7 @@ function out = run(b)
 
   % plate rate (m/s)
   ss.Vpl=1e-9*ones(size(ss.faultZ));
+  ss.Vpl_scalar = 1e-9;
 
   % reference slip rate (m/s)
   ss.Vo=1e-6*ones(size(ss.faultZ));
@@ -374,12 +375,12 @@ function out = run(b)
         summ12 = summ12 + sterm12;
         summ13 = summ13 + sterm13;
         m = m + 1;
-        % sizing issue here, left is 1x1 right is 400x1
         sterm12 = e12Terms(x2p, x3p, m, n, w);
         sterm13 = e13Terms(x2p, x3p, m, n, w);
       end
-      ss.e12p_plate(i,j) = ss.Vpl * (1/2*w + 1/w)*(summ12);
-      ss.e13_plate(i,j) = ss.Vpl * (-1/(w*n^0.5)*(summ13) );
+      % sizing issue here, left is 1x1 right is 400x1
+      ss.e12p_plate(i,j) = ss.Vpl_scalar * (1/2*w + 1/w)*(summ12);
+      ss.e13_plate(i,j) = ss.Vpl_scalar * (-1/(w*n^0.5)*(summ13) );
 
     end
   end
