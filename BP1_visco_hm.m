@@ -432,6 +432,10 @@ function out = run(b)
     ss.COH.^(ss.r).*ss.d.^(-ss.pexp);
 
   % Strengh profile
+
+  size(ss.e12p_plate)
+  size(ss.Const_dis)
+
   s120 = (ss.e12p_plate./ss.Const_dis).^(1./ss.n);
   s130 = zeros(size(s120));
   e120 = zeros(size(s120));
