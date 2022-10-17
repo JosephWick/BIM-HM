@@ -33,36 +33,33 @@ function r = build()
     Yhat = linspace(0, probDim, N);
     Zhat = linspace(0, probDim, N);
 
-    % --- 2D mesh ---
-    [Y, X] = ndgrid(Yhat, Xhat);
-    Z = zeros(size(X(:)'));
-
-    % --- 2D kvf ---
-    c.X = [X(:)', Y(:)', Z];
-
-    % tolerance 1e-6;
-    c.tol = 1e-6;
-    c.write_hmat_filename = strcat('./tmp/timing_2d_n', nstring, '_e6');
-    c.write_hd_filename = strcat(c.write_hmat_filename, '-hd');
-    c.kvf = strcat(c.write_hmat_filename, '.kvf');
-    kvf('Write', c.kvf, c, 32);
-    cmd = '    include/hmmvp/bin/hmmvpbuild_omp ' + c.kvf;
-    disp(cmd)
-    r.kvfs_2d_6(length(r.kvfs_2d_6)+1) = c.write_hmat_filename;
-
-    % tolerance 1e-6;
-    c.tol = 1e-8;
-    c.write_hmat_filename = './tmp/timing_2d_n' + nstring + '_e8';
-    c.write_hd_filename = c.write_hmat_filename + '-hd';
-    c.kvf = c.write_hmat_filename + '.kvf';
-    kvf('Write', c.kvf, c, 32);
-    cmd = '    include/hmmvp/bin/hmmvpbuild_omp ' + c.kvf;
-    disp(cmd)
-    r.kvfs_2d_8(length(r.kvfs_2d_8)+1) = c.write_hmat_filename;
+    L = abs(Xhat(2) - Xhat(1));
 
     % --- 3D Mesh ---
     [Z, Y, X] = ndgrid(Zhat, Yhat, Xhat);
+    X = X(:)';
+    Y = Y(:)';
+    Z = Z(:)';
     c.X = [X(:)', Y(:)', Z(:)'];
+
+    %  create kernel based on mesh
+    G = 30e3;
+    nu = 0.25 %??
+
+    kernel = zeros(N^3, N^3);
+    for i = 1:N^3
+      for j = 1:n^3
+        kernel(i,j) = computeStressVerticalShearZone_s12(...
+        X(i), Y(i), Z(i), ...
+        X(j), Y(j), Z(j), L, L, L, 0, ...
+        epsv11p, epsv12p, epsv13p, epsv22p, epsv23p, epsv33p, ...
+        G, nu);
+
+        )
+
+
+      end
+    end
 
     % tolerance 1e-6;
     c.tol = 1e-6;

@@ -11,6 +11,9 @@ private:
   // geometry
   Matd _x;
 
+  // kernel
+  Matd _k;
+
   double _N;
 
   double Eval(UInt i, UInt j) const;
@@ -18,25 +21,10 @@ private:
 
 inline double GreensFnTest::Eval (UInt i, UInt j) const {
   // i is the receiver, j is the source; both start at 1
-  // keep in mind that i/j are the cell number not location
-  //printf("ij: %d, %d\n", i, j);
+  // i is row, j column
+  // take the kernel passed in as a parameter
 
-  // take distance between points i and j
-  // if dist = 0, kernel value is negative
-  // if dist > 0, kernel value is 1/d
-
-  // declaration
-
-  double dist;
-
-  dist = sqrt( pow(_x(1,i)-_y(1,j),2) +
-                pow(_x(2,i)-_y(2,j),2) +
-                pow(_x(3,i)-_y(3,j),2) );
-
-  if (dist == 0){
-    return -2;
-  }
-  return 1/dist;
+  return _k(i,j);
 
 }
 
@@ -51,6 +39,9 @@ void GreensFnTest::Init (const KeyValueFile* kvf) throw (Exception) {
   if (!kvf->GetMatd("X", m)) throw Exception("Missing X.");
   _x = *m;
   if (_x.Size(1) != 3) throw Exception("X must be 3xN.");
+
+  if (!kvf->GetMatd("K", n)) throw Exception("Missing K.");
+  _k = *n;
 
   kvf->GetDouble("N", _N);
   if (_N <= 0) throw Exception("N must be greater than 0.");

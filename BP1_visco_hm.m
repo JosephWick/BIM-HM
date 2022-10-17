@@ -378,7 +378,6 @@ function out = run(b)
         sterm12 = e12Terms(x2p, x3p, m, n, w);
         sterm13 = e13Terms(x2p, x3p, m, n, w);
       end
-      % sizing issue here, left is 1x1 right is 400x1
       ss.e12p_plate(i,j) = ss.Vpl_scalar * (1/2*w + 1/w)*(summ12);
       ss.e13p_plate(i,j) = ss.Vpl_scalar * (-1/(w*n^0.5)*(summ13) );
 
@@ -488,7 +487,7 @@ function out = run(b)
   tic
   % Solve the system
   options=odeset('Refine',1,'RelTol',3e-7,'InitialStep',1e-3,'MaxStep',3e6);
-  [t,Y]=ode45_2(yp,[0 100*3.15e7],Y0,options);
+  [t,Y]=ode45_2(yp,[0 1*3.15e7],Y0,options);
   disp('done solving.')
   toc
   %%
