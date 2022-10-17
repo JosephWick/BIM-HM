@@ -379,7 +379,7 @@ function out = run(b)
         sterm13 = e13Terms(x2p, x3p, m, n, w);
       end
       ss.e12p_plate(i,j) = ss.Vpl_scalar * ( 1/(2*w) + (1/w)*(summ12));
-      ss.e13p_plate(i,j) = ss.Vpl_scalar * ( -1/(w*n^0.5)*(summ13) );
+      ss.e13p_plate(i,j) = ss.Vpl_scalar * ( ()-1/(w*n^0.5))*(summ13) );
 
     end
   end
@@ -626,18 +626,18 @@ end
 
 % terms in the summation for e12
 function y = e12Terms(x2p, x3p, m, n, w)
-  t1 = cosh((m*pi*(1-x3p))/(w*n^0.5));
-  t2 = cos((m*pi*x2p)/(w*n^0.5));
-  t3 = cosh((m*pi)/(w*n^0.5));
+  t1 = cosh( (m*pi*(1-x3p))/(w*n^0.5) );
+  t2 = cos( (m*pi*x2p)/(w*n^0.5) );
+  t3 = cosh( (m*pi)/(w*n^0.5) );
 
-  y = (t1*t2)/t3;
+  y = (t1/t3)*t2;
 end
 
 % terms in the summation for e13
 function y = e13Terms(x2p, x3p, m, n, w)
-  t1 = sinh((m*pi*(1-x3p))/(w*n^0.5));
-  t2 = sin((m*pi*x2p)/(w*n^0.5));
-  t3 = cosh((m*pi)/(w*n^0.5));
+  t1 = sinh( (m*pi*(1-x3p))/(w*n^0.5) );
+  t2 = sin( (m*pi*x2p)/(w*n^0.5) );
+  t3 = cosh( (m*pi)/(w*n^0.5) );
 
   y = (t1*t2)/t3;
 end
