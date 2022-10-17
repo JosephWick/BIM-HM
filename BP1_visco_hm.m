@@ -378,8 +378,8 @@ function out = run(b)
         sterm12 = e12Terms(x2p, x3p, m, n, w);
         sterm13 = e13Terms(x2p, x3p, m, n, w);
       end
-      ss.e12p_plate(i,j) = ss.Vpl_scalar * (1/2*w + 1/w)*(summ12);
-      ss.e13p_plate(i,j) = ss.Vpl_scalar * (-1/(w*n^0.5)*(summ13) );
+      ss.e12p_plate(i,j) = ss.Vpl_scalar * ( 1/(2*w) + (1/w)*(summ12));
+      ss.e13p_plate(i,j) = ss.Vpl_scalar * ( -1/(w*n^0.5) * (summ13) );
 
     end
   end
