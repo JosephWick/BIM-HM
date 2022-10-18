@@ -379,17 +379,17 @@ function out = run(b)
         sterm12 = e12Terms(x2p, x3p, m, n, w);
         sterm13 = e13Terms(x2p, x3p, m, n, w);
       end
-      ss.e12p_plate(i,j) = ss.Vpl_scalar * ( 1/(2*w) + (1/w)*(summ12));
-      ss.e13p_plate(i,j) = ss.Vpl_scalar * ( (-1/(w*n^0.5)) * (summ13) );
+      ss.e12p_plate(i,j) = ss.Vpl_scalar * ( 1/(2*w) + (1/w) * summ12);
+      ss.e13p_plate(i,j) = ss.Vpl_scalar * ( (-1/(w*(n^0.5))) * summ13 );
 
     end
   end
 
   % flatten
-  %ss.e12p_plate = ss.e12p_plate(:);
-  %ss.e13p_plate = ss.e13p_plate(:);
-  ss.e12p_plate = 1e-14*ones(length(ss.shearY_chat)*length(ss.shearZ_chat),1);
-  ss.e13p_plate =      zeros(length(ss.shearY_chat)*length(ss.shearZ_chat),1);
+  ss.e12p_plate = ss.e12p_plate(:);
+  ss.e13p_plate = ss.e13p_plate(:);
+  %ss.e12p_plate = 1e-14*ones(length(ss.shearY_chat)*length(ss.shearZ_chat),1);
+  %ss.e13p_plate =      zeros(length(ss.shearY_chat)*length(ss.shearZ_chat),1);
 
   % Rheological Parameters
   % Reference Strain Rate (for stress in MPa)
@@ -621,18 +621,18 @@ end
 
 % terms in the summation for e12
 function y = e12Terms(x2p, x3p, m, n, w)
-  t1 = cosh( (m*pi*(1-x3p))/(w*n^0.5) );
-  t2 = cos( (m*pi*x2p)/(w*n^0.5) );
-  t3 = cosh( (m*pi)/(w*n^0.5) );
+  t1 = cosh( (m*pi*(1-x3p))/(w*(n^0.5)) );
+  t2 = cos( (m*pi*x2p)/(w*(n^0.5)) );
+  t3 = cosh( (m*pi)/(w*(n^0.5)) );
 
   y = (t1/t3) * t2;
 end
 
 % terms in the summation for e13
 function y = e13Terms(x2p, x3p, m, n, w)
-  t1 = sinh( (m*pi*(1-x3p))/(w*n^0.5) );
-  t2 = sin( (m*pi*x2p)/(w*n^0.5) );
-  t3 = cosh( (m*pi)/(w*n^0.5) );
+  t1 = sinh( (m*pi*(1-x3p))/(w*(n^0.5)) );
+  t2 = sin( (m*pi*x2p)/(w*(n^0.5)) );
+  t3 = cosh( (m*pi)/(w*(n^0.5)) );
 
   y = (t1/t3) * t2;
 end
