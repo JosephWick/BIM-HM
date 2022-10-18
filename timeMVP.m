@@ -36,6 +36,7 @@ function r = build()
     L = abs(Xhat(2) - Xhat(1));
 
     % --- 3D Mesh ---
+    % mesh should not be unifornm
     [Z, Y, X] = ndgrid(Zhat, Yhat, Xhat);
     X = X(:)';
     Y = Y(:)';
@@ -44,7 +45,9 @@ function r = build()
 
     %  create kernel based on mesh
     G = 30e3;
-    nu = 0.25 %??
+    nu = 0.25; % this is fine
+    % theta is zero
+    % eps12 can be 1; others zero
 
     kernel = zeros(N^3, N^3);
     for i = 1:N^3

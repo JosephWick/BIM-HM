@@ -349,12 +349,12 @@ function out = run(b)
   % Driving strain rate (1/s)
 
   % solve for using the epsilon dote
-  %equations 6 and 7 inthe oberleaf
-  % add fcator of plate rate out front
+  % equations 6 and 7 in the overleaf
+  % add factor of plate rate out front
   Dv = ss.probW-ss.transition;
   Df = ss.lambdaZ;
   n = 3;
-  w=10;
+  w = 10;
 
   ss.e12p_plate = zeros(ss.Ny, ss.Nz);
   ss.e13p_plate = zeros(ss.Ny, ss.Nz);
@@ -369,9 +369,10 @@ function out = run(b)
       summ13 = 0;
       m = 1;
 
+      % also consider term as percentage of the total
       sterm12 = e12Terms(x2p, x3p, m, n, w);
       sterm13 = e13Terms(x2p, x3p, m, n, w);
-      while sterm12 > 1e-5 || sterm13 > 1e-5;
+      while sterm12 >= summ12*0.005 || sterm13 >= summ13*0.005;
         summ12 = summ12 + sterm12;
         summ13 = summ13 + sterm13;
         m = m + 1;
@@ -379,22 +380,16 @@ function out = run(b)
         sterm13 = e13Terms(x2p, x3p, m, n, w);
       end
       ss.e12p_plate(i,j) = ss.Vpl_scalar * ( 1/(2*w) + (1/w)*(summ12));
-      ss.e13p_plate(i,j) = ss.Vpl_scalar * ( (-1/(w*n^0.5))*(summ13) );
+      ss.e13p_plate(i,j) = ss.Vpl_scalar * ( (-1/(w*n^0.5)) * (summ13) );
 
     end
   end
 
   % flatten
-  ss.e12p_plate = ss.e12p_plate(:);
-  ss.e13p_plate = ss.e13p_plate(:);
-
-  for i=1:1:ss.Ny
-    for j=1:1:ss.Nz
-
-    end
-  end
-  %ss.e12p_plate = 1e-14*ones(length(ss.shearY_chat)*length(ss.shearZ_chat),1);
-  %ss.e13p_plate =      zeros(length(ss.shearY_chat)*length(ss.shearZ_chat),1);
+  %ss.e12p_plate = ss.e12p_plate(:);
+  %ss.e13p_plate = ss.e13p_plate(:);
+  ss.e12p_plate = 1e-14*ones(length(ss.shearY_chat)*length(ss.shearZ_chat),1);
+  ss.e13p_plate =      zeros(length(ss.shearY_chat)*length(ss.shearZ_chat),1);
 
   % Rheological Parameters
   % Reference Strain Rate (for stress in MPa)
