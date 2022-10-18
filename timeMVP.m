@@ -80,7 +80,7 @@ function r = build()
     c.write_hd_filename = strcat(c.write_hmat_filename,'-hd');
     c.kvf = strcat(c.write_hmat_filename, '.kvf');
     kvf('Write', c.kvf, c, 4);
-    cmd = ['    include/hmmvp/bin/hmmvpbuild_omp ' c.kvf];
+    cmd = strcat('    include/hmmvp/bin/hmmvpbuild_omp ', c.kvf);
     disp(cmd)
     r.kvfs_3d_6(length(r.kvfs_3d_6)+1) = c.write_hmat_filename;
 
