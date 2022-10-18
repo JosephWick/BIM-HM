@@ -129,7 +129,7 @@ function r = build()
   % ---       s12 kernel stress on fault, by fault      ---
   c.greens_fn = 'okadaS12';
   c.write_hmat_filename = './tmp/BP1v_ff-s12';
-  c.kvf = [c.write_hmat_filename '.kvf'];
+  c.kvf = [c.write_hmat_filename '.kvf']
 
   c.Y = [faultX; faultY; faultZ'];
   c.X = [faultX_c; faultY_c; faultZ_c];
