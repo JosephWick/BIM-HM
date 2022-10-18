@@ -625,7 +625,7 @@ function y = e12Terms(x2p, x3p, m, n, w)
   t2 = cos( (m*pi*x2p)/(w*n^0.5) );
   t3 = cosh( (m*pi)/(w*n^0.5) );
 
-  y = (t1/t3)*t2;
+  y = (t1/t3) * t2;
 end
 
 % terms in the summation for e13
@@ -634,5 +634,5 @@ function y = e13Terms(x2p, x3p, m, n, w)
   t2 = sin( (m*pi*x2p)/(w*n^0.5) );
   t3 = cosh( (m*pi)/(w*n^0.5) );
 
-  y = (t1*t2)/t3;
+  y = (t1/t3) * t2;
 end
