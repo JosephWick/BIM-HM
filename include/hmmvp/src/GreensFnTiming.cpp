@@ -1,6 +1,6 @@
 
 
-class GreensFnTest : public ImplGreensFn {
+class GreensFnTiming : public ImplGreensFn {
 public:
   virtual void Init(const KeyValueFile* kvf) throw (Exception);
   virtual Hd* ComputeHd (double eta) { return NewHd(_x, _x, NULL, eta); }
@@ -19,7 +19,7 @@ private:
   double Eval(UInt i, UInt j) const;
 };
 
-inline double GreensFnTest::Eval (UInt i, UInt j) const {
+inline double GreensFnTiming::Eval (UInt i, UInt j) const {
   // i is the receiver, j is the source; both start at 1
   // i is row, j column
   // take the kernel passed in as a parameter
@@ -28,7 +28,7 @@ inline double GreensFnTest::Eval (UInt i, UInt j) const {
 
 }
 
-void GreensFnTest::Init (const KeyValueFile* kvf) throw (Exception) {
+void GreensFnTiming::Init (const KeyValueFile* kvf) throw (Exception) {
   const Matd* m;
   const Matd* n;
   const Matd* o;
@@ -47,7 +47,7 @@ void GreensFnTest::Init (const KeyValueFile* kvf) throw (Exception) {
   if (_N <= 0) throw Exception("N must be greater than 0.");
 }
 
-bool GreensFnTest::
+bool GreensFnTiming::
 Call (const CompressBlockInfo& cbi, const vector<UInt>& rs,
       const vector<UInt>& cs, double* B) const {
   for (UInt k = 0, ic = 0; ic < cs.size(); ic++)
