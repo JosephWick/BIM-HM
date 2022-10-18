@@ -143,7 +143,7 @@ function measure(b)
 
   end
 
-  T = (t_dense; t_3d_6; t_3d_8)
+  T = [t_dense; t_3d_6; t_3d_8]
 
 end
 
