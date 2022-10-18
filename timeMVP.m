@@ -12,6 +12,7 @@ function r = build()
 
   Ns = [10, 25, 50, 100, 500, 1000];
   probDim = 200e3; %200km
+  transition = 40e3;
 
   r.kvfs_2d_6 = [];
   r.kvfs_2d_8 = [];
@@ -30,7 +31,7 @@ function r = build()
 
     Xhat = linspace(0, probDim, N);
     shearYhat = tan(nc*pi/(2.5*max(nc)))*32e3;
-    shearZhat = ss.transition+tan((0:ss.Nz)'*pi/(2.2*(ss.Nz+eps)))*ss.transition;
+    shearZhat = transition+tan((0:N)'*pi/(2.2*(N+eps)))*transition;
 
     L = abs(Xhat(2) - Xhat(1));
 
