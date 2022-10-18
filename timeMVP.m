@@ -115,19 +115,19 @@ function measure(b)
     now = tic();
     x = hmmvp('mvp', hme6, v);
     t = toc(now)
-    t_3d_6[i] = t;
+    t_3d_6(i) = t;
 
     hme8 = hmmvp('load', './tmp/timing_3d_n' + nstring + '_e8');
     now = tic();
     x = hmmvp('mvp', hme8, v);
     t = toc(now)
-    t_3d_8[i] = t;
+    t_3d_8(i) = t;
 
     dense = hmmvp('extract', hme8, 1:1:N*N*N, 1:1:N*N*N);
     now = tic();
     x = dense*v;
     t = toc(now)
-    t_dense[i] = t;
+    t_dense(i) = t;
 
   % load
 
