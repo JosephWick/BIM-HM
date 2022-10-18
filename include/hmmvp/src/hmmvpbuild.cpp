@@ -109,6 +109,7 @@ public:
 #include "GreensFnShear1213.cpp"
 #include "GreensFnShear1313.cpp"
 #include "GreensFnShear1212.cpp"
+#include "GreensFnTiming.cpp"
 
 ImplGreensFn* NewGreensFn (const string& id, const KeyValueFile* kvf)
   throw (Exception)
@@ -131,7 +132,9 @@ ImplGreensFn* NewGreensFn (const string& id, const KeyValueFile* kvf)
     gf = new GreensFnShear1212();
   } else if (id == "shear1313") {
     gf = new GreensFnShear1313();
-  } else if (id == "test") {
+  } else if (id == "time") {
+    gf = new GreensFnTiming();
+  }else if (id == "test") {
     gf = new GreensFnTest();
   } else {
     throw Exception("No such Green's function string identifier.");

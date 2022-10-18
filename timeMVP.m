@@ -79,7 +79,7 @@ function r = build()
     c.write_hd_filename = c.write_hmat_filename + '-hd';
     c.kvf = c.write_hmat_filename + '.kvf';
     kvf('Write', c.kvf, c, 32);
-    cmd = '    include/hmmvp/bin/hmmvpbuild_omp' + c.kvf;
+    cmd = ['    include/hmmvp/bin/hmmvpbuild_omp ' + c.kvf];
     disp(cmd)
     r.kvfs_3d_6(length(r.kvfs_3d_6)+1) = c.write_hmat_filename;
 
@@ -89,7 +89,7 @@ function r = build()
     c.write_hd_filename = c.write_hmat_filename + '-hd';
     c.kvf = c.write_hmat_filename + '.kvf';
     kvf('Write', c.kvf, c, 32);
-    cmd = ['    include/hmmvp/bin/hmmvpbuild_omp ' c.kvf];
+    cmd = '    include/hmmvp/bin/hmmvpbuild_omp ' + c.kvf;
     disp(cmd)
     r.kvfs_2d_8(length(r.kvfs_3d_8)+1) = c.write_hmat_filename;
 
