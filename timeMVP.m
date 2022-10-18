@@ -26,6 +26,8 @@ function r = build()
     N = Ns(i);
     nstring = string(N);
 
+    disp(N)
+
     eps = 1e-12;
     nc = (-N/2:N/2);
 
@@ -49,6 +51,8 @@ function r = build()
     % theta is zero
     % eps12 can be 1; others zero
 
+    disp('mesh done, making kernel')
+
     kernel = zeros(N^3, N^3);
     for i = 1:N^3
       for j = 1:N^3
@@ -60,6 +64,8 @@ function r = build()
 
       end
     end
+
+    disp('kernel done')
 
     % general things
     c.greens_fn = 'shear1212';
