@@ -77,6 +77,7 @@ function r = build()
     c.tol = 1e-6;
     c.write_hmat_filename = './tmp/timing_3d_n' + nstring + '_e6';
     c.write_hd_filename = c.write_hmat_filename + '-hd';
+    kvf = c.write_hmat_filename + '.kvf'
     c.kvf('Write', c.kvf, c, 32);
     cmd = '    include/hmmvp/bin/hmmvpbuild_omp' + c.kvf;
     disp(cmd)
@@ -86,25 +87,53 @@ function r = build()
     c.tol = 1e-8;
     c.write_hmat_filename = './tmp/timing_3d_n' + nstring + '_e8';
     c.write_hd_filename = c.write_hmat_filename + '-hd';
-    c.kvf = c.write_hmat_filename + '.kvf'
-    kvf('Write', c.kvf, c, 32);
+    kvf = c.write_hmat_filename + '.kvf'
+    c.kvf('Write', c.kvf, c, 32);
     cmd = ['    include/hmmvp/bin/hmmvpbuild_omp ' c.kvf];
     disp(cmd)
     r.kvfs_2d_8(length(r.kvfs_3d_8)+1) = c.write_hmat_filename;
 
   end
 
+  b.Ns = Ns;
+
 end
 
 function measure(b)
 
   Ns = b.Ns;
-  t_2d_6 = [];
-  t_2d_8 = [];
   t_3d_6 = [];
   t_3d_8 = [];
+  t_dense = [];
+
+  Ns = [10, 25, 50, 100, 500, 1000];
+  for i=1:length(Ns)
+    N = Ns(i);
+    v = ones(N*N*N)
+
+    hme6 = hmmvp('load', './tmp/timing_3d_n' + nstring + '_e6');
+    now = tic();
+    x = hmmvp('mvp', hme6, v);
+    t = toc(now)
+    t_3d_6[i] = t;
+
+    hme8 = hmmvp('load', './tmp/timing_3d_n' + nstring + '_e8');
+    now = tic();
+    x = hmmvp('mvp', hme8, v);
+    t = toc(now)
+    t_3d_8[i] = t;
+
+    dense = hmmvp('extract', hme8, 1:1:N*N*N, 1:1:N*N*N);
+    now = tic();
+    x = dense*v;
+    t = toc(now)
+    t_dense[i] = t;
+
+  % load
 
 
+
+  % do and time mvp
 
 end
 
