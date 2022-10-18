@@ -30,8 +30,8 @@ function r = build()
     nc = (-N/2:N/2);
 
     Xhat = linspace(0, probDim, N);
-    shearYhat = tan(nc*pi/(2.5*max(nc)))*32e3;
-    shearZhat = transition+tan((0:N)'*pi/(2.2*(N+eps)))*transition;
+    Yhat = tan(nc*pi/(2.5*max(nc)))*32e3;
+    Zhat = transition+tan((0:N)'*pi/(2.2*(N+eps)))*transition;
 
     L = abs(Xhat(2) - Xhat(1));
 
