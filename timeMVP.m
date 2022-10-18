@@ -128,12 +128,7 @@ function measure(b)
     x = dense*v;
     t = toc(now)
     t_dense(i) = t;
-
-  % load
-
-
-
-  % do and time mvp
+end
 
 end
 
