@@ -78,7 +78,7 @@ function r = build()
     c.write_hmat_filename = './tmp/timing_3d_n' + nstring + '_e6';
     c.write_hd_filename = c.write_hmat_filename + '-hd';
     kvf = c.write_hmat_filename + '.kvf'
-    c.kvf('Write', c.kvf, c, 32);
+    c.kvf('Write', kvf, c, 32);
     cmd = '    include/hmmvp/bin/hmmvpbuild_omp' + c.kvf;
     disp(cmd)
     r.kvfs_3d_6(length(r.kvfs_3d_6)+1) = c.write_hmat_filename;
@@ -88,7 +88,7 @@ function r = build()
     c.write_hmat_filename = './tmp/timing_3d_n' + nstring + '_e8';
     c.write_hd_filename = c.write_hmat_filename + '-hd';
     kvf = c.write_hmat_filename + '.kvf'
-    c.kvf('Write', c.kvf, c, 32);
+    c.kvf('Write', kvf, c, 32);
     cmd = ['    include/hmmvp/bin/hmmvpbuild_omp ' c.kvf];
     disp(cmd)
     r.kvfs_2d_8(length(r.kvfs_3d_8)+1) = c.write_hmat_filename;
@@ -111,24 +111,39 @@ function measure(b)
     N = Ns(i);
     v = ones(N*N*N)
 
-    hme6 = hmmvp('load', './tmp/timing_3d_n' + nstring + '_e6');
-    now = tic();
-    x = hmmvp('mvp', hme6, v);
-    t = toc(now)
-    t_3d_6(i) = t;
+    tees = [];
+    for j=1:3
+      hme6 = hmmvp('load', './tmp/timing_3d_n' + nstring + '_e6');
+      now = tic();
+      x = hmmvp('mvp', hme6, v);
+      t = toc(now)
+      tees(j) = t;
+    end
+    t_3d_6(i) = mean(tees);
 
-    hme8 = hmmvp('load', './tmp/timing_3d_n' + nstring + '_e8');
-    now = tic();
-    x = hmmvp('mvp', hme8, v);
-    t = toc(now)
-    t_3d_8(i) = t;
+    tees = [];
+    for j=1:3
+      hme8 = hmmvp('load', './tmp/timing_3d_n' + nstring + '_e8');
+      now = tic();
+      x = hmmvp('mvp', hme8, v);
+      t = toc(now)
+      tees(i) = t;
+    end
+    t_3d_8(i) = mean(tees);
 
-    dense = hmmvp('extract', hme8, 1:1:N*N*N, 1:1:N*N*N);
-    now = tic();
-    x = dense*v;
-    t = toc(now)
-    t_dense(i) = t;
-end
+    tees = [];
+    for j = 1:3
+      dense = hmmvp('extract', hme8, 1:1:N*N*N, 1:1:N*N*N);
+      now = tic();
+      x = dense*v;
+      t = toc(now)
+      tees(i) = t;
+    end
+    t_dense(i) = mean(tees);
+
+  end
+
+  T = (t_dense; t_3d_6; t_3d_8)
 
 end
 
