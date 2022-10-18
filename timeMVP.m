@@ -13,10 +13,6 @@ function r = build()
   Ns = [10, 25, 50, 100, 500, 1000];
   probDim = 200e3; %200km
 
-  c.greens_fn = 'shear1212';
-  c.command = 'compress';
-  c.err_method = 'mrem-fro';
-
   r.kvfs_2d_6 = [];
   r.kvfs_2d_8 = [];
   r.kvfs_3d_6 = [];
@@ -29,9 +25,12 @@ function r = build()
     N = Ns(i);
     nstring = string(N);
 
+    eps = 1e-12;
+    nc = (-N/2:N/2);
+
     Xhat = linspace(0, probDim, N);
-    Yhat = linspace(0, probDim, N);
-    Zhat = linspace(0, probDim, N);
+    shearYhat = tan(nc*pi/(2.5*max(nc)))*32e3;
+    shearZhat = ss.transition+tan((0:ss.Nz)'*pi/(2.2*(ss.Nz+eps)))*ss.transition;
 
     L = abs(Xhat(2) - Xhat(1));
 
@@ -55,14 +54,17 @@ function r = build()
         kernel(i,j) = computeStressVerticalShearZone_s12(...
         X(i), Y(i), Z(i), ...
         X(j), Y(j), Z(j), L, L, L, 0, ...
-        epsv11p, epsv12p, epsv13p, epsv22p, epsv23p, epsv33p, ...
+        0, 1, 0, 0, 0, 0, ...
         G, nu);
-
-        )
-
 
       end
     end
+
+    % general things
+    c.greens_fn = 'shear1212';
+    c.command = 'compress';
+    c.err_method = 'mrem-fro';
+    c.K = kernel;
 
     % tolerance 1e-6;
     c.tol = 1e-6;
