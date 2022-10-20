@@ -42,7 +42,6 @@ function r = build()
     Y = Y(:)';
     Z = Z(:)';
     c.X = [X; Y; Z];
-    size(c.X)
 
     %  create kernel based on mesh
     G = 30e3;
@@ -70,7 +69,7 @@ function r = build()
     c.command = 'compress';
     c.greens_fn = 'time';
     c.err_method = 'mrem-fro';
-    c.K = kernel;
+    c.K = kernel(:)';
     c.allow_overwrite = 1;
 
     % tolerance 1e-6;
