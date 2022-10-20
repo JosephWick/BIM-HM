@@ -61,7 +61,6 @@ function r = build()
         G, nu);
       end
     end
-    kernel
 
     disp('kernel done')
 
@@ -69,7 +68,7 @@ function r = build()
     c.command = 'compress';
     c.greens_fn = 'time';
     c.err_method = 'mrem-fro';
-    c.K = kernel(:)';
+    c.K = real(kernel);
     c.allow_overwrite = 1;
 
     % tolerance 1e-6;
