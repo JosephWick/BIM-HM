@@ -83,7 +83,6 @@ function r = build()
     kvf('Write', c.kvf, c, 4);
     cmd = ['    include/hmmvp/bin/hmmvpbuild_omp ' c.kvf];
     disp(cmd)
-    r.kvfs_3d_6(length(r.kvfs_3d_6)+1) = c.write_hmat_filename;
 
     % tolerance 1e-8;
     c.tol = 1e-8;
@@ -93,7 +92,7 @@ function r = build()
     kvf('Write', c.kvf, c, 32);
     cmd = ['    include/hmmvp/bin/hmmvpbuild_omp ' c.kvf];
     disp(cmd)
-    r.kvfs_2d_8(length(r.kvfs_3d_8)+1) = c.write_hmat_filename;
+    %r.kvfs_2d_8(length(r.kvfs_3d_8)+1) = c.write_hmat_filename;
 
   end
 
