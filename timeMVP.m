@@ -43,7 +43,7 @@ function r = build()
     X = X(:)';
     Y = Y(:)';
     Z = Z(:)';
-    c.X = [X, Y, Z];
+    c.X = [X; Y; Z];
     size(c.X)
 
     %  create kernel based on mesh
