@@ -61,7 +61,7 @@ function r = build()
         G, nu);
       end
     end
-    size(kernel)
+    kernel
 
     disp('kernel done')
 
