@@ -12,8 +12,6 @@ private:
   // kernel
   Matd _k;
 
-  double _N;
-
   double Eval(UInt i, UInt j) const;
 };
 
@@ -37,8 +35,6 @@ void GreensFnTiming::Init (const KeyValueFile* kvf) throw (Exception) {
   if (!kvf->GetMatd("K", n)) throw Exception("Missing K.");
   _k = *n;
 
-  kvf->GetDouble("N", _N);
-  if (_N <= 0) throw Exception("N must be greater than 0.");
 }
 
 bool GreensFnTiming::
