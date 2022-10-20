@@ -62,9 +62,9 @@ function r = build()
         X(j), Y(j), Z(j), L, L, L, 0, ...
         0, 1, 0, 0, 0, 0, ...
         G, nu);
-
       end
     end
+    size(kernel);
 
     disp('kernel done')
 
