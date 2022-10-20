@@ -26,8 +26,6 @@ function r = build()
     N = Ns(i);
     nstring = string(N);
 
-    disp(N)
-
     eps = 1e-12;
     nc = (-N/2:N/2);
 
@@ -64,7 +62,7 @@ function r = build()
         G, nu);
       end
     end
-    size(kernel);
+    size(kernel)
 
     disp('kernel done')
 
