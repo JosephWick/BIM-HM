@@ -355,6 +355,10 @@ function out = run(b)
   Df = ss.lambdaZ;
   w = 10;
 
+  % Power-Law Exponent
+  ss.n = 3.0*ones(length(ss.shearZ_chat)*length(ss.shearY_chat),1);
+  n_scalar = 3.0;
+
   ss.e12p_plate = zeros(ss.Ny, ss.Nz);
   ss.e13p_plate = zeros(ss.Ny, ss.Nz);
   for i=1:1:ss.Ny
@@ -394,10 +398,6 @@ function out = run(b)
   % Reference Strain Rate (for stress in MPa)
   ss.Adif = 1e6*ones(length(ss.shearZ_chat)*length(ss.shearY_chat),1);
   ss.Adis = 90 *ones(length(ss.shearZ_chat)*length(ss.shearY_chat),1);
-
-  % Power-Law Exponent
-  ss.n = 3.0*ones(length(ss.shearZ_chat)*length(ss.shearY_chat),1);
-  n_scalar = 3.0;
 
   % Activation Energy Wet Oliving (J/mol)
   ss.Qdif = 335e3*ones(length(ss.shearZ_chat)*length(ss.shearY_chat),1);
