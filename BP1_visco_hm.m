@@ -353,7 +353,6 @@ function out = run(b)
   % add factor of plate rate out front
   Dv = ss.probW-ss.transition;
   Df = ss.lambdaZ;
-  n = 3;
   w = 10;
 
   ss.e12p_plate = zeros(ss.Ny, ss.Nz);
@@ -370,14 +369,14 @@ function out = run(b)
       m = 1;
 
       % also consider term as percentage of the total
-      sterm12 = e12Terms(x2p, x3p, m, n, w);
-      sterm13 = e13Terms(x2p, x3p, m, n, w);
+      sterm12 = e12Terms(x2p, x3p, m, n_scalar, w);
+      sterm13 = e13Terms(x2p, x3p, m, n_scalar, w);
       while sterm12 >= summ12*0.005 || sterm13 >= summ13*0.005;
         summ12 = summ12 + sterm12;
         summ13 = summ13 + sterm13;
         m = m + 1;
-        sterm12 = e12Terms(x2p, x3p, m, n, w);
-        sterm13 = e13Terms(x2p, x3p, m, n, w);
+        sterm12 = e12Terms(x2p, x3p, m, n_scalar, w);
+        sterm13 = e13Terms(x2p, x3p, m, n_scalar, w);
       end
       ss.e12p_plate(i,j) = ss.Vpl_scalar * ( 1/(2*w) + (1/w) * summ12);
       ss.e13p_plate(i,j) = ss.Vpl_scalar * ( (-1/(w*(n^0.5))) * summ13 );
@@ -397,7 +396,8 @@ function out = run(b)
   ss.Adis = 90 *ones(length(ss.shearZ_chat)*length(ss.shearY_chat),1);
 
   % Power-Law Exponent
-  ss.n = 3.5*ones(length(ss.shearZ_chat)*length(ss.shearY_chat),1);
+  ss.n = 3.0*ones(length(ss.shearZ_chat)*length(ss.shearY_chat),1);
+  n_scalar = 3.0;
 
   % Activation Energy Wet Oliving (J/mol)
   ss.Qdif = 335e3*ones(length(ss.shearZ_chat)*length(ss.shearY_chat),1);
