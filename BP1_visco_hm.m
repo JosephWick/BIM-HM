@@ -389,8 +389,8 @@ function out = run(b)
   end
 
   % flatten
-  ss.e12p_plate = ss.e12p_plate(:);
-  ss.e13p_plate = ss.e13p_plate(:);
+  ss.e12p_plate = ss.e12p_plate(:)';
+  ss.e13p_plate = ss.e13p_plate(:)';
   %ss.e12p_plate = 1e-14*ones(length(ss.shearY_chat)*length(ss.shearZ_chat),1);
   %ss.e13p_plate =      zeros(length(ss.shearY_chat)*length(ss.shearZ_chat),1);
 
