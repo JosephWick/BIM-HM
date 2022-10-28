@@ -23,7 +23,8 @@ inline double GreensFnTiming::Eval (UInt i, UInt j) const {
   // i is row, j column
   // take the kernel passed in as a parameter
 
-  // printf(_k(i,j));
+  //printf(_k(i,j));
+  printf("a\n");
   return _k(i,j);
 
 }
