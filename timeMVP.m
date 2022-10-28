@@ -84,7 +84,7 @@ function r = build()
         if yrec == 0
           xrec = 1;
         end
-        yrec = floor(j/N)+1;
+        xrec = floor(j/N)+1;
         zrec = floor(j/N^2)+1;
 
         kernel(i,j) = computeStressVerticalShearZone_s12(...
