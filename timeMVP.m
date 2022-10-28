@@ -69,14 +69,12 @@ function r = build()
     c.greens_fn = 'time';
     c.err_method = 'mrem-fro';
     c.allow_overwrite = 1;
-    %c.K = real(kernel(:)');
-    %size(c.K)
+    c.K = real(kernel(:)');
 
     % tolerance 1e-6;
     c.tol = 1e-6;
-    %c.write_hmat_filename = strcat('./tmp/t3d_n',nstring,'_e6');
-    c.write_hmat_filename = 'tmp/timingHM';
-    %c.write_hd_filename = './tmp/timingHM-hd';
+    c.write_hmat_filename = './tmp/timingHM';
+    c.write_hd_filename = './tmp/timingHM-hd';
     c.kvf = [c.write_hmat_filename '.kvf'];
     c.kvf
     kvf('Write', c.kvf, c, 4);
