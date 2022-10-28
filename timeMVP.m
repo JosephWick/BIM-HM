@@ -71,6 +71,8 @@ function r = build()
     c.allow_overwrite = 1;
     c.K = real(kernel(:)');
 
+    c.Bfro = 1e-8;
+
     % tolerance 1e-6;
     c.tol = 1e-6;
     c.write_hmat_filename = './tmp/timingHM';
