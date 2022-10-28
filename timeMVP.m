@@ -34,9 +34,9 @@ function r = build()
     Zhat = transition+tan((0:N)'*pi/(2.2*(N+eps)))*transition;
 
     % todo L1, L2, L3
-    L1 = zeros(1,ss.Nx);
-    L2 = zeros(1,ss.Ny);
-    L3 = zeros(1,ss.Nz);
+    L1 = zeros(1,N+1);
+    L2 = zeros(1,N+1);
+    L3 = zeros(1,N+1);
 
     for idx=(1:length(shearZhat)-1)
       L1(idx) = abs(shearXhat(idx) - shearXhat(idx+1));
