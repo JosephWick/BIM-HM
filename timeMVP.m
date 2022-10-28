@@ -63,6 +63,11 @@ function r = build()
     Yc = Yc(:)';
     Zc = Zc(:)';
 
+    [L3f, L2f, L1f] = ndgrid(L3, L2, L1);
+    L1f = L1f(:)';
+    L2f = L2f(:)';
+    L3f = L3f(:)';
+
     %  create kernel based on mesh
     G = 30e3;
     nu = 0.25; % this is fine
@@ -81,7 +86,7 @@ function r = build()
 
         kernel(i,j) = computeStressVerticalShearZone_s12(...
         X(i), Y(i), Z(i), ...
-        Xc(j), Yc(j), Zc(j), L1(xrec), L2(yrec), L3(zrec), 0, ...
+        Xc(j), Yc(j), Zc(j), L1f(j), L2f(j), L3f(j), 0, ...
         0, 1, 0, 0, 0, 0, ...
         G, nu);
       end
