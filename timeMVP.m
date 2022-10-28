@@ -68,7 +68,7 @@ function r = build()
     c.command = 'compress';
     c.greens_fn = 'time';
     c.err_method = 'mrem-fro';
-    c.K = real(kernel);
+    c.K = real(kernel(:)');
     size(c.K)
     c.allow_overwrite = 1;
 
@@ -78,7 +78,6 @@ function r = build()
     c.write_hmat_filename = './tmp/timingHM';
     c.write_hd_filename = [c.write_hmat_filename '-hd'];
     c.kvf = [c.write_hmat_filename, '.kvf'];
-    disp(c.kvf)
     kvf('Write', c.kvf, c, 4);
     cmd = ['    include/hmmvp/bin/hmmvpbuild_omp ' c.kvf];
     disp(cmd)
