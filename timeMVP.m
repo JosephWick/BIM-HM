@@ -48,7 +48,7 @@ function r = build()
       Zchat(idx) = Zhat(idx) - abs(Zhat(idx) - Zhat(idx+1))/2;
     end
     L2(end) = L2(1);
-    L3(end) = abs(Zhat(end-1) - Zhat(end))
+    L3(end) = abs(Zhat(end-1) - Zhat(end));
     Yhat(end)=[]; Zhat(end)=[];
 
     % --- 3D Mesh ---
@@ -73,9 +73,9 @@ function r = build()
     kernel = zeros((N+1)^3, (N+1)^3);
     for i = 1:N^3
       for j = 1:N^3
-        ysend = mod(i,m);
+        ysend = mod(i,N);
         if ysend == 0
-          ysend = n;
+          ysend = N;
         end
         xsend = floor(i/N) + 1;
         zsend = floor(i/N^2)+1;
