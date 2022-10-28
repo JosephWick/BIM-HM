@@ -68,6 +68,8 @@ function r = build()
     L2f = L2f(:)';
     L3f = L3f(:)';
 
+    length(L1f)
+
     %  create kernel based on mesh
     G = 30e3;
     nu = 0.25; % this is fine
