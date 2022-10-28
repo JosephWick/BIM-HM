@@ -77,15 +77,15 @@ function r = build()
         if ysend == 0
           ysend = N;
         end
-        xsend = floor(i/N) + 1;
-        zsend = floor(i/N^2)+1;
+        zsend = floor(i/N) + 1;
+        xsend = floor(i/N^2)+1;
 
         yrec = mod(j,N);
         if yrec == 0
           yrec = 1;
         end
-        xrec = floor(j/N)+1;
-        zrec = floor(j/N^2)+1;
+        zrec = floor(j/N)+1;
+        xrec = floor(j/N^2)+1;
 
         [xsend, ysend, zsend, xrec, yrec, zrec]
 
