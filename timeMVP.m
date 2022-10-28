@@ -29,34 +29,34 @@ function r = build()
     eps = 1e-12;
     nc = (-N/2:N/2);
 
-    Xhat = linspace(0, probDim, N+1);
+    Xhat = linspace(0, probDim, N);
     Yhat = tan(nc*pi/(2.5*max(nc)))*32e3;
     Zhat = transition+tan((0:N)'*pi/(2.2*(N+eps)))*transition;
 
-    % todo L1, L2, L3
-    L1 = zeros(1,N+1);
-    L2 = zeros(1,N+1);
-    L3 = zeros(1,N+1);
+    L1 = abs(Xhat(1)-Xhat(2))*ones(1,N+1); % xhat direction is uniform meshing
+    L2 = zeros(1,N);
+    L3 = zeros(1,N);
 
+    Xchat = Xhat+L1(1);
+    Ychat = zeros(1,N);
+    Zchat = zeros(1,N);
     for idx=(1:length(Zhat)-1)
-      L1(idx) = abs(Xhat(idx) - Xhat(idx+1));
       L2(idx) = abs(Yhat(idx) - Yhat(idx+1));
       L3(idx) = abs(Zhat(idx) - Zhat(idx+1));
+
+      Ychat(idx) = Yhat(idx) - abs(Yhat(idx) - Yhat(idx+1))/2;
+      Zchat(idx) = Zhat(idx) - abs(Zhat(idx) - Zhat(idx+1))/2;
     end
-    L1(end) = L1(1);
     L2(end) = L2(1);
-    L3(end) = L3(1);
+    L3(end) = abs(Zhat(end-1) - Zhat(end))
+    Yhat(end)=[]; Zhat(end)=[];
 
     % --- 3D Mesh ---
-    % mesh should not be unifornm
     [Z, Y, X] = ndgrid(Zhat, Yhat, Xhat);
     X = X(:)';
     Y = Y(:)';
     Z = Z(:)';
     c.X = [X; Y; Z];
-    disp(length(Xhat))
-    disp(length(Yhat))
-    disp(length(Zhat))
 
     %  create kernel based on mesh
     G = 30e3;
@@ -66,14 +66,33 @@ function r = build()
 
     disp('mesh done, making kernel')
 
-    kernel = zeros(N^3, N^3);
+    % todo:
+    % - double check sender/receiver center vs upper left
+    % - make chat's
+    % -
+    kernel = zeros((N+1)^3, (N+1)^3);
     for i = 1:N^3
       for j = 1:N^3
-        kernel(i,j) = computeStressVerticalShearZone_s12(...
-        X(i), Y(i), Z(i), ...
-        X(j), Y(j), Z(j), L1(j), L2(j), L3(j), 0, ...
-        0, 1, 0, 0, 0, 0, ...
-        G, nu);
+          ysend = mod(i,m);
+          if ysend == 0
+            ysend = n;
+          end
+          xsend = floor(i/N) + 1;
+          zsend = floor(i/N^2)+1;
+
+          yrec = mod(j,m);
+          if yrec == 0
+            xrec = 1;
+          end
+          yrec = floor(j/N)+1;
+          zrec = floor(j/N^2)+1;
+
+          kernel(i,j) = computeStressVerticalShearZone_s12(...
+          Xhat(xsend), Yhat(ysend), Zhat(zsend), ...
+          Xchat(xrec), Ychat(yrec), Zchat(zrec), L1(xrec), L2(yrec), L3(zred), 0, ...
+          0, 1, 0, 0, 0, 0, ...
+          G, nu);
+        end
       end
     end
 
