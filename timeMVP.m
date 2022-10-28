@@ -99,9 +99,10 @@ function r = build()
     c.greens_fn = 'time';
     c.err_method = 'mrem-fro';
     c.allow_overwrite = 1;
-    c.K = real(kernel);
 
-    writematrix(c.K, 'K.csv');
+    K = real(kernel);
+    K(isnan(K)) = 0;
+    c.K = K;
 
     c.Bfro = 1e-8;
 
