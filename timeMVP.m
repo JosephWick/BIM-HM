@@ -152,4 +152,5 @@ function addpaths()
   addpath('include/hmmvp/matlab')
   addpath('ODEsolving')
   addpath('include/')
+  addpath('./tmp/')
 end
