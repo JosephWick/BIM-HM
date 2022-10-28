@@ -33,7 +33,19 @@ function r = build()
     Yhat = tan(nc*pi/(2.5*max(nc)))*32e3;
     Zhat = transition+tan((0:N)'*pi/(2.2*(N+eps)))*transition;
 
-    L = abs(Xhat(2) - Xhat(1));
+    % todo L1, L2, L3
+    L1 = zeros(1,ss.Nx);
+    L2 = zeros(1,ss.Ny);
+    L3 = zeros(1,ss.Nz);
+
+    for idx=(1:length(shearZhat)-1)
+      L1(idx) = abs(shearXhat(idx) - shearXhat(idx+1));
+      L2(idx) = abs(shearYhat(idx) - shearYhat(idx+1));
+      L3(idx) = abs(shearZhat(idx) - shearZhat(idx+1));
+    end
+    L1(end) = L1(1);
+    L2(end) = L2(1);
+    L3(end) = L3(1);
 
     % --- 3D Mesh ---
     % mesh should not be unifornm
@@ -59,7 +71,7 @@ function r = build()
       for j = 1:N^3
         kernel(i,j) = computeStressVerticalShearZone_s12(...
         X(i), Y(i), Z(i), ...
-        X(j), Y(j), Z(j), L, L, L, 0, ...
+        X(j), Y(j), Z(j), L1(j), L2(j), L3(j), 0, ...
         0, 1, 0, 0, 0, 0, ...
         G, nu);
       end
