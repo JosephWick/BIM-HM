@@ -80,7 +80,7 @@ function r = build()
         xsend = floor(i/N) + 1;
         zsend = floor(i/N^2)+1;
 
-        yrec = mod(j,m);
+        yrec = mod(j,N);
         if yrec == 0
           xrec = 1;
         end
