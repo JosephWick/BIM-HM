@@ -101,8 +101,7 @@ function r = build()
     c.allow_overwrite = 1;
     c.K = real(kernel);
 
-    fid = fopen('tmp.txt', 'w');;
-    fprintf(fid, real(kernel));
+    writematrix(c.K, 'K.csv');
 
     c.Bfro = 1e-8;
 
