@@ -68,8 +68,6 @@ function r = build()
     L2f = L2f(:)';
     L3f = L3f(:)';
 
-    length(L1f)
-
     %  create kernel based on mesh
     G = 30e3;
     nu = 0.25; % this is fine
@@ -102,6 +100,8 @@ function r = build()
     c.err_method = 'mrem-fro';
     c.allow_overwrite = 1;
     c.K = real(kernel);
+
+    real(kernel)include/hmmvp/bin/hmmvpbuild_omp ./tmp/timingHM.kvf
 
     c.Bfro = 1e-8;
 
