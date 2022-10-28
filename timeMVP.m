@@ -68,8 +68,8 @@ function r = build()
     c.command = 'compress';
     c.greens_fn = 'time';
     c.err_method = 'mrem-fro';
-    c.K = real(kernel(:)');
-    size(c.K)
+    %c.K = real(kernel(:)');
+    %size(c.K)
     c.allow_overwrite = 1;
 
     % tolerance 1e-6;
