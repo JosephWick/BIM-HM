@@ -82,12 +82,10 @@ function r = build()
 
         yrec = mod(j,N);
         if yrec == 0
-          xrec = 1;
+          yrec = 1;
         end
         xrec = floor(j/N)+1;
         zrec = floor(j/N^2)+1;
-
-        xsend, ysend, zsend, xrec, yrec, zrec
 
         kernel(i,j) = computeStressVerticalShearZone_s12(...
         Xhat(xsend), Yhat(ysend), Zhat(zsend), ...
