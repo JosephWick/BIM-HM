@@ -42,7 +42,9 @@ function r = build()
     Y = Y(:)';
     Z = Z(:)';
     c.X = [X; Y; Z];
-    disp(length(Xhat), length(Yhat), length(Zhat))
+    disp(length(Xhat))
+    disp(length(Yhat))
+    disp(length(Zhat))
 
     %  create kernel based on mesh
     G = 30e3;
