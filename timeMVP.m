@@ -83,6 +83,8 @@ function r = build()
     cmd = ['    include/hmmvp/bin/hmmvpbuild_omp ' c.kvf];
     disp(cmd)
 
+    aaaaa
+
     % tolerance 1e-8;
     c.tol = 1e-8;
     c.write_hmat_filename = ['./tmp/t3d_n' nstring '_e8'];
