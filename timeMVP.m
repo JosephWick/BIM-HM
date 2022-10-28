@@ -69,7 +69,7 @@ function r = build()
     c.greens_fn = 'time';
     c.err_method = 'mrem-fro';
     c.allow_overwrite = 1;
-    c.K = real(kernel(:)');
+    c.K = real(kernel);
 
     c.Bfro = 1e-8;
 
