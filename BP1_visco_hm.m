@@ -359,8 +359,8 @@ function out = run(b)
   ss.n = 3.0*ones(length(ss.shearZ_chat)*length(ss.shearY_chat),1);
   n_scalar = 3.0;
 
-  ss.e12p_plate = zeros(1, ss.Nz*ss.Ny);
-  ss.e13p_plate = zeros(1, ss.Nz*ss.Ny);
+  ss.e12p_plate = zeros(ss.Nz*ss.Ny, 1);
+  ss.e13p_plate = zeros(ss.Nz*ss.Ny, 1);
   for i=1:1:ss.Ny
     for j = 1:1:ss.Nz
       x2 = ss.shearY_chat(i);
