@@ -359,12 +359,12 @@ function out = run(b)
   ss.n = 3.0*ones(length(ss.shearZ_chat)*length(ss.shearY_chat),1);
   n_scalar = 3.0;
 
-  ss.e12p_plate = zeros(ss.Ny, ss.Nz);
-  ss.e13p_plate = zeros(ss.Ny, ss.Nz);
+  ss.e12p_plate = zeros(1, ss.Nz*ss.Ny);
+  ss.e13p_plate = zeros(1, ss.Nz*ss.Ny);
   for i=1:1:ss.Ny
     for j = 1:1:ss.Nz
-      x2 = ss.shearY_c(i,j);
-      x3 = ss.shearZ_c(i,j);
+      x2 = ss.shearY_chat(i);
+      x3 = ss.shearZ_chat(j);
       x2p = x2/(Dv);
       x3p = (x3-Df)/(Dv);
 
@@ -382,8 +382,8 @@ function out = run(b)
         sterm12 = e12Terms(x2p, x3p, m, n_scalar, w);
         sterm13 = e13Terms(x2p, x3p, m, n_scalar, w);
       end
-      ss.e12p_plate(i,j) = ss.Vpl_scalar * ( 1/(2*w) + (1/w) * summ12);
-      ss.e13p_plate(i,j) = ss.Vpl_scalar * ( (-1/(w*(n_scalar^0.5))) * summ13 );
+      ss.e12p_plate((j-1)*ss.Ny+i) = ss.Vpl_scalar * ( 1/(2*w) + (1/w) * summ12);
+      ss.e13p_plate((j-1)*ss.Ny+i) = ss.Vpl_scalar * ( (-1/(w*(n_scalar^0.5))) * summ13 );
 
     end
   end
@@ -393,8 +393,8 @@ function out = run(b)
   ss.e13p_plate = ss.e13p_plate';
   ss.e12p_plate = ss.e12p_plate(:);
   ss.e13p_plate = ss.e13p_plate(:);
-  ss.e12p_plate = 1e-14*ones(length(ss.shearY_chat)*length(ss.shearZ_chat),1);
-  ss.e13p_plate =      zeros(length(ss.shearY_chat)*length(ss.shearZ_chat),1);
+  %ss.e12p_plate = 1e-14*ones(length(ss.shearY_chat)*length(ss.shearZ_chat),1);
+  %ss.e13p_plate =      zeros(length(ss.shearY_chat)*length(ss.shearZ_chat),1);
 
   % Rheological Parameters
   % Reference Strain Rate (for stress in MPa)
