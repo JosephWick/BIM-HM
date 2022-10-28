@@ -101,7 +101,8 @@ function r = build()
     c.allow_overwrite = 1;
     c.K = real(kernel);
 
-    real(kernel)
+    fid = fopen('tmp.txt', 'w');;
+    fprintf(fid, real(kernel));
 
     c.Bfro = 1e-8;
 
