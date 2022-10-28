@@ -38,7 +38,7 @@ function r = build()
     L2 = zeros(1,N+1);
     L3 = zeros(1,N+1);
 
-    for idx=(1:length(shearZhat)-1)
+    for idx=(1:length(Zhat)-1)
       L1(idx) = abs(Xhat(idx) - Xhat(idx+1));
       L2(idx) = abs(Yhat(idx) - Yhat(idx+1));
       L3(idx) = abs(Zhat(idx) - Zhat(idx+1));
