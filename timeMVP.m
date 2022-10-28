@@ -73,26 +73,25 @@ function r = build()
     kernel = zeros((N+1)^3, (N+1)^3);
     for i = 1:N^3
       for j = 1:N^3
-          ysend = mod(i,m);
-          if ysend == 0
-            ysend = n;
-          end
-          xsend = floor(i/N) + 1;
-          zsend = floor(i/N^2)+1;
-
-          yrec = mod(j,m);
-          if yrec == 0
-            xrec = 1;
-          end
-          yrec = floor(j/N)+1;
-          zrec = floor(j/N^2)+1;
-
-          kernel(i,j) = computeStressVerticalShearZone_s12(...
-          Xhat(xsend), Yhat(ysend), Zhat(zsend), ...
-          Xchat(xrec), Ychat(yrec), Zchat(zrec), L1(xrec), L2(yrec), L3(zred), 0, ...
-          0, 1, 0, 0, 0, 0, ...
-          G, nu);
+        ysend = mod(i,m);
+        if ysend == 0
+          ysend = n;
         end
+        xsend = floor(i/N) + 1;
+        zsend = floor(i/N^2)+1;
+
+        yrec = mod(j,m);
+        if yrec == 0
+          xrec = 1;
+        end
+        yrec = floor(j/N)+1;
+        zrec = floor(j/N^2)+1;
+
+        kernel(i,j) = computeStressVerticalShearZone_s12(...
+        Xhat(xsend), Yhat(ysend), Zhat(zsend), ...
+        Xchat(xrec), Ychat(yrec), Zchat(zrec), L1(xrec), L2(yrec), L3(zred), 0, ...
+        0, 1, 0, 0, 0, 0, ...
+        G, nu);
       end
     end
 
