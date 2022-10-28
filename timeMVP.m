@@ -29,7 +29,7 @@ function r = build()
     eps = 1e-12;
     nc = (-N/2:N/2);
 
-    Xhat = linspace(0, probDim, N);
+    Xhat = linspace(0, probDim, N+1);
     Yhat = tan(nc*pi/(2.5*max(nc)))*32e3;
     Zhat = transition+tan((0:N)'*pi/(2.2*(N+eps)))*transition;
 
