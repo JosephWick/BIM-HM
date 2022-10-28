@@ -58,6 +58,11 @@ function r = build()
     Z = Z(:)';
     c.X = [X; Y; Z];
 
+    [Zc,Yc,Xc] = ndgrid(Zchat, Ychat, Xchat);
+    Xc = Xc(:)';
+    Yc = Yc(:)';
+    Zc = Zc(:)';
+
     %  create kernel based on mesh
     G = 30e3;
     nu = 0.25; % this is fine
@@ -73,25 +78,10 @@ function r = build()
     kernel = zeros((N+1)^3, (N+1)^3);
     for i = 1:N^3
       for j = 1:N^3
-        ysend = mod(i,N);
-        if ysend == 0
-          ysend = N;
-        end
-        zsend = floor(i/N) + 1;
-        xsend = floor(i/N^2)+1;
-
-        yrec = mod(j,N);
-        if yrec == 0
-          yrec = 1;
-        end
-        zrec = floor(j/N)+1;
-        xrec = floor(j/N^2)+1;
-
-        [xsend, ysend, zsend, xrec, yrec, zrec]
 
         kernel(i,j) = computeStressVerticalShearZone_s12(...
-        Xhat(xsend), Yhat(ysend), Zhat(zsend), ...
-        Xchat(xrec), Ychat(yrec), Zchat(zrec), L1(xrec), L2(yrec), L3(zrec), 0, ...
+        X(i), Y(i), Z(i), ...
+        Xc(j), Yc(j), Zc(j), L1(xrec), L2(yrec), L3(zrec), 0, ...
         0, 1, 0, 0, 0, 0, ...
         G, nu);
       end
