@@ -76,7 +76,7 @@ function r = build()
     c.tol = 1e-6;
     %c.write_hmat_filename = strcat('./tmp/t3d_n',nstring,'_e6');
     c.write_hmat_filename = './tmp/timingHM';
-    c.write_hd_filename = [c.write_hmat_filename '-hd'];
+    c.write_hd_filename = './tmp/timingHM-hd';
     c.kvf = [c.write_hmat_filename, '.kvf'];
     c.kvf
     kvf('Write', c.kvf, c, 4);
