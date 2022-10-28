@@ -39,9 +39,9 @@ function r = build()
     L3 = zeros(1,N+1);
 
     for idx=(1:length(shearZhat)-1)
-      L1(idx) = abs(shearXhat(idx) - shearXhat(idx+1));
-      L2(idx) = abs(shearYhat(idx) - shearYhat(idx+1));
-      L3(idx) = abs(shearZhat(idx) - shearZhat(idx+1));
+      L1(idx) = abs(Xhat(idx) - Xhat(idx+1));
+      L2(idx) = abs(Yhat(idx) - Yhat(idx+1));
+      L3(idx) = abs(Zhat(idx) - Zhat(idx+1));
     end
     L1(end) = L1(1);
     L2(end) = L2(1);
