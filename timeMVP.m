@@ -101,7 +101,7 @@ function r = build()
     c.allow_overwrite = 1;
     c.K = real(kernel);
 
-    real(kernel)include/hmmvp/bin/hmmvpbuild_omp ./tmp/timingHM.kvf
+    real(kernel)
 
     c.Bfro = 1e-8;
 
