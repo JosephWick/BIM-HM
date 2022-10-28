@@ -78,6 +78,7 @@ function r = build()
     c.write_hmat_filename = './tmp/timingHM';
     c.write_hd_filename = [c.write_hmat_filename '-hd'];
     c.kvf = [c.write_hmat_filename, '.kvf'];
+    c.kvf
     kvf('Write', c.kvf, c, 4);
     cmd = ['    include/hmmvp/bin/hmmvpbuild_omp ' c.kvf];
     disp(cmd)
