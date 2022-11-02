@@ -107,21 +107,20 @@ function r = build()
   c.write_hmat_filename = './tmp/t3d_e6';
   c.write_hd_filename = './tmp/t3d_e6-hd';
   c.kvf = [c.write_hmat_filename '.kvf'];
-  c.kvf
   kvf('Write', c.kvf, c, 4);
   cmd = ['    include/hmmvp/bin/hmmvpbuild_omp ' c.kvf];
   disp(cmd)
-  b.e6 = c.kvf;
+  r.e6 = c.kvf;
 
   % tolerance 1e-8;
   c.tol = 1e-8;
   c.write_hmat_filename = './tmp/t3d_e8';
-  c.write_hd_filename = './tmp/t3d_e8-hd'
+  c.write_hd_filename = './tmp/t3d_e8-hd';
   c.kvf = [c.write_hmat_filename '.kvf'];
   kvf('Write', c.kvf, c, 4);
   cmd = ['    include/hmmvp/bin/hmmvpbuild_omp ' c.kvf];
   disp(cmd)
-  b.e8 = c.kvf;
+  r.e8 = c.kvf;
 
 end
 
