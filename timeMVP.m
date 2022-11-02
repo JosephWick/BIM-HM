@@ -96,6 +96,7 @@ function r = build()
     c.err_method = 'mrem-fro';
     c.allow_overwrite = 1;
 
+    csvwrite('K.csv', K);
     K = real(kernel);
     K(isnan(K)) = 0;
     c.K = K;
