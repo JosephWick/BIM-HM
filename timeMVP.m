@@ -10,7 +10,7 @@ end
 function r = build()
   addpaths();
 
-  Ns = [50, 100, 500, 1000];
+  Ns = [20, 50, 100, 500, 1000];
   probDim = 200e3; %200km
   transition = 40e3;
 
