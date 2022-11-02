@@ -24,7 +24,7 @@ inline double GreensFnTiming::Eval (UInt i, UInt j) const {
   // take the kernel passed in as a parameter
 
   //printf(_k(i,j));
-  printf("a\n");
+  printf("%d\n", %_k(i,j));
   return _k(i,j);
 
 }
