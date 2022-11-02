@@ -10,7 +10,7 @@ end
 function r = build()
   addpaths();
 
-  Ns = [20, 50, 100, 500, 1000];
+  Ns = [10, 50, 100, 500, 1000];
   probDim = 200e3; %200km
   transition = 40e3;
 
@@ -76,10 +76,7 @@ function r = build()
 
     disp('mesh done, making kernel')
 
-    % todo:
-    % - double check sender/receiver center vs upper left
-    % - make chat's
-    % -
+    % src is upper left, rec is center 
     kernel = zeros((N+1)^3, (N+1)^3);
     for i = 1:N^3
       for j = 1:N^3
