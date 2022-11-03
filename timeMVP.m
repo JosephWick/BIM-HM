@@ -124,15 +124,13 @@ function r = build()
 end
 
 function measure(b)
-  Ns = [5, 10, 50, 100, 500, 1000];
-  N = Ns(i)
+  N = b.N;
 
   t_3d_6 = [];
   t_3d_8 = [];
   t_dense = [];
 
-  N = Ns(i);
-  v = ones(N*N*N)
+  v = ones(N*N*N);
 
   tees = [];
   for j=1:3
