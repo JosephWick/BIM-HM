@@ -19,6 +19,8 @@ function r = build()
   N = Ns(i);
   nstring = string(N);
 
+  r.N = N;
+
   eps = 1e-12;
   nc = (-N/2:N/2);
 
@@ -104,7 +106,7 @@ function r = build()
   kvf('Write', c.kvf, c, 4);
   cmd = ['    include/hmmvp/bin/hmmvpbuild_omp ' c.kvf];
   disp(cmd)
-  %r.kvfe6 = c.kvf;
+  hm.kvfe6 = c.kvf;
 
   % tolerance 1e-8;
   c.tol = 1e-8;
@@ -114,9 +116,9 @@ function r = build()
   kvf('Write', c.kvf, c, 4);
   cmd = ['    include/hmmvp/bin/hmmvpbuild_omp ' c.kvf];
   disp(cmd)
-  %r.kvfe8 = c.kvf;
+  hm.kvfe8 = c.kvf;
 
-  r=1;
+  r.hm = hm;
 
 end
 
