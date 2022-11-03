@@ -14,12 +14,6 @@ function r = build()
   probDim = 200e3; %200km
   transition = 40e3;
 
-  r.kvfs_2d_6 = [];
-  r.kvfs_2d_8 = [];
-  r.kvfs_3d_6 = [];
-  r.kvfs_3d_8 = [];
-  r.N = Ns;
-
   disp('Run the following commands in a shell to build all HMs')
   i = 1;
   N = Ns(i);
@@ -110,7 +104,6 @@ function r = build()
   kvf('Write', c.kvf, c, 4);
   cmd = ['    include/hmmvp/bin/hmmvpbuild_omp ' c.kvf];
   disp(cmd)
-  b.e6 = c.kvf;
 
   % tolerance 1e-8;
   c.tol = 1e-8;
@@ -120,15 +113,13 @@ function r = build()
   kvf('Write', c.kvf, c, 4);
   cmd = ['    include/hmmvp/bin/hmmvpbuild_omp ' c.kvf];
   disp(cmd)
-  b.e8 = c.kvf;
-
-  r=b;
 
 end
 
 function measure(b)
+  Ns = [5, 10, 50, 100, 500, 1000];
+  N = Ns(i)
 
-  Ns = b.Ns;
   t_3d_6 = [];
   t_3d_8 = [];
   t_dense = [];
