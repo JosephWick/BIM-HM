@@ -95,6 +95,7 @@ function r = build()
   K = real(kernel);
   K(isnan(K)) = 0;
   c.K = K;
+  r.K = K;
 
   c.Bfro = 1e-8;
 
