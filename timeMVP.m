@@ -138,7 +138,7 @@ function measure(b)
     hme6 = hmmvp('init', b.kvfe6);
     now = tic();
     x = hmmvp('mvp', hme6, v);
-    t = toc(now)
+    t = toc(now);
     tees(j) = t;
   end
   t_3d_6 = mean(tees);
@@ -148,8 +148,8 @@ function measure(b)
     hme8 = hmmvp('init', b.kvfe8);
     now = tic();
     x = hmmvp('mvp', hme8, v);
-    t = toc(now)
-    tees(i) = t;
+    t = toc(now);
+    tees(j) = t;
   end
   t_3d_8 = mean(tees);
 
@@ -158,8 +158,8 @@ function measure(b)
     dense = hmmvp('extract', hme8, 1:1:N*N*N, 1:1:N*N*N);
     now = tic();
     x = dense*v;
-    t = toc(now)
-    tees(i) = t;
+    t = toc(now);
+    tees(j) = t;
   end
   t_dense = mean(tees);
 
