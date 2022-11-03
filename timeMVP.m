@@ -110,7 +110,7 @@ function r = build()
   kvf('Write', c.kvf, c, 4);
   cmd = ['    include/hmmvp/bin/hmmvpbuild_omp ' c.kvf];
   disp(cmd)
-  r.e6 = c.kvf;
+  b.e6 = c.kvf;
 
   % tolerance 1e-8;
   c.tol = 1e-8;
@@ -120,7 +120,9 @@ function r = build()
   kvf('Write', c.kvf, c, 4);
   cmd = ['    include/hmmvp/bin/hmmvpbuild_omp ' c.kvf];
   disp(cmd)
-  r.e8 = c.kvf;
+  b.e8 = c.kvf;
+
+  r=b;
 
 end
 
