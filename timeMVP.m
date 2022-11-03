@@ -1,8 +1,8 @@
 % timeMVP.m
 
-function varargout = time (varargin)
+function varargout = tMVP (varargin)
 
-    [vararout{1:nargout}] = feval(varargin{:});
+    [varargout{1:nargout}] = feval(varargin{:});
 
 end
 
