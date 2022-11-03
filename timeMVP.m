@@ -132,7 +132,7 @@ function measure(b)
 
   tees = [];
   for j=1:3
-    hme6 = hmmvp('load', b.kvfe6);
+    hme6 = hmmvp('init', b.kvfe6);
     now = tic();
     x = hmmvp('mvp', hme6, v);
     t = toc(now)
@@ -142,7 +142,7 @@ function measure(b)
 
   tees = [];
   for j=1:3
-    hme8 = hmmvp('load', b.kvfe8);
+    hme8 = hmmvp('init', b.kvfe8);
     now = tic();
     x = hmmvp('mvp', hme8, v);
     t = toc(now)
