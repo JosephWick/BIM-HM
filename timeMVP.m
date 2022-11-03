@@ -15,10 +15,9 @@ function r = build()
   transition = 40e3;
 
   disp('Run the following commands in a shell to build all HMs')
+
   i = 1;
   N = Ns(i);
-  nstring = string(N);
-
   r.N = N;
 
   eps = 1e-12;
@@ -45,6 +44,10 @@ function r = build()
   L2(end) = L2(1);
   L3(end) = abs(Zhat(end-1) - Zhat(end));
   Yhat(end)=[]; Zhat(end)=[];
+
+  length(Xhat)
+  length(Yhat)
+  length(Zhat)
 
   % --- 3D Mesh ---
   [Z, Y, X] = ndgrid(Zhat, Yhat, Xhat);
@@ -134,7 +137,7 @@ function measure(b)
   for j=1:3
     hme6 = hmmvp('init', b.kvfe6);
     now = tic();
-    x = hmmvp('mvp', hme6, v');
+    x = hmmvp('mvp', hme6, v);
     t = toc(now)
     tees(j) = t;
   end
