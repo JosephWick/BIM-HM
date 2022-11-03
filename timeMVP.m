@@ -45,9 +45,9 @@ function r = build()
   L3(end) = abs(Zhat(end-1) - Zhat(end));
   Yhat(end)=[]; Zhat(end)=[];
 
-  length(Xhat)
-  length(Yhat)
-  length(Zhat)
+  length(Xhat);
+  length(Yhat);
+  length(Zhat);
 
   % --- 3D Mesh ---
   [Z, Y, X] = ndgrid(Zhat, Yhat, Xhat);
@@ -137,7 +137,7 @@ function measure(b)
   for j=1:3
     hme6 = hmmvp('init', b.kvfe6);
     now = tic();
-    x = hmmvp('mvp', hme6, v);
+    x = hmmvp('mvp', hme6, v');
     t = toc(now)
     tees(j) = t;
   end
