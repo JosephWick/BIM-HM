@@ -104,7 +104,7 @@ function r = build()
   kvf('Write', c.kvf, c, 4);
   cmd = ['    include/hmmvp/bin/hmmvpbuild_omp ' c.kvf];
   disp(cmd)
-  r.kvfe6 = c.kvf;
+  %r.kvfe6 = c.kvf;
 
   % tolerance 1e-8;
   c.tol = 1e-8;
@@ -114,7 +114,9 @@ function r = build()
   kvf('Write', c.kvf, c, 4);
   cmd = ['    include/hmmvp/bin/hmmvpbuild_omp ' c.kvf];
   disp(cmd)
-  r.kvfe8 = c.kvf;
+  %r.kvfe8 = c.kvf;
+
+  r=1;
 
 end
 
