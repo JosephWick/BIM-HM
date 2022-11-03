@@ -19,7 +19,6 @@ function Write (fn, c, allow_overwrite)
   if (~allow_overwrite && exist(fn, 'file'))
     error(sprintf('Write: I don''t want to overwrite %s!\n', fn));
   end
-  fn
   fptr = fopen(fn, 'wb');
   if (fptr == -1) error(sprintf('Could not open %s for writing.', fn)); end
   kvf_Write(fptr, c);
