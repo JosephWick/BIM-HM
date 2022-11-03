@@ -75,7 +75,7 @@ function r = build()
   disp('mesh done, making kernel')
 
   % src is upper left, rec is center
-  kernel = zeros((N+1)^3, (N+1)^3);
+  kernel = zeros(N^3, N^3);
   for i = 1:N^3
     for j = 1:N^3
       kernel(i,j) = computeStressVerticalShearZone_s12(...
