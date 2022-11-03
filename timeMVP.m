@@ -107,7 +107,7 @@ function r = build()
   kvf('Write', c.kvf, c, 4);
   cmd = ['    include/hmmvp/bin/hmmvpbuild_omp ' c.kvf];
   disp(cmd)
-  hm.kvfe6 = c.kvf;
+  r.kvfe6 = c.kvf;
 
   % tolerance 1e-8;
   c.tol = 1e-8;
@@ -117,9 +117,7 @@ function r = build()
   kvf('Write', c.kvf, c, 4);
   cmd = ['    include/hmmvp/bin/hmmvpbuild_omp ' c.kvf];
   disp(cmd)
-  hm.kvfe8 = c.kvf;
-
-  r.hm = hm;
+  r.kvfe8 = c.kvf;
 
 end
 
@@ -134,7 +132,7 @@ function measure(b)
 
   tees = [];
   for j=1:3
-    hme6 = hmmvp('load', './tmp/timing_3d_n' + nstring + '_e6');
+    hme6 = hmmvp('load', b.h);
     now = tic();
     x = hmmvp('mvp', hme6, v);
     t = toc(now)
