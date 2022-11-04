@@ -326,19 +326,6 @@ function out = run(b)
   fprintf('QS Cohesive zone = %.2f (m)\n',coh);
   fprintf('Est. Recurrence time = %.2f (yr)\n\n', Ti/3.15e7);
 
-  % - OLD/2F
-  % Confining pressure (MPa) and Temperature (K)
-  k  = 3.138; % thermal conductivity (W/m/K)
-  Cp = 1171 ; % specific heat (J/kg/K)
-  Rm = 3330 ; % mantle density (kg/m^3)
-
-  Pconf       = Rm*9.8*ss.shearZ_chat/1e6;  % Shear zones
-  Pconf_fault = Rm*9.8*(ss.faultZ+ss.dz); % Faults
-
-  Kappa     = k / (Rm * Cp); % Thermal diffusivity (m^2/s)
-  Age_plate = 2e15; % seconds
-  ss.Tprof  = 300+1380*erf(ss.shearZ_chat/(sqrt(4* Kappa * Age_plate)));  % Kelvin
-
   %% % % % % % % % % % % % % % % % % % % % % % % % % % % %
   %                                                      %
   %                   R H E O L O G Y                    %
@@ -393,6 +380,7 @@ function out = run(b)
   %ss.e13p_plate = ss.e13p_plate';
   %ss.e12p_plate = ss.e12p_plate(:);
   %ss.e13p_plate = ss.e13p_plate(:);
+
   %ss.e12p_plate = 1e-14*ones(length(ss.shearY_chat)*length(ss.shearZ_chat),1);
   %ss.e13p_plate =      zeros(length(ss.shearY_chat)*length(ss.shearZ_chat),1);
 
@@ -433,7 +421,8 @@ function out = run(b)
 
   % Strengh profile
 
-  %  ?? definition of s130 is adapted from s120
+  %  ?? this definition involves rhealogical params that I thought we are
+  %     getting rid of
   s120 = (ss.e12p_plate./ss.Const_dis).^(1./ss.n);
   s130 = (ss.e13p_plate./ss.Const_dis).^(1./ss.n);
   e120 = zeros(size(s120));
