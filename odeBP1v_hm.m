@@ -69,9 +69,6 @@ th=Y(3:ss.dgfF:ss.M*ss.dgfF);
 dth = (ss.Vo.*exp(-th)-V)./ss.Drs;
 Yp(3:ss.dgfF:ss.M*ss.dgfF)=dth;
 
-length(V)
-length(ss.Vpl)
-
 % Shear stress rate on fault due to fault and shear zones
 t1 = hmmvp('mvp', hm.ff12, (V-ss.Vpl));
 t2 = hmmvp('mvp', hm.fs1212, (e12p-ss.e12p_plate));
