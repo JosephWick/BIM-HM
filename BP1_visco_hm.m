@@ -117,8 +117,8 @@ function r = build()
   ss.shearYhat = shearYhat;
   ss.shearZhat = shearZhat;
 
-  length(ss.shearXhat)
-  length(ss.shearX_chat)
+  length(ss.shearYhat)
+  length(ss.shearY_chat)
 
   disp('mesh done.')
   disp('beginning kernels...')
