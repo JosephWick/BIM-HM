@@ -116,9 +116,6 @@ function r = build()
   ss.shearYhat = shearYhat;
   ss.shearZhat = shearZhat;
 
-  length(ss.shearZhat)
-  length(ss.shearZ_chat)
-
   disp('mesh done.')
   disp('beginning kernels...')
 
@@ -396,6 +393,9 @@ function out = run(b)
   s130 = (ss.e13p_plate./ss.A).^(1./ss.n);
   e120 = zeros(size(s120));
   e130 = zeros(size(s120));
+
+  length(s120)
+  length(s130)
 
   %% % % % % % % % % % % % % % % % % % % % % % % % % % % %
   %                                                       %
