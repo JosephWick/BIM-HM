@@ -51,7 +51,7 @@ tau13=Y(ss.M*ss.dgfF+2:ss.dgfS:end);
 tau=sqrt(tau12.^2+tau13.^2);
 
 % Dislocation strain rate
-Aeff = ss.Const_dis.* (tau).^(ss.n-1);
+Aeff = ss.A; %??
 e12p = tau12 .* Aeff;
 e13p = tau13 .* Aeff;
 
@@ -95,7 +95,7 @@ Yp(ss.M*ss.dgfF+1 : ss.dgfS : end) = t1 + t2 + t3;
 
 t1 = hmmvp('mvp', hm.ss1213, (e12p-ss.e12p_plate));
 t2 = hmmvp('mvp', hm.ss1313, (e13p-ss.e13p_plate));
-t3 = hmmvp('mvp', hm.sf13, (V-ss.Vpl)); 
+t3 = hmmvp('mvp', hm.sf13, (V-ss.Vpl));
 Yp(ss.M*ss.dgfF+2 : ss.dgfS : end) = t1 + t2 + t3;
 
 % Strain rate

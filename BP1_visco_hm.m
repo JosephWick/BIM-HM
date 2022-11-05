@@ -386,10 +386,10 @@ function out = run(b)
 
   % Strengh profile
 
-  A = 10e-19;
+  ss.A = 10e-19;
 
-  s120 = (ss.e12p_plate./A).^(1./ss.n);
-  s130 = (ss.e13p_plate./A).^(1./ss.n);
+  s120 = (ss.e12p_plate./ss.A).^(1./ss.n);
+  s130 = (ss.e13p_plate./ss.A).^(1./ss.n);
   e120 = zeros(size(s120));
   e130 = zeros(size(s120));
 
