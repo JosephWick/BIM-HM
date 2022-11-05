@@ -38,13 +38,14 @@ function r = build()
 
   disp('begin mesh...')
 
+  % ?? not sure about problem dimensions
+
   % Fault Meshes
   ss.probL = 200e3;
-  ss.probW = 200e3;
-
+  ss.probW = 100e3;
 
   ss.lambdaZ = 40e3; % fault depth extent
-  ss.M = 400; %number of fault cells
+  ss.M = 1600; % number of fault cells, this is 25m patches
   ss.dz = ss.lambdaZ/ss.M; dz = ss.dz;
 
   ss.transition = 40e3; Transition = ss.transition;
