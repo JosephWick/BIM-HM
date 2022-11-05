@@ -113,6 +113,8 @@ function r = build()
   ss.shearZ_c = shearZ_c;
   ss.shearY_chat = ss.shearY_chat;
   ss.shearZ_chat = ss.shearZ_chat;
+  ss.shearXhat = shearXhat;
+  ss.shearYhat = shearYhat;
   ss.shearZhat = shearZhat;
 
   disp('mesh done.')
