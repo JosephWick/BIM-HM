@@ -376,8 +376,8 @@ function out = run(b)
   end
 
   % flatten
-  %ss.e12p_plate = ss.e12p_plate';
-  %ss.e13p_plate = ss.e13p_plate';
+  ss.e12p_plate = ss.e12p_plate';
+  ss.e13p_plate = ss.e13p_plate';
   %ss.e12p_plate = ss.e12p_plate(:);
   %ss.e13p_plate = ss.e13p_plate(:);
 
