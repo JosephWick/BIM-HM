@@ -348,17 +348,12 @@ function out = run(b)
   ss.n = 3.0*ones(length(ss.shearZ_chat)*length(ss.shearY_chat),1);
   n_scalar = 3.0;
 
-  length(ss.shearYhat)
-  length(ss.shearZhat)
-  ss.Ny
-  ss.Nz
-
   ss.e12p_plate = zeros(ss.Nz*ss.Ny, 1);
   ss.e13p_plate = zeros(ss.Nz*ss.Ny, 1);
   for i=1:1:ss.Ny
     for j = 1:1:ss.Nz
-      x2 = ss.shearYhat(i);
-      x3 = ss.shearZhat(j);
+      x2 = ss.shearY_chat(i);
+      x3 = ss.shearZ_chat(j);
       x2p = x2/(Dv);
       x3p = (x3-Df)/(Dv);
 
@@ -398,9 +393,6 @@ function out = run(b)
   s130 = (ss.e13p_plate./ss.A).^(1./ss.n);
   e120 = zeros(size(s120));
   e130 = zeros(size(s120));
-
-  length(s120)
-  length(s130)
 
   %% % % % % % % % % % % % % % % % % % % % % % % % % % % %
   %                                                       %
