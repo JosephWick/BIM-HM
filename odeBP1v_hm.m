@@ -40,7 +40,7 @@ function [Yp]= odeBP1v_hm2(~,Y,ss,hm)
 G=30e3; % MPa
 
 % Shear stress on faults
-tauF_W = Y(2:ss.dgfF:ss.M*ss.dgfF);
+tauF = Y(2:ss.dgfF:ss.M*ss.dgfF);
 
 % Slip rate
 V = ss.Vo.* exp(Y(4:ss.dgfF:ss.M*ss.dgfF));
