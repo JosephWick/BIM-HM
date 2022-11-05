@@ -384,47 +384,12 @@ function out = run(b)
   %ss.e12p_plate = 1e-14*ones(length(ss.shearY_chat)*length(ss.shearZ_chat),1);
   %ss.e13p_plate =      zeros(length(ss.shearY_chat)*length(ss.shearZ_chat),1);
 
-  % Rheological Parameters
-  % Reference Strain Rate (for stress in MPa)
-  ss.Adif = 1e6*ones(length(ss.shearZ_chat)*length(ss.shearY_chat),1);
-  ss.Adis = 90 *ones(length(ss.shearZ_chat)*length(ss.shearY_chat),1);
-
-  % Activation Energy Wet Oliving (J/mol)
-  ss.Qdif = 335e3*ones(length(ss.shearZ_chat)*length(ss.shearY_chat),1);
-  ss.Qdis = 480e3*ones(length(ss.shearZ_chat)*length(ss.shearY_chat),1);
-
-  % Activation Volume (m^3/mol)
-  ss.Voldif = 4e-6*ones(length(ss.shearZ_chat)*length(ss.shearY_chat),1);
-  ss.Voldis = 11e-6*ones(length(ss.shearZ_chat)*length(ss.shearY_chat),1);
-
-  % Grain size (m)
-  ss.d    = 1e-2*ones(length(ss.shearZ_chat)*length(ss.shearY_chat),1);
-  ss.pexp = 3*ones(length(ss.shearZ_chat)*length(ss.shearY_chat),1);
-
-  % Water fugacity (H/10^6 Si)
-  ss.COH = 1000*ones(length(ss.shearZ_chat)*length(ss.shearY_chat),1);
-  ss.r   = 1.2*ones(length(ss.shearZ_chat)*length(ss.shearY_chat),1);
-
-  % Pressure (Pa)
-  ss.P = repmat(1e6*Pconf',length(ss.shearY_chat),1);
-  ss.P = reshape(ss.P,[length(ss.shearY_chat)*length(ss.shearZ_chat),1]);
-
-  % Temperature (K)
-  Te0 = repmat(ss.Tprof',length(ss.shearY_chat),1);
-  Te0 = reshape(Te0,[length(ss.shearY_chat)*length(ss.shearZ_chat),1]);
-
-  % Coefficients for dislocation and diffusion creep
-  ss.Const_dis = ss.Adis.*exp(-(ss.Qdis+ss.P.*ss.Voldis)./(8.314.*Te0)).* ...
-    ss.COH.^(ss.r);
-  ss.Const_diff = ss.Adif.*exp(-(ss.Qdif+ss.P.*ss.Voldif)./(8.314.*Te0)).* ...
-    ss.COH.^(ss.r).*ss.d.^(-ss.pexp);
-
   % Strengh profile
 
-  %  ?? this definition involves rhealogical params that I thought we are
-  %     getting rid of
-  s120 = (ss.e12p_plate./ss.Const_dis).^(1./ss.n);
-  s130 = (ss.e13p_plate./ss.Const_dis).^(1./ss.n);
+  A = 10e-19;
+
+  s120 = (ss.e12p_plate./A).^(1./ss.n);
+  s130 = (ss.e13p_plate./A).^(1./ss.n);
   e120 = zeros(size(s120));
   e130 = zeros(size(s120));
 
