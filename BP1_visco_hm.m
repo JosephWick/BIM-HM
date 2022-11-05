@@ -335,7 +335,7 @@ function out = run(b)
 
   % Driving strain rate (1/s)
 
-  % solve for using the epsilon dote
+  % solve for using the epsilon dot
   % equations 6 and 7 in the overleaf
   % add factor of plate rate out front
   Dv = ss.probW-ss.transition;
@@ -376,17 +376,16 @@ function out = run(b)
   end
 
   % flatten
-  ss.e12p_plate = ss.e12p_plate;
-  ss.e13p_plate = ss.e13p_plate;
+  %ss.e12p_plate = ss.e12p_plate';
+  %ss.e13p_plate = ss.e13p_plate';
   %ss.e12p_plate = ss.e12p_plate(:);
   %ss.e13p_plate = ss.e13p_plate(:);
 
   %ss.e12p_plate = 1e-14*ones(length(ss.shearY_chat)*length(ss.shearZ_chat),1);
   %ss.e13p_plate =      zeros(length(ss.shearY_chat)*length(ss.shearZ_chat),1);
 
-  % Strengh profile
-
-  ss.A = 10e-19;
+  % Strength profile
+  ss.A = 1e-19;
 
   s120 = (ss.e12p_plate./ss.A).^(1./ss.n);
   s130 = (ss.e13p_plate./ss.A).^(1./ss.n);
