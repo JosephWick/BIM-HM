@@ -52,8 +52,8 @@ tau=sqrt(tau12.^2+tau13.^2);
 
 % Dislocation strain rate
 Aeff = ss.A; %??
-e12p = tau12 .* Aeff;
-e13p = tau13 .* Aeff;
+e12p = Aeff.*tau12.^ss.n;
+e13p = Aeff.*tau13.^ss.n;
 
 % Initiate state derivative
 Yp=zeros(size(Y));
