@@ -351,8 +351,8 @@ function out = run(b)
   ss.e13p_plate = zeros(ss.Nz*ss.Ny, 1);
   for i=1:1:ss.Ny
     for j = 1:1:ss.Nz
-      x2 = ss.shearY_chat(i);
-      x3 = ss.shearZ_chat(j);
+      x2 = ss.shearYhat(i);
+      x3 = ss.shearZhat(j);
       x2p = x2/(Dv);
       x3p = (x3-Df)/(Dv);
 
