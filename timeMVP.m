@@ -135,36 +135,36 @@ function measure(b)
   rng('default');
   v = rand(N*N*N,1);
 
-  tees = [];
+  t6 = [];
   for j=1:3
     hme6 = hmmvp('init', b.kvfe6);
     now = tic();
     x = hmmvp('mvp', hme6, v);
     t = toc(now);
-    tees(j) = t;
+    t6(j) = t;
   end
-  t_3d_6 = mean(tees);
+  t_3d_6 = mean(t6);
 
-  tees = [];
+  t8 = [];
   for j=1:3
     hme8 = hmmvp('init', b.kvfe8);
     now = tic();
     x = hmmvp('mvp', hme8, v);
     t = toc(now);
-    tees(j) = t;
+    t8(j) = t;
   end
-  t_3d_8 = mean(tees);
+  t_3d_8 = mean(t8);
 
-  tees = [];
+  td = [];
   for j = 1:3
     %dense = hmmvp('extract', hme8, 1:1:N*N*N, 1:1:N*N*N);
     dense = b.K;
     now = tic();
     x = dense*v;
     t = toc(now);
-    tees(j) = t;
+    td(j) = t;
   end
-  t_dense = mean(tees);
+  t_dense = mean(td);
 
 disp('dense: ')
 t_dense
