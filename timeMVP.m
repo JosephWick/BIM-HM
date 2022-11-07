@@ -132,7 +132,8 @@ function measure(b)
   t_3d_8 = -1;
   t_dense = -1;
 
-  v = ones(N*N*N,1);
+  rng('default');
+  v = random(N*N*N,1);
 
   tees = [];
   for j=1:3
