@@ -340,12 +340,12 @@ function out = run(b)
   % solve for using the epsilon dot
   % equations 6 and 7 in the overleaf
   % add factor of plate rate out front
-  Dv = ss.probW-ss.transition;
   Df = ss.lambdaZ;
+  Dv = ss.probW-ss.lambdaZ;
   w = 10;
 
   % Power-Law Exponent
-  ss.n = 3.0*ones(length(ss.shearZ_chat)*length(ss.shearY_chat),1);
+  ss.n = 3.0*ones(ss.Nz*ss.Ny,1);
   n_scalar = 3.0;
 
   ss.e12p_plate = zeros(ss.Nz*ss.Ny, 1);
@@ -354,8 +354,8 @@ function out = run(b)
     for j = 1:1:ss.Nz
       x2 = ss.shearY_chat(i); %?? center or edge here?
       x3 = ss.shearZ_chat(j);
-      x2p = x2/(Dv);
-      x3p = (x3-Df)/(Dv);
+      x2p = x2/Dv;
+      x3p = (x3-Df)/Dv;
 
       summ12 = 0;
       summ13 = 0;
@@ -383,8 +383,10 @@ function out = run(b)
   %ss.e12p_plate = ss.e12p_plate(:);
   %ss.e13p_plate = ss.e13p_plate(:);
 
-  ss.e12p_plate = 1e-14*ones(length(ss.shearY_chat)*length(ss.shearZ_chat),1);
+  %ss.e12p_plate = 1e-14*ones(length(ss.shearY_chat)*length(ss.shearZ_chat),1);
   %ss.e13p_plate =      zeros(length(ss.shearY_chat)*length(ss.shearZ_chat),1);
+
+  % when ss.e13p_plate is zeros, there is no blow up
 
   % Strength profile
   ss.A = 1e-19;
