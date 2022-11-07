@@ -364,7 +364,7 @@ function out = run(b)
       % also consider term as percentage of the total
       sterm12 = e12Terms(x2p, x3p, m, n_scalar, w);
       sterm13 = e13Terms(x2p, x3p, m, n_scalar, w);
-      while sterm12 >= summ12*0.005 || sterm13 >= summ13*0.005;
+      while sterm12 >= summ12*0.001 || sterm13 >= summ13*0.001;
         summ12 = summ12 + sterm12;
         summ13 = summ13 + sterm13;
         m = m + 1;
