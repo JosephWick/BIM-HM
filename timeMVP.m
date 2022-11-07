@@ -133,7 +133,7 @@ function measure(b)
   t_dense = -1;
 
   rng('default');
-  v = random(N*N*N,1);
+  v = rand(N*N*N,1);
 
   tees = [];
   for j=1:3
