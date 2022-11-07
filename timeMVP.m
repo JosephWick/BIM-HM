@@ -156,7 +156,8 @@ function measure(b)
 
   tees = [];
   for j = 1:3
-    dense = hmmvp('extract', hme8, 1:1:N*N*N, 1:1:N*N*N);
+    %dense = hmmvp('extract', hme8, 1:1:N*N*N, 1:1:N*N*N);
+    dense = b.K;
     now = tic();
     x = dense*v;
     t = toc(now);
