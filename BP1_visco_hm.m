@@ -364,7 +364,7 @@ function out = run(b)
       % also consider term as percentage of the total
       sterm12 = e12Terms(x2p, x3p, m, n_scalar, w);
       sterm13 = e13Terms(x2p, x3p, m, n_scalar, w);
-      while sterm12 >= summ12*0.005 || sterm13 >= summ13*0.005;
+      while sterm12 >= summ12*0.001 || sterm13 >= summ13*0.001;
         summ12 = summ12 + sterm12;
         summ13 = summ13 + sterm13;
         m = m + 1;
@@ -384,7 +384,7 @@ function out = run(b)
   %ss.e13p_plate = ss.e13p_plate(:);
 
   %ss.e12p_plate = 1e-14*ones(length(ss.shearY_chat)*length(ss.shearZ_chat),1);
-  %ss.e13p_plate =      zeros(length(ss.shearY_chat)*length(ss.shearZ_chat),1);
+  ss.e13p_plate =      zeros(length(ss.shearY_chat)*length(ss.shearZ_chat),1);
 
   % Strength profile
   ss.A = 1e-19;
@@ -392,7 +392,7 @@ function out = run(b)
   s120 = (ss.e12p_plate./ss.A).^(1./ss.n);
   s130 = (ss.e13p_plate./ss.A).^(1./ss.n);
   e120 = zeros(size(s120));
-  e130 = zeros(size(s120));
+  e130 = zeros(size(s130));
 
   %% % % % % % % % % % % % % % % % % % % % % % % % % % % %
   %                                                       %
