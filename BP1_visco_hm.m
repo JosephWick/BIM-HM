@@ -352,7 +352,7 @@ function out = run(b)
   ss.e13p_plate = zeros(ss.Nz*ss.Ny, 1);
   for i=1:1:ss.Ny
     for j = 1:1:ss.Nz
-      x2 = ss.shearY_chat(i); %?? center or edge here?
+      x2 = ss.shearY_chat(i); %centers
       x3 = ss.shearZ_chat(j);
       x2p = x2/Dv;
       x3p = (x3-Df)/Dv;
@@ -377,12 +377,6 @@ function out = run(b)
     end
   end
 
-  % flatten
-  %ss.e12p_plate = ss.e12p_plate';
-  %ss.e13p_plate = ss.e13p_plate';
-  %ss.e12p_plate = ss.e12p_plate(:);
-  %ss.e13p_plate = ss.e13p_plate(:);
-
   %ss.e12p_plate = 1e-14*ones(length(ss.shearY_chat)*length(ss.shearZ_chat),1);
   %ss.e13p_plate =      zeros(length(ss.shearY_chat)*length(ss.shearZ_chat),1);
 
@@ -390,6 +384,9 @@ function out = run(b)
 
   % Strength profile
   ss.A = 1e-19;
+
+  % e_mag_plate is root sum of squares (magnitude)
+  %s120 = (ss.e12p_plate ./ e_mag_plate) .* tau0_mag
 
   s120 = (ss.e12p_plate./ss.A).^(1./ss.n);
   s130 = (ss.e13p_plate./ss.A).^(1./ss.n);
