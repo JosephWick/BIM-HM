@@ -48,15 +48,18 @@ V = ss.Vo.* exp(Y(4:ss.dgfF:ss.M*ss.dgfF));
 % Shear stress in zones of distributed deformation
 tau12=Y(ss.M*ss.dgfF+1:ss.dgfS:end);
 tau13=Y(ss.M*ss.dgfF+2:ss.dgfS:end);
-tau=sqrt(tau12.^2+tau13.^2);
+tau_mag=sqrt(tau12.^2+tau13.^2);
 
 % Dislocation strain rate
-% ??
-e12p = ss.A.*(tau12.^ss.n);
-e13p = ss.A.*(tau13.^ss.n);
+e12 = ss.A.*(tau12.^ss.n);
+e13 = ss.A.*(tau13.^ss.n);
+e_mag = sqrt(e12.^2 + e13.^2);
+
+e12p = (tau12/tau_mag).*e_mag;
+e13p = (tau13/tau_mag).*e_mag;
 
 % magnitudes ^ here again
-% directions of strain should be same as stress 
+% directions of strain should be same as stress
 
 % Initiate state derivative
 Yp=zeros(size(Y));
