@@ -370,6 +370,9 @@ function out = run(b)
         m = m + 1;
         sterm12 = e12Terms(x2p, x3p, m, n_scalar, w);
         sterm13 = e13Terms(x2p, x3p, m, n_scalar, w);
+        if imag(sterm12) ~= 0 || imag(sterm13) ~= 0
+          sterm12, sterm13
+        end
       end
       ss.e12p_plate((j-1)*ss.Ny+i) = ss.Vpl_scalar * ( 1/(2*w) + (1/w)*summ12);
       ss.e13p_plate((j-1)*ss.Ny+i) = ss.Vpl_scalar * ( (-1/(w*(n_scalar^0.5))) * summ13 );
