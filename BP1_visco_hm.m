@@ -399,6 +399,7 @@ function out = run(b)
   % these have no imaginary parts, but some Infs and NaNs
   csvwrite('e12p_plate.csv', ss.e12p_plate);
   csvwrite('e13p_plate.csv', ss.e13p_plate);
+  csvwrite('tau_mag.csv', tau0_mag);
 
   % lots of imaginary parts
   csvwrite('tau12.csv', tau12);
