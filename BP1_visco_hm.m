@@ -516,7 +516,7 @@ function out = run(b)
     for idx = 1:size(Epall, 2)
       oneE = Epall(:,idx);
       oneEsq = reshape(oneE, [ss.Ny, ss.Nz]);
-      imagesc(oneEsq'); colormap(hot); colorbar; caxis([])
+      imagesc(oneEsq'); colormap(hot); colorbar; caxis([1e-15, 5e-14])
       title(idx)
       drawnow
       frame = getframe(fig);
