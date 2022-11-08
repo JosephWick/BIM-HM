@@ -397,19 +397,19 @@ function out = run(b)
   tau0_mag = sqrt( (tau12).^2 + (tau13).^2);
 
   % these have no imaginary parts, but some Infs and NaNs
-  writematrix(ss.e12p_plate, 'e12p_plate.csv');
-  writematrix(ss.e12p_plate, 'e13p_plate.csv');
-  writematrix(tau0_mag, 'tau_mag.csv');
+  csvwrite('e12p_plate.csv', ss.e12p_plate);
+  csvwrite('e13p_plate.csv', ss.e13p_plate);
+  csvwrite('tau_mag.csv', tau0_mag);
 
   % lots of imaginary parts
-  writematrix(tau12, 'tau12.csv');
-  writematrix('tau13.csv');
+  csvwrite('tau12.csv', tau12);
+  csvwrite('tau13.csv', tau13);
 
   s120 = (ss.e12p_plate./e_mag_plate).*tau0_mag;
   s130 = (ss.e13p_plate./e_mag_plate).*tau0_mag;
 
-  writematrix(s120, 's120.csv');
-  writematrix('s130.csv');
+  csvwrite('s120.csv', s120);
+  csvwrite('s130.csv', s130);
 
   %s120 = (ss.e12p_plate./ss.A).^(1./ss.n);
   %s130 = (ss.e13p_plate./ss.A).^(1./ss.n);
