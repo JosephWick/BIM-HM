@@ -389,7 +389,7 @@ function out = run(b)
   %s120 = (ss.e12p_plate ./ e_mag_plate) .* tau0_mag
 
   e_mag_plate = sqrt(ss.e12p_plate.^2 + ss.e13p_plate.^2);
-  tau0_mag = sqrt((((ss.e12p_plate./ss.A).^(1./ss.n)).^2 + ((ss.e13p_plate./ss.A).^(1./ss.n)).^2);
+  tau0_mag = sqrt( ((ss.e12p_plate./ss.A).^(1./ss.n)).^2 + ((ss.e13p_plate./ss.A).^(1./ss.n)).^2);
 
   s120 = (ss.e12p_plate./e_mag_plate).*tau0_mag;
   s130 = (ss.e13p_plate./e_mag_plate).*tau0_mag;
