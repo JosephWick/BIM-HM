@@ -399,14 +399,10 @@ function out = run(b)
 
   s120 = (ss.e12p_plate./e_mag_plate).*tau0_mag;
   s130 = (ss.e13p_plate./e_mag_plate).*tau0_mag;
-
-  ss.e12p_plate = s120;
-  ss.e13p_plate = s130;
-
   %s120 = (ss.e12p_plate./ss.A).^(1./ss.n);
   %s130 = (ss.e13p_plate./ss.A).^(1./ss.n);
-  e120 = zeros(size(s120));
-  e130 = zeros(size(s130));
+  e120 = ones(size(s120));
+  e130 = ones(size(s130));
 
   %% % % % % % % % % % % % % % % % % % % % % % % % % % % %
   %                                                       %
