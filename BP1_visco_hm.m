@@ -380,10 +380,10 @@ function out = run(b)
     end
   end
 
-  ss.e12p_plate = 1e-14*ones(length(ss.shearY_chat)*length(ss.shearZ_chat),1);
-  ss.e13p_plate =      zeros(length(ss.shearY_chat)*length(ss.shearZ_chat),1);
-
-  % when ss.e13p_plate is zeros, there is no blow up
+  %ss.e12p_plate = 1e-14*ones(length(ss.shearY_chat)*length(ss.shearZ_chat),1);
+  %ss.e13p_plate =      zeros(length(ss.shearY_chat)*length(ss.shearZ_chat),1);
+  % using the above constant conditions produced a sim that did not have any
+  % postseismic activity
 
   % Strength profile
   ss.A = 1e-19;
