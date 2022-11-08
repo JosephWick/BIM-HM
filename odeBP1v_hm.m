@@ -55,8 +55,8 @@ e12 = ss.A.*(tau12.^ss.n);
 e13 = ss.A.*(tau13.^ss.n);
 e_mag = sqrt(e12.^2 + e13.^2);
 
-e12p = (tau12/tau_mag).*e_mag;
-e13p = (tau13/tau_mag).*e_mag;
+e12p = (tau12./tau_mag).*e_mag;
+e13p = (tau13./tau_mag).*e_mag;
 
 % magnitudes ^ here again
 % directions of strain should be same as stress

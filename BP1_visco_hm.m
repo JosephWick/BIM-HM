@@ -396,8 +396,6 @@ function out = run(b)
   s120 = (ss.e12p_plate./e_mag_plate).*tau0_mag;
   s130 = (ss.e13p_plate./e_mag_plate).*tau0_mag;
 
-  length(s130)
-
   %s120 = (ss.e12p_plate./ss.A).^(1./ss.n);
   %s130 = (ss.e13p_plate./ss.A).^(1./ss.n);
   e120 = zeros(size(s120));
