@@ -55,6 +55,9 @@ tau=sqrt(tau12.^2+tau13.^2);
 e12p = ss.A.*(tau12.^ss.n);
 e13p = ss.A.*(tau13.^ss.n);
 
+% magnitudes ^ here again
+% directions of strain should be same as stress 
+
 % Initiate state derivative
 Yp=zeros(size(Y));
 
