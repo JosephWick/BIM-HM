@@ -401,8 +401,11 @@ function out = run(b)
   s130 = (ss.e13p_plate./e_mag_plate).*tau0_mag;
   %s120 = (ss.e12p_plate./ss.A).^(1./ss.n);
   %s130 = (ss.e13p_plate./ss.A).^(1./ss.n);
-  e120 = ones(size(s120));
-  e130 = ones(size(s130));
+  e120 = zeros(size(s120));
+  e130 = zeros(size(s130));
+
+  csvwrite('s120.csv', s120);
+  csvwrite('s130.csv', s130);
 
   %% % % % % % % % % % % % % % % % % % % % % % % % % % % %
   %                                                       %
