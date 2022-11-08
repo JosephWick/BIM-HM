@@ -396,12 +396,12 @@ function out = run(b)
   tau13 = nthroot(ss.e13p_plate./ss.A, n_scalar);
   tau0_mag = sqrt( (tau12).^2 + (tau13).^2);
 
+  % it looks like csvwrite doesn't overwrite, do rm *.csv before running
   % these have no imaginary parts, but some Infs and NaNs
   csvwrite('e12p_plate.csv', ss.e12p_plate);
   csvwrite('e13p_plate.csv', ss.e13p_plate);
   csvwrite('tau_mag.csv', tau0_mag);
 
-  % lots of imaginary parts
   csvwrite('tau12.csv', tau12);
   csvwrite('tau13.csv', tau13);
 
@@ -461,7 +461,7 @@ function out = run(b)
   tic
   % Solve the system
   options=odeset('Refine',1,'RelTol',3e-7,'InitialStep',1e-3,'MaxStep',3e6);
-  [t,Y]=ode45_2(yp,[0 10*3.15e7],Y0,options);
+  [t,Y]=ode45_2(yp,[0 100*3.15e7],Y0,options);
   disp('done solving.')
   toc
   %%
