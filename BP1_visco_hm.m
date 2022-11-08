@@ -380,8 +380,8 @@ function out = run(b)
     end
   end
 
-  %ss.e12p_plate = 1e-14*ones(length(ss.shearY_chat)*length(ss.shearZ_chat),1);
-  %ss.e13p_plate =      zeros(length(ss.shearY_chat)*length(ss.shearZ_chat),1);
+  ss.e12p_plate = 1e-14*ones(length(ss.shearY_chat)*length(ss.shearZ_chat),1);
+  ss.e13p_plate =      zeros(length(ss.shearY_chat)*length(ss.shearZ_chat),1);
 
   % when ss.e13p_plate is zeros, there is no blow up
 
@@ -396,20 +396,8 @@ function out = run(b)
   tau13 = nthroot(ss.e13p_plate./ss.A, n_scalar);
   tau0_mag = sqrt( (tau12).^2 + (tau13).^2);
 
-  % it looks like csvwrite doesn't overwrite, do rm *.csv before running
-  % these have no imaginary parts, but some Infs and NaNs
-  csvwrite('e12p_plate.csv', ss.e12p_plate);
-  csvwrite('e13p_plate.csv', ss.e13p_plate);
-  csvwrite('tau_mag.csv', tau0_mag);
-
-  csvwrite('tau12.csv', tau12);
-  csvwrite('tau13.csv', tau13);
-
   s120 = (ss.e12p_plate./e_mag_plate).*tau0_mag;
   s130 = (ss.e13p_plate./e_mag_plate).*tau0_mag;
-
-  csvwrite('s120.csv', s120);
-  csvwrite('s130.csv', s130);
 
   %s120 = (ss.e12p_plate./ss.A).^(1./ss.n);
   %s130 = (ss.e13p_plate./ss.A).^(1./ss.n);
@@ -519,7 +507,7 @@ function out = run(b)
   saveas(gcf, 'figures/BP1vHM2_strainCenter.png')
 
   % ---         Movies        ---
-  Smovie=true;
+  Smovie=false;
   if Smovie
     disp('begin shear movie')
     clf;
