@@ -396,14 +396,17 @@ function out = run(b)
   tau13 = (ss.e13p_plate./ss.A).^(1./ss.n);
   tau0_mag = sqrt( (tau12).^2 + (tau13).^2);
 
+  csvwrite('e12p_plate.csv', ss.e12p_plate);
+  csvwrite('e13p_plate.csv', ss.e13p_plate);
+
   csvwrite('tau12.csv', tau12);
   csvwrite('tau13.csv', tau13);
 
   s120 = (ss.e12p_plate./e_mag_plate).*tau0_mag;
   s130 = (ss.e13p_plate./e_mag_plate).*tau0_mag;
 
-  csvwrite('s120', s120);
-  csvwrite('s130', s130);
+  csvwrite('s120.csv', s120);
+  csvwrite('s130.csv', s130);
 
   %s120 = (ss.e12p_plate./ss.A).^(1./ss.n);
   %s130 = (ss.e13p_plate./ss.A).^(1./ss.n);
