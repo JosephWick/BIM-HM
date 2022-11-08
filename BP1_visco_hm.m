@@ -396,6 +396,8 @@ function out = run(b)
   s120 = (ss.e12p_plate./e_mag_plate).*tau0_mag;
   s130 = (ss.e13p_plate./e_mag_plate).*tau0_mag;
 
+  s120
+
   %s120 = (ss.e12p_plate./ss.A).^(1./ss.n);
   %s130 = (ss.e13p_plate./ss.A).^(1./ss.n);
   e120 = zeros(size(s120));
@@ -446,7 +448,7 @@ function out = run(b)
   tic
   % Solve the system
   options=odeset('Refine',1,'RelTol',3e-7,'InitialStep',1e-3,'MaxStep',3e6);
-  [t,Y]=ode45_2(yp,[0 100*3.15e7],Y0,options);
+  [t,Y]=ode45_2(yp,[0 10*3.15e7],Y0,options);
   disp('done solving.')
   toc
   %%
