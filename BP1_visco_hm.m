@@ -45,7 +45,7 @@ function r = build()
   ss.probW = 200e3;
 
   ss.lambdaZ = 40e3; % fault depth extent
-  ss.M = 400; % number of fault cells, this is 25m patches
+  ss.M = 1600; % number of fault cells, this is 25m patches
   ss.dz = ss.lambdaZ/ss.M; dz = ss.dz;
 
   ss.transition = 40e3; Transition = ss.transition;
@@ -388,8 +388,14 @@ function out = run(b)
   % e_mag_plate is root sum of squares (magnitude)
   %s120 = (ss.e12p_plate ./ e_mag_plate) .* tau0_mag
 
-  s120 = (ss.e12p_plate./ss.A).^(1./ss.n);
-  s130 = (ss.e13p_plate./ss.A).^(1./ss.n);
+  e_mag_plate = sqrt(ss.e12p_plate.^2 + ss.e13p_plate.^2);
+  tau0_mag = sqrt((((ss.e12p_plate./ss.A).^(1./ss.n)).^2 + ((ss.e13p_plate./ss.A).^(1./ss.n)).^2);
+
+  s120 = (ss.e12p_plate./e_mag_plate).*tau0_mag;
+  s130 = (ss.e13p_plate./e_mag_plate).*tau0_mag;
+
+  %s120 = (ss.e12p_plate./ss.A).^(1./ss.n);
+  %s130 = (ss.e13p_plate./ss.A).^(1./ss.n);
   e120 = zeros(size(s120));
   e130 = zeros(size(s130));
 
