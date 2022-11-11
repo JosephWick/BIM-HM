@@ -382,19 +382,11 @@ function out = run(b)
 
   %ss.e12p_plate = 1e-14*ones(length(ss.shearY_chat)*length(ss.shearZ_chat),1);
   %ss.e13p_plate =      zeros(length(ss.shearY_chat)*length(ss.shearZ_chat),1);
-  % using the above constant conditions produced a sim that did not have any
-  % postseismic activity
 
   % Strength profile
   ss.A = 1e-19;
 
-  % e_mag_plate is root sum of squares (magnitude)
-  %s120 = (ss.e12p_plate ./ e_mag_plate) .* tau0_mag
-
   e_mag_plate = sqrt(ss.e12p_plate.^2 + ss.e13p_plate.^2);
-
-  %tau12 = nthroot(ss.e12p_plate./ss.A, n_scalar);
-  %tau13 = nthroot(ss.e13p_plate./ss.A, n_scalar);
   tau0_mag = nthroot(e_mag_plate./ss.A, n_scalar);
 
   s120 = (ss.e12p_plate./e_mag_plate).*tau0_mag;
