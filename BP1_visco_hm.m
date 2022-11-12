@@ -488,7 +488,7 @@ function out = run(b)
 
   % fault slip figure
   clf;
-  imagesc(log10(y.V)); colorbar;
+  imagesc(log10(y.V)); colormap('default'); colorbar;
   title('Slip Rate')
   xlabel('time steps')
   ylabel('fault mesh block')
