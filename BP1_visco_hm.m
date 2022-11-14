@@ -348,6 +348,8 @@ function out = run(b)
   ss.n = 3.0*ones(ss.Nz*ss.Ny,1);
   n_scalar = 3.0;
 
+  fid = fopen('largeIndices.txt');
+
   ss.e12p_plate = zeros(ss.Nz*ss.Ny, 1);
   ss.e13p_plate = zeros(ss.Nz*ss.Ny, 1);
   for i=1:1:ss.Ny
@@ -379,9 +381,9 @@ function out = run(b)
       ss.e13p_plate((j-1)*ss.Ny+i) = ss.Vpl_scalar * ( (-1/(w*(n_scalar^0.5))) * summ13 );
 
       if ss.e12p_plate((j-1)*ss.Ny+i) > 1e-4 || ss.e13p_plate((j-1)*ss.Ny+i) > 1e-4
-        disp('large at:')
-        disp(i)
-        disp(j)
+        fprintf(fid,'large at:')
+        fprintf(fid, i)
+        fprintf(fid, j)
       end
 
     end
