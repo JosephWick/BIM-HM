@@ -379,13 +379,6 @@ function out = run(b)
       end
       ss.e12p_plate((j-1)*ss.Ny+i) = ss.Vpl_scalar * ( 1/(2*w) + (1/w)*summ12);
       ss.e13p_plate((j-1)*ss.Ny+i) = ss.Vpl_scalar * ( (-1/(w*(n_scalar^0.5))) * summ13 );
-
-      if ss.e12p_plate((j-1)*ss.Ny+i) > 1e-4 || ss.e13p_plate((j-1)*ss.Ny+i) > 1e-4
-        fprintf(fid,'large at:')
-        fprintf(fid, i)
-        fprintf(fid, j)
-      end
-
     end
   end
 
@@ -393,7 +386,7 @@ function out = run(b)
   %ss.e13p_plate =      zeros(length(ss.shearY_chat)*length(ss.shearZ_chat),1);
 
   % Strength profile
-  ss.A = 1e-19;
+  ss.A = 1e-1;
 
   e_mag_plate = sqrt(ss.e12p_plate.^2 + ss.e13p_plate.^2);
   tau0_mag = nthroot(e_mag_plate./ss.A, n_scalar);
@@ -594,7 +587,7 @@ end
 % terms in the summation for e12
 function y = e12Terms(x2p, x3p, m, n, w)
   t1 = cosh( (m*pi*(1-x3p)) / (w*(n^0.5)) );
-  t2 = cos( (m*pi*x2p) / (w*(n^0.5)) );
+  t2 = cos( (m*pi*x2p)/w );
   t3 = cosh( (m*pi) / (w*(n^0.5)) );
 
   y = (t1*t2)/t3;
@@ -603,7 +596,7 @@ end
 % terms in the summation for e13
 function y = e13Terms(x2p, x3p, m, n, w)
   t1 = sinh( (m*pi*(1-x3p)) / (w*(n^0.5)) );
-  t2 = sin( (m*pi*x2p) / (w*(n^0.5)) );
+  t2 = sin( (m*pi*x2p)/w );
   t3 = cosh( (m*pi) / (w*(n^0.5)) );
 
   y = (t1*t2)/t3;
