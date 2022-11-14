@@ -378,6 +378,7 @@ function out = run(b)
           disp('large at:')
           disp(i)
           disp(j)
+        end
       end
       ss.e12p_plate((j-1)*ss.Ny+i) = ss.Vpl_scalar * ( 1/(2*w) + (1/w)*summ12);
       ss.e13p_plate((j-1)*ss.Ny+i) = ss.Vpl_scalar * ( (-1/(w*(n_scalar^0.5))) * summ13 );
