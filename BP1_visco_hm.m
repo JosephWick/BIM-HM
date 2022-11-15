@@ -386,7 +386,7 @@ function out = run(b)
   %ss.e13p_plate =      zeros(length(ss.shearY_chat)*length(ss.shearZ_chat),1);
 
   % Strength profile
-  ss.A = 1e-10;
+  ss.A = 1e-1;
 
   e_mag_plate = sqrt(ss.e12p_plate.^2 + ss.e13p_plate.^2);
   tau0_mag = nthroot(e_mag_plate./ss.A, n_scalar);
@@ -586,18 +586,18 @@ end
 
 % terms in the summation for e12
 function y = e12Terms(x2p, x3p, m, n, w)
-  t1 = cosh( (m*pi*(1-x3p)) / (w*(n^0.5)) );
+  t1 = cosh( (m*pi*(1-x3p)) / (w*sqrt(n)) );
   t2 = cos( (m*pi*x2p)/w );
-  t3 = cosh( (m*pi) / (w*(n^0.5)) );
+  t3 = cosh( (m*pi) / (w*sqrt(n)) );
 
   y = (t1*t2)/t3;
 end
 
 % terms in the summation for e13
 function y = e13Terms(x2p, x3p, m, n, w)
-  t1 = sinh( (m*pi*(1-x3p)) / (w*(n^0.5)) );
+  t1 = sinh( (m*pi*(1-x3p)) / (w*sqrt(n)) );
   t2 = sin( (m*pi*x2p)/w );
-  t3 = cosh( (m*pi) / (w*(n^0.5)) );
+  t3 = cosh( (m*pi) / (w*sqrt(n)) );
 
   y = (t1*t2)/t3;
 end
