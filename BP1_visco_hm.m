@@ -348,13 +348,11 @@ function out = run(b)
   ss.n = 3.0*ones(ss.Nz*ss.Ny,1);
   n_scalar = 3.0;
 
-  fid = fopen('largeIndices.txt');
-
   ss.e12p_plate = zeros(ss.Nz*ss.Ny, 1);
   ss.e13p_plate = zeros(ss.Nz*ss.Ny, 1);
   for i=1:1:ss.Ny
     for j = 1:1:ss.Nz
-      x2 = ss.shearY_chat(i); %centers
+      x2 = ss.shearY_chat(i); % centers
       x3 = ss.shearZ_chat(j);
       x2p = x2/Dv;
       x3p = (x3-Df)/Dv;
@@ -379,6 +377,10 @@ function out = run(b)
       end
       ss.e12p_plate((j-1)*ss.Ny+i) = ss.Vpl_scalar * ( 1/(2*w) + (1/w)*summ12);
       ss.e13p_plate((j-1)*ss.Ny+i) = ss.Vpl_scalar * ( (-1/(w*(n_scalar^0.5))) * summ13 );
+
+      if ss.e12p_plate(j-1)*ss.Ny+i) > 1e-2 || ss.e13p_plate((j-1)*ss.Ny+i) > 1e-2
+        disp([i,j])
+      end
     end
   end
 
