@@ -1,4 +1,4 @@
-function varargout = myode45(ode,tspan,y0,options,varargin)
+function varargout = ode45_2(ode,tspan,y0,options,varargin)
 % Edit version by Valere Lambert , August 2018
 
 %ODE45  Solve non-stiff differential equations, medium order method.
