@@ -1,5 +1,5 @@
-function varargout = ode45_2(ode,tspan,y0,options,varargin)
-% Edit version by Valere Lambert , Dec 28, 2016
+function varargout = myode45(ode,tspan,y0,options,varargin)
+% Edit version by Valere Lambert , August 2018
 
 %ODE45  Solve non-stiff differential equations, medium order method.
 %   [TOUT,YOUT] = ODE45(ODEFUN,TSPAN,Y0) with TSPAN = [T0 TFINAL] integrates
@@ -114,11 +114,11 @@ end
 
 % Handle solver arguments
 [neq, tspan, ntspan, next, t0, tfinal, tdir, y0, f0, odeArgs, odeFcn, ...
- options, threshold, rtol, normcontrol, normy, hmax, htry, htspan, dataType, verbose] = ...
+ options, threshold, rtol, normcontrol, normy, hmax, htry, htspan, dataType] = ...
     odearguments(FcnHandlesUsed, solver_name, ode, tspan, y0, options, varargin);
 nfevals = nfevals + 1;
 
-% Handle the output
+% Handle the output - Modified Valere 2018
 % if nargout > 0
 outputFcn = odeget(options,'OutputFcn',[],'fast');
 % else
@@ -136,7 +136,7 @@ else
   end
 end
 refine = max(1,odeget(options,'Refine',4,'fast'));
-% Discrepancy 1 unicycle
+% Modified by Valere 2018
 if isfield(options,'OutputSelection')
     ioselection = options.OutputSelection;
 else
@@ -156,7 +156,7 @@ else
 end
 printstats = strcmp(odeget(options,'Stats','off','fast'),'on');
 
-% output directory from 2  unicycle
+% Modified by Valere 2018
 oDir = odeget(options,'oDir','','fast');
 
 % Handle the event function
@@ -178,11 +178,11 @@ end
 
 t = t0;
 y = y0;
-%yold=y0; %% from unicycle 3
+%yold=y0; Modified by Valere 2018
 
 % Allocate memory if we're generating output.
 
-% From unicycle 4 create output files
+% Modified by Valere 2018
 if ~isempty(oDir)
     timeFID=fopen([oDir '/time.dat'],'wt');
     fprintf(timeFID,'# t(yr) dt(yr)\n');
@@ -373,7 +373,7 @@ while ~done
   end
   nsteps = nsteps + 1;
 
-  %% begin discrepancy  ynew
+  %% Modified by Valere 2018
 
 %   if haveEventFcn
 %     [te,ye,ie,valt,stop] = ...
