@@ -419,7 +419,8 @@ while ~done
         fprintf(yOUT,'%22.16e ',ynew);
         fprintf(yOUT,'\n');
         byteCount=byteCount+Ydof;
-        if byteCount/3e7 > 1
+        % this is where the write size is determined
+        if byteCount/3e6 > 1
             fclose(yOUT);
             file_i=file_i+1;
             yOUT=fopen(sprintf('%s/yOUT_%d.dat',oDir,file_i),'wt');
