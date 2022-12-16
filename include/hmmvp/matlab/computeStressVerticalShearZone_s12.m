@@ -1,7 +1,7 @@
 function [s12]=computeStressVerticalShearZone_s12( ...
     x1,x2,x3,q1,q2,q3,L,T,W,theta,epsv11p,epsv12p,epsv13p,epsv22p,epsv23p,epsv33p,G,nu)
-% function COMPUTESTRESSVERTICALSHEARZONE computes the stress field 
-% associated with deforming vertical shear zones using the analytic 
+% function COMPUTESTRESSVERTICALSHEARZONE computes the stress field
+% associated with deforming vertical shear zones using the analytic
 % solution considering the following geometry.
 %
 %                      N (x1)
@@ -29,8 +29,8 @@ function [s12]=computeStressVerticalShearZone_s12( ...
 % q1, q2, q3         north, east and depth coordinates of the shear zone,
 % L, T, W            length, thickness, and width of the shear zone,
 % theta (degree)     strike of the shear zone,
-% epsvijp            source strain component 11, 12, 13, 22, 23 and 33 
-%                    in the shear zone in the system of reference tied to 
+% epsvijp            source strain component 11, 12, 13, 22, 23 and 33
+%                    in the shear zone in the system of reference tied to
 %                    the shear zone (primed reference system),
 % G, nu              shear modulus and Poisson's ratio in the half space.
 %
@@ -185,7 +185,7 @@ s12=2*G*e12;
     end
 
 
-  
+
     function d=J1123d2(y1,y2,y3)
         lr1=r1(y1,y2,y3);
         lr2=r2(y1,y2,y3);
@@ -549,7 +549,7 @@ s12=2*G*e12;
             lr1+x3-y3)+xLogy((-3)+6.*nu-4.*nu.^2,lr2+x3+y3));
     end
 
-   
+
 
     function d=J2223d1(y1,y2,y3)
         lr1=r1(y1,y2,y3);
@@ -595,7 +595,7 @@ s12=2*G*e12;
             +4.*((-1)+nu).*atan2(lr2.*(x1-y1),(x2-y2).*(x3+y3)));
     end
 
- 
+
 
     function d=J1312d2(y1,y2,y3)
         lr1=r1(y1,y2,y3);
