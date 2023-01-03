@@ -9,11 +9,10 @@ public:
 
 private:
 
-  // kernel
-  Matd _k;
-
-  // for sizing only
-  Matd _x;
+  // receiver
+  Matd _X;
+  // source
+  Matd _Q:
 
   double Eval(UInt i, UInt j) const;
 };
@@ -24,7 +23,12 @@ inline double GreensFnTiming::Eval (UInt i, UInt j) const {
   // take the kernel passed in as a parameter
 
   // printf("%f\n", _k(i,j));
-  return _k(i,j);
+  // return _k(i,j);
+
+  return s12::stressVertShear_s12( _X(1,i),_X(2,i),_X(3,i), _Q(1,j),_Q(2,j),_Q(3,j),
+          L(j), T(j), W(j), 0,
+          0, 1, 0, 0, 0, 0,
+          30*10*10*10, 0.25);
 
 }
 
@@ -36,11 +40,11 @@ void GreensFnTiming::Init (const KeyValueFile* kvf) throw (Exception) {
   const Matd* w;
 
   if (!kvf->GetMatd("X", m)) throw Exception("Missing X.");
-  _x = *m;
+  _X = *m;
   if (_x.Size(1) != 3) throw Exception("X must be 3xN.");
 
-  if (!kvf->GetMatd("K", n)) throw Exception("Missing K.");
-  _k = *n;
+  if (!kvf->GetMatd("Q", n)) throw Exception("Missing Q.");
+  _Q = *n;
 
 }
 

@@ -14,6 +14,8 @@ double s12::stressVertShear_s12(double x1, double x2, double x3,
                            double G, double nu)
 {
 
+  // x is receiver, q is sender 
+
   // --- function definitions
   // Green's functions
   double r1 = [](double y1, double y2, double y3){
