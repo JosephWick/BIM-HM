@@ -91,7 +91,7 @@ function r = build()
 
   % general things
   c.command = 'compress';
-  c.greens_fn = 'time';
+  c.greens_fn = 'okada';
   c.err_method = 'mrem-fro';
   c.allow_overwrite = 1;
 
