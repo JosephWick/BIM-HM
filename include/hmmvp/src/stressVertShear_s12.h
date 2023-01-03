@@ -4,7 +4,7 @@
  */
 
 // main function
-double s12::stressVertShear_s12(double x1, double x2, double x3,
+double stressVertShear_s12(double x1, double x2, double x3,
                            double q1, double q2, double q3,
                            double L, double T, double W, double theta,
                            double epsv11p, double epsv12p, double epsv13p,
