@@ -76,8 +76,6 @@ function varargout = ode45_2(ode,tspan,y0,options,varargin)
 %   Mark W. Reichelt and Lawrence F. Shampine, 6-14-94
 %   Copyright 1984-2011 The MathWorks, Inc.
 
-disp('hi yes hello')
-
 solver_name = 'ode45';
 
 % Check inputs
@@ -423,7 +421,7 @@ while ~done
         byteCount=byteCount+Ydof;
         % this is where the write size is determined
         %if byteCount/3e6 > 1
-        if byteCount/5 > 1
+        if byteCount/3e6 > 1
             fclose(yOUT);
             file_i=file_i+1;
             yOUT=fopen(sprintf('%s/yOUT_%d.dat',oDir,file_i),'wt');
