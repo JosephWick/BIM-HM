@@ -13,7 +13,7 @@
 
 using namespace std;
 extern "C"{
-void dc3d_(char* SPACE, double* ALPHA, double* X, double* Y, double* Z,
+void dc3d0_(char* SPACE, double* ALPHA, double* X, double* Y, double* Z,
               double* DEPTH, double* DIP, double* AL1, double* AL2, double* AW1,
               double* AW2, double* DISL1, double* DISL2, double* DISL3, double* UX,
               double* UY, double* UZ, double* UXX, double* UYX, double* UZX,
@@ -32,8 +32,6 @@ public:
 private:
   //geometry
   Matd _x;
-  UInt _order;
-  double _delta;
 
   // halfspace
   char _h;
@@ -65,7 +63,7 @@ private:
 
 inline double GreensFnOkada::Eval (UInt i, UInt j) const {
   //find individual values to the hmatrix here
-  // i is the reeiver, j is the source
+  // i is the receiver, j is the source
 
   // these correspond to AL1 and AW1 respectively
   double zL = 0;
@@ -114,7 +112,7 @@ inline double GreensFnOkada::Eval (UInt i, UInt j) const {
   //printf("d1: %f, d2: %f, d3: %f\n", *pD1, *pD2, *pD3);
   //printf("================\n");
 
-  dc3d_(ph, pAlpha,
+  dc3d0_(ph, pAlpha,
         &obsx, &obsy, &obsz,
         &srcdepth, pDip,
         &zL, pL, &zW, pW,
@@ -123,29 +121,6 @@ inline double GreensFnOkada::Eval (UInt i, UInt j) const {
 
   double out = _mu*(uxy + uyx);
   printf("out: %f\n", out);
-
-  // hardcoded 2d greens funcs from val's QDBIM2D.m
-  // y-coordinates represent source, x-coordinates represent receiver
-  // y3 is vertical coordinate, our y
-  double rho = 2670.0;
-  double Vs = 3464.0;
-  double G = rho*(pow(Vs, 2))/1e6;
-
-  double x3 = obsy;
-  double x2 = obsx;
-  double y3 = srcdepth-1.0;
-  double y2 = (double)_x(1,j);
-  double W = _dz;
-
-  double s12 = (G/(2*M_PI))*( -(x3-y3)/(pow((x2-y2),2) + pow((x3-y3),2))
-                              +(x3+y3)/(pow((x2-y2),2) + pow((x3+y3),2))
-                              +(x3-y3-W)/(pow((x2-y2),2) + pow((x3-y3-W),2))
-                              -(x3+y3+W)/(pow((x2-y2),2) + pow((x3+y3+W),2)) );
-  //printf("out: %f\n", out);
-  //printf("x3: %f, x2: %f, y3: %f, y2: %f, W: %f, s12: %f\n", x3, x2, y3, y2, W, s12);
-
-  double scale = 100000000;
-  printf("i: %d, j: %d, uxy: %f, uyx: %f, dc3d: %f, s12: %f\n", i, j, uxy*scale, uyx*scale, out, s12);
 
   return out;
 }
@@ -158,12 +133,6 @@ void GreensFnOkada::Init(const KeyValueFile* kvf) throw (Exception) {
   if (!kvf->GetMatd("X", m)) throw Exception("Missing X.");
   _x = *m;
   if (_x.Size(1) != 3) throw Exception("X must be 3xN.");
-
-  if (kvf->GetDouble("order", d)) _order = (UInt) d;
-
-  kvf->GetDouble("delta", _delta);
-  if (_delta < 0) throw Exception("delta must be >= 0.");
-  printf("delta: %f\n", _delta);
 
   _h = 'f';
   kvf->GetDouble("halfspace", tmp);
