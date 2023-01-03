@@ -76,6 +76,8 @@ function varargout = ode45_2(ode,tspan,y0,options,varargin)
 %   Mark W. Reichelt and Lawrence F. Shampine, 6-14-94
 %   Copyright 1984-2011 The MathWorks, Inc.
 
+disp('hi yes hello')
+
 solver_name = 'ode45';
 
 % Check inputs
