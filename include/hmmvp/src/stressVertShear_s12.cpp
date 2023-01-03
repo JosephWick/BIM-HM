@@ -67,7 +67,7 @@ double stressVertShear_s12(double x1, double x2, double x3,
     return Omega(x-0.5);
   };
 
-  double J1112d2 = [](y1, y2, y3){
+  double J1112d2 = [G,nu, x1,x2,x3](y1, y2, y3){
     double lr1 = r1(y1, y2, y3);
     double lr2 = r2(y1, y2, y3);
 
@@ -102,7 +102,7 @@ double stressVertShear_s12(double x1, double x2, double x3,
 
   };
 
-  double J1113d2 = [](y1, y2, y3){
+  double J1113d2 = [G,nu, x1,x2,x3](y1, y2, y3){
     double lr1 = r1(y1, y2, y3);
     double lr2 = r2(y1, y2, y3);
 
@@ -151,7 +151,7 @@ double stressVertShear_s12(double x1, double x2, double x3,
 
   };
 
-  double J1123d2 = [](y1,y2,y3) {
+  double J1123d2 = [G,nu, x1,x2,x3](y1,y2,y3) {
     double lr1 = r1(y1, y2, y3);
     double lr2 = r2(y1, y2, y3);
 
@@ -251,7 +251,7 @@ double stressVertShear_s12(double x1, double x2, double x3,
           +s20+s21+s22+s23+s24+s25);
   };
 
-  double J2112d1 = [](y1,y2,y3){
+  double J2112d1 = [nu,G, x1,x2,x3](y1,y2,y3){
     double lr1 = r1(y1, y2, y3);
     double lr2 = r2(y1, y2, y3);
 
@@ -262,7 +262,7 @@ double stressVertShear_s12(double x1, double x2, double x3,
 
   };
 
-  double J2113d1 = [](y1,y2,y3){
+  double J2113d1 = [nu,G, x1,x2,x3](y1,y2,y3){
     double lr1=r1(y1, y2, y3);
     double lr2=r2(y1, y2, y3);
 
@@ -290,7 +290,7 @@ double stressVertShear_s12(double x1, double x2, double x3,
       )))*pow(G,-1);
   };
 
-  double J2123d1 = [](y1,y2,y3){
+  double J2123d1 = [nu,G, x1,x2,x3](y1,y2,y3){
     double lr1=r1(y1, y2, y3);
     double lr2=r2(y1, y2, y3);
     return (1/16)*pow(1-nu,-1)*pow(pi,-1)*pow(G,-1)*(pow(-lr1,-1)*pow(
@@ -320,7 +320,7 @@ double stressVertShear_s12(double x1, double x2, double x3,
         y3)+2*(1-2*nu)*nu*log(lr2+x3+y3));
   };
 
-  double J1212d2 = [](y1,y2,y3){
+  double J1212d2 = [nu,G, x1,x2,x3](y1,y2,y3){
     double lr1=r1(y1, y2, y3);
     double lr2=r2(y1, y2, y3);
 
@@ -331,7 +331,7 @@ double stressVertShear_s12(double x1, double x2, double x3,
         -3/2))*pow(G,-1);
   };
 
-  double J1213d2 = [](y1,y2,y3){
+  double J1213d2 = [nu,G, x1,x2,x3](y1,y2,y3){
     double lr1=r1(y1, y2, y3);
     double lr2=r2(y1, y2, y3);
 
@@ -362,7 +362,7 @@ double stressVertShear_s12(double x1, double x2, double x3,
         -1)*y3)+2.*(1-2.*nu).*nu*log(lr2+x3+y3));
   };
 
-  double J2212d1 = [](y1,y2,y3){
+  double J2212d1 = [nu,G, x1,x2,x3](y1,y2,y3){
     double lr1=r1(y1, y2, y3);
     double lr2=r2(y1, y2, y3);
 
@@ -399,7 +399,7 @@ double stressVertShear_s12(double x1, double x2, double x3,
         +4-4.*nu*log(lr2+x2-y2));
   };
 
-  double J2213d1 = [](y1,y2,y3){
+  double J2213d1 = [nu,G, x1,x2,x3](y1,y2,y3){
     double lr1=r1(y1 ,y2, y3);
     double lr2=r2(y1, y2, y3);
 
@@ -493,7 +493,7 @@ double stressVertShear_s12(double x1, double x2, double x3,
         lr1+x3-y3)+((-3)+6*nu-4*pow(nu,2))*log(lr2+x3+y3));
   };
 
-  double J2223d1 = [](y1,y2,y3) {
+  double J2223d1 = [nu,G, x1,x2,x3](y1,y2,y3) {
     double lr1=r1(y1, y2, y3);
     double lr2=r2(y1, y2, y3);
 
@@ -538,7 +538,7 @@ double stressVertShear_s12(double x1, double x2, double x3,
         +4*((-1)+nu)*atan2(lr2*(x1-y1),(x2-y2)*(x3+y3)));
   };
 
-  double J1312d2 = [](y1,y2,y3){
+  double J1312d2 = [nu,G, x1,x2,x3](y1,y2,y3){
     double lr1=r1(y1, y2, y3);
     double lr2=r2(y1, y2, y3);
     return (-1/16)*pow(1-nu,-1)*pow(pi,-1)*pow(G,-1)*(4*((-1)+nu)*((
@@ -559,7 +559,7 @@ double stressVertShear_s12(double x1, double x2, double x3,
         2),-3/2)+4.*((-1)+nu)*((-1)+2*nu)*log(lr2+x3+y3));
   };
 
-  double J1313d2 = [](y1,y2,y3){
+  double J1313d2 = [nu,g, x1,x2,x3](y1,y2,y3){
     double lr1=r1(y1, y2, y3);
     double lr2=r2(y1, y2, y3);
     return (-1/16)*pow(1-nu,-1)*pow(pi,-1)*(pow(lr1,-1)*(x2-y2)+2*
@@ -574,7 +574,7 @@ double stressVertShear_s12(double x1, double x2, double x3,
         -8)*((-2)+nu)*nu*(pow(x2-y2,2)+pow(x3+y3,2))))*pow(G,-1);
   };
 
-double J1323d2 = [](y1,y2,y3){
+double J1323d2 = [nu,G, x1,x2,x3](y1,y2,y3){
   double lr1=r1(y1, y2, y3);
   double lr2=r2(y1, y2, y3);
   return (-1/16)*pow(1-nu,-1)*pow(pi,-1)*((x1-y1)*pow(lr1+x2+(-1)
@@ -594,7 +594,7 @@ double J1323d2 = [](y1,y2,y3){
       2)+pow(x3+y3,2),-3/2))*pow(G,-1);
 };
 
-double J2312d1 = [](y1,y2,y3){
+double J2312d1 = [nu,g, x1,x2,x3](y1,y2,y3){
   double lr1=r1(y1, y2, y3);
   double lr2=r2(y1, y2, y3);
   return (-1/16)*pow(1-nu,-1)*pow(pi,-1)*pow(G,-1)*(4*((-1)+nu)*((
@@ -615,7 +615,7 @@ double J2312d1 = [](y1,y2,y3){
       2),-3/2)+(4.*((-1)+nu).*((-1)+2.*nu))*logy(lr2+x3+y3));
 };
 
-double J2313d1 = [](y1,y2,y3){
+double J2313d1 = [nu,G, x1,x2,x3](y1,y2,y3){
   double lr1=r1(y1, y2, y3);
   double lr2=r2(y1, y2, y3);
   return (-1/16)*pow(1-nu,-1)*pow(pi,-1)*(pow(lr1+x1-y1,-1)*(
@@ -635,7 +635,7 @@ double J2313d1 = [](y1,y2,y3){
       pow(x3+y3,2),-3/2))*pow(G,-1);
 };
 
-  double J2323d1 = [](y1,y2,y3){
+  double J2323d1 = [nu,G, x1,x2,x3](y1,y2,y3){
     double lr1=r1(y1, y2, y3);
     double lr2=r2(y1, y2, y3);
     return (-1/16)*pow(1-nu,-1)*pow(pi,-1)*(pow(lr1,-1)*(x1-y1)+2*
