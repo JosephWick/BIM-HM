@@ -17,7 +17,7 @@ function r = build()
 
   disp('Run the following commands in a shell to build all HMs')
 
-  i = 4;
+  i = 2;
   N = Ns(i);
   r.N = N;
 
@@ -91,7 +91,7 @@ function r = build()
 
   % general things
   c.command = 'compress';
-  c.greens_fn = 'okada';
+  c.greens_fn = 'timing';
   c.err_method = 'mrem-fro';
   c.allow_overwrite = 1;
 
