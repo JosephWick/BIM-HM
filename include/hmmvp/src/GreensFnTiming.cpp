@@ -1,3 +1,5 @@
+#include "stressVertShear_s12.h"
+
 class GreensFnTiming : public ImplGreensFn {
 public:
   virtual void Init(const KeyValueFile* kvf) throw (Exception);
