@@ -16,15 +16,21 @@ double stressVertShear_s12(double x1, double x2, double x3,
 
   // x is receiver, q is sender
 
+  // Lame paramter
+  double lambda = G*2*nu/(1-2*nu);
+  // isotropic strain
+  double epsvkk = epsv11p + epsv22p + epsv33p;
+
   // --- function definitions
   // Green's functions
-  double r1 = [](double y1, double y2, double y3){
+  double r1 = [x1,x2,x3](double y1, double y2, double y3){
     return sqrt( pow(x1-y1, 2) + pow(x2-y2,2) + pow(x3-y3,2) );
   };
-  double r2 = [](double y1, double y2, double y3){
+  double r2 = [x1,x2,x3](double y1, double y2, double y3){
     return sqrt( pow(x1-y1, 2) + pow(x2-y2,2) + pow(x3+y3,2) );
   }
-  double IU1d2 = [](double y1, y2, y3){
+  double IU1d2 = [lambda,epsvkk, epsv11p, epsv12p, epsv13p, epsv22p, epsv23p,epsv33p]
+    (double y1, y2, y3){
     double s1 = (lambda*epsvkk + 2*G*epsv11p)*J1123d2(y1,y2,y3);
     double s2 = 2*G*epsv12p*(J1223d2(y1,y2,y3) + J1113d2(y1,y2,y3));
     double s3 = 2*G*epsv13p*(J1323d2(y1,y2,y3) + J1112d2(y1,y2,y3));
@@ -36,7 +42,8 @@ double stressVertShear_s12(double x1, double x2, double x3,
 
     return s1+s2+s3+s4+s5+s6;
   };
-  double IU2d1 = [](double y1, double y2, double y3){
+  double IU2d1 = [lambda,epsvkk, epsv11p,epsv12p,epsv13p,epsv22p,epsv23p,epsv33p]
+    (double y1, double y2, double y3){
     doubld s1 = (lambda*epsvkk + 2*G*epsv11p)*J2123d1(y1,y2,y3);
     double s2 = 2*G*epsv12p*(J2223d1(y1,y2,y3) + J2113d1(y1,y2,y3));
     double s3 = 2*G*epsv13p*(J2323d1(y1,y2,y3) + J2112d1(y1,y2,y3));
@@ -644,12 +651,6 @@ double J2313d1 = [](y1,y2,y3){
   };
 
   // --- end function definitions
-
-  // Lame paramter
-  double lambda = G*2*nu/(1-2*nu);
-
-  // isotropic strain
-  double epsvkk = epsv11p + epsv22p + epsv33p;
 
   // rotate observation points to the shear-zone-centric system of coords
   double t1 =  (x1-q1)*cos(theta * M_PI/180) + (x2-q2)*sin(theta * M_PI/180);
