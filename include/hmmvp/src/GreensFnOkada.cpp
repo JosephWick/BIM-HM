@@ -122,7 +122,7 @@ inline double GreensFnOkada::Eval (UInt i, UInt j) const {
         &ux, &uy, &uz, &uxx, &uyx, &uzx, &uxy, &uyy, &uzy, &uxz, &uyz, &uzz);
 
   double out = _mu*(uxy + uyx);
-  //printf("out: %f\n", out);
+  printf("out: %f\n", out);
 
   // hardcoded 2d greens funcs from val's QDBIM2D.m
   // y-coordinates represent source, x-coordinates represent receiver
