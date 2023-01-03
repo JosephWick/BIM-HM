@@ -12,7 +12,12 @@ private:
   // receiver
   Matd _X;
   // source
-  Matd _Q:
+  Matd _Q;
+
+  // sizing
+  Matd L;
+  Matd T;
+  Matd W;
 
   double Eval(UInt i, UInt j) const;
 };
