@@ -3,6 +3,8 @@
  * Header file for s12 component stress calculation
  */
 
+namespace s12 {}
+
 // main function
 double s12::stressVertShear_s12(double x1, double x2, double x3,
                            double q1, double q2, double q3,
