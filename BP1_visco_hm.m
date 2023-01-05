@@ -42,7 +42,7 @@ function r = build()
 
   % Fault Meshes
   ss.probL = 200e3;
-  ss.probW = 200e3;
+  ss.probW = 100e3;
 
   ss.lambdaZ = 40e3; % fault depth extent
   ss.M = 1600; % number of fault cells, this is 25m patches
@@ -73,7 +73,7 @@ function r = build()
   eps = 1e-12;
   nc = (-ss.Ny/2:ss.Ny/2);
   shearZhat = ss.transition+tan((0:ss.Nz)'*pi/(2.2*(ss.Nz+eps)))*ss.transition;
-  shearYhat = tan(nc*pi/(2.5*max(nc)))*32e3;
+  shearYhat = tan(nc*pi/(2.5*max(nc)))*(160*ss.probW);
   shearXhat = zeros(size(shearZhat));
 
   % shear patch centers
