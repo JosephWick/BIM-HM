@@ -42,6 +42,8 @@ function r = build()
   ss.probL = 200e3; % left/right; ie yhat
   ss.probW = 100e3; % up/down; ie zhat
 
+  param1 = 3.1 %3.1 for 100e3 probW, 2.3 for 200e3 probW
+
   ss.lambdaZ = 40e3; % fault depth extent
   ss.M = 1600; % number of fault cells, this is 25m patches
   ss.dz = ss.lambdaZ/ss.M; dz = ss.dz;
@@ -70,7 +72,7 @@ function r = build()
   % *hat terms are 1xN
   eps = 1e-12;
   nc = (-ss.Ny/2:ss.Ny/2);
-  shearZhat = ss.transition+tan((0:ss.Nz)'*pi/(2.3*(ss.Nz+eps)))*ss.transition;
+  shearZhat = ss.transition+tan((0:ss.Nz)'*pi/(param1*(ss.Nz+eps)))*ss.transition;
   shearYhat = tan(nc*pi/(2.5*max(nc)))*(160*ss.probL/1000); %32000
   shearXhat = zeros(size(shearZhat));
 
