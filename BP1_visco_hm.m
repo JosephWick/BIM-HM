@@ -40,7 +40,7 @@ function r = build()
 
   % Fault Meshes
   ss.probL = 200e3; % left/right; ie yhat
-  ss.probW = 200e3; % up/down; ie zhat
+  ss.probW = 100e3; % up/down; ie zhat
 
   ss.lambdaZ = 40e3; % fault depth extent
   ss.M = 1600; % number of fault cells, this is 25m patches
