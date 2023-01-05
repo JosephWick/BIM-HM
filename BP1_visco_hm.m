@@ -73,7 +73,7 @@ function r = build()
   eps = 1e-12;
   nc = (-ss.Ny/2:ss.Ny/2);
   shearZhat = ss.transition+tan((0:ss.Nz)'*pi/(2.2*(ss.Nz+eps)))*ss.transition;
-  shearYhat = tan(nc*pi/(2.5*max(nc)))*(160*ss.probW);
+  shearYhat = tan(nc*pi/(2.5*max(nc)))*(160*ss.probW/1000); %
   shearXhat = zeros(size(shearZhat));
 
   disp(shearYhat);
