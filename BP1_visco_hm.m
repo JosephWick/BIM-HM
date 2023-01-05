@@ -73,10 +73,10 @@ function r = build()
   eps = 1e-12;
   nc = (-ss.Ny/2:ss.Ny/2);
   shearZhat = ss.transition+tan((0:ss.Nz)'*pi/(2.2*(ss.Nz+eps)))*ss.transition;
-  shearYhat = tan(nc*pi/(2.5*max(nc)))*32000;%*(160*ss.probW/1000); %32000
+  shearYhat = tan(nc*pi/(2.5*max(nc)))*(160*ss.probL/1000); %32000
   shearXhat = zeros(size(shearZhat));
 
-  disp(shearYhat);
+  disp(shearZhat);
 
   % shear patch centers
   shearX_c = zeros(ss.Ny,ss.Nz);
