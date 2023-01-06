@@ -80,6 +80,7 @@ solver_name = 'ode45';
 
 % remove this
 bcm = 3e4;
+disp('byte ct max: ')
 disp(bcm)
 
 % Check inputs
