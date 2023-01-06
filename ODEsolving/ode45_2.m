@@ -78,6 +78,10 @@ function varargout = ode45_2(ode,tspan,y0,options,varargin)
 
 solver_name = 'ode45';
 
+% remove this
+bcm = 3e4;
+disp(bcm)
+
 % Check inputs
 if nargin < 4
   options = [];
@@ -421,7 +425,7 @@ while ~done
         byteCount=byteCount+Ydof;
         % this is where the write size is determined
         %if byteCount/3e7 > 1
-        if byteCount/3e6 > 1
+        if byteCount/bcm > 1
             fclose(yOUT);
             file_i=file_i+1;
             yOUT=fopen(sprintf('%s/yOUT_%d.dat',oDir,file_i),'wt');
