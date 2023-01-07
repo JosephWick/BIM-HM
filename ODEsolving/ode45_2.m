@@ -79,7 +79,7 @@ function varargout = ode45_2(ode,tspan,y0,options,varargin)
 solver_name = 'ode45';
 
 % remove this
-bcm = 3e6;
+bcm = 3e4;
 disp('byte ct max: ')
 disp(bcm)
 
