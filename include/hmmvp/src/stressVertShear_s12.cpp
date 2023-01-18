@@ -450,7 +450,7 @@ double s12::J1223d2(double y1,double y2,double y3, double nu,double G,
   double lr1=s12::r1(x1,x2,x3, y1,y2,y3);
   double lr2=s12::r2(x1,x2,x3, y1,y2,y3);
 
-  return (1/16)*pow(1-nu,-1)*pow(pi,-1)*(-pow(lr1,-1)*(x1-
+  return (1/16)*pow(1-nu,-1)*pow(M_PI,-1)*(-pow(lr1,-1)*(x1-
         y1)*(x2-y2)*pow(lr1+x3-y3,-1)-((-1)-2*nu+
         4*pow(nu,2))*pow(lr2,-1)*(x1-y1)*(x2-y2)*pow(lr2+x3+y3,
         -1)-4*((-1)+nu)*((-1)+2*nu)*(x1-y1)*pow(pow(x1-y1,
