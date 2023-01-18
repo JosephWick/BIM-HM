@@ -134,6 +134,8 @@ ImplGreensFn* NewGreensFn (const string& id, const KeyValueFile* kvf)
     gf = new GreensFnShear1313();
   } else if (id == "time") {
     gf = new GreensFnTiming();
+  } else if (id == "timeML") {
+    gf = new GreensFnTimeML();
   }else if (id == "test") {
     gf = new GreensFnTest();
   } else {
