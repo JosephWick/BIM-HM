@@ -29,7 +29,7 @@ inline double GreensFnTiming::Eval (UInt i, UInt j) const {
 
 }
 
-void GreensFnTiming::Init (const KeyValueFile* kvf) throw (Exception) {
+void GreensFnTimeML::Init (const KeyValueFile* kvf) throw (Exception) {
   const Matd* m;
 
   if (!kvf->GetMatd("K", m)) throw Exception("Missing K.");
@@ -38,7 +38,7 @@ void GreensFnTiming::Init (const KeyValueFile* kvf) throw (Exception) {
 
 }
 
-bool GreensFnTiming::
+bool GreensFnTimeML::
 Call (const CompressBlockInfo& cbi, const vector<UInt>& rs,
       const vector<UInt>& cs, double* B) const {
   for (UInt k = 0, ic = 0; ic < cs.size(); ic++)
