@@ -35,7 +35,7 @@ namespace s12 {
   double J1113d2(double y1,double y2,double y3, double nu,double G,
       double x1,double x2,double x3);
   double J2112d1(double y1,double y2,double y3, double nu,double G,
-      double x1, double x2, double x3)
+      double x1, double x2, double x3);
   double J2113d1(double y1,double y2,double y3, double nu,double G,
       double x1,double x2, double x3);
   double J2123d1(double y1,double y2,double y3, double nu,double G,
