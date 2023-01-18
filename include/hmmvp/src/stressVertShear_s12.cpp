@@ -617,7 +617,7 @@ double s12::J2223d1(double y1,double y2,double y3, double nu,double G,
       -1)*y2,2),-1)*(-x2+y2)+9*x1*pow(9*pow(x1,2)+pow(x2-y2,
       2),-1)*(-x2+y2)+4*pow(nu,2)*x1*pow(pow(nu,2)*pow(x1,2)+pow(x2-
       y2,2),-1)*(-x2+y2)-4*((-1)+nu)*pow(lr1,-1)*(x1-
-      y1)*pow(lr1+x2-y2,-1*(x3-y3)-4*((-1)+nu)*lr1*(
+      y1)*pow(lr1+x2-y2,-1)*(x3-y3)-4*((-1)+nu)*lr1*(
       x1-y1)*pow(pow(x1-y1,2)+pow(x2-y2,2),-1)*(x2+(-1)
       *y2)*pow(pow(x1-y1,2)+pow(x3-y3,2),-1)*(x3-y3)+(
       -4)*((-1)+nu)*pow(lr1,-1)*pow(x1-y1,3)*pow(pow(x1-y1,2)+pow(x2+
