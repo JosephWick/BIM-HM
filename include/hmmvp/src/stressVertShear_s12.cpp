@@ -205,7 +205,7 @@ double s12::J1123d2(double y1,double y2,double y3, double nu,double G,
 
   double s1 = pow(x1,2)*pow(pow(x1,2)*pow(x2-y2,2),-1);
   double s2 = 9*pow(x1,2)*pow(9*pow(x1,2)+pow(x-y2,2),-1);
-  double s3 = 4*pow(nu,2)*pow(x1,2)*pow(pow(nu*x,2)+pow(x2-y2,2),-1);
+  double s3 = 4*pow(nu,2)*pow(x1,2)*pow(pow(nu*x1,2)+pow(x2-y2,2),-1);
   double s4 = -2*(nu-1)*(2*nu-1)*pow(x1-y1,2)*pow(pow(x1-y1,2)+pow(x2-y2,2),-1);
   double s5 = pow(y1,2)*pow(pow(y1,2)+pow(x2-y2,2),-1);
   double s6 = 9*pow(y1,2)*pow(9*pow(y1,2)+pow(x2-y2,2),-1);
