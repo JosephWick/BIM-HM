@@ -85,7 +85,7 @@ function r = build()
   c.err_method = 'mrem-fro';
   c.allow_overwrite = 1;
 
-  c.Bfro = 1e-8;
+  %c.Bfro = 1e-8;
 
   % tolerance 1e-6;
   c.tol = 1e-6;
