@@ -573,7 +573,7 @@ double s12::J2213d1(double y1,double y2,double y3, double nu,double G,
       -1)*y2,2))+((-2)*lr2*x3+3*pow(x3,2)+pow(y1,2)+pow(x2-y2,2))*y3+(
       -1)*(lr2-3*x3)*pow(y3,2)+pow(y3,3))*(pow(x2-y2,2)+pow(x3+y3,2))+
       2*pow(nu,2)*(x3*(pow(x3,2)+pow(y1,2)+pow(x2-y2,2))+((-2)*lr2*x3+3*
-      pow(x3,2)+pow(y1m,2)+pow(x2-y2,2))*y3-(lr2-3*x3)*pow(y3,2)+
+      pow(x3,2)+pow(y1,2)+pow(x2-y2,2))*y3-(lr2-3*x3)*pow(y3,2)+
       pow(y3,3))*(pow(x2-y2,2)+pow(x3+y3,2))+2*x1*y1*(3*nu*(x3+y3)*
       (pow(x2-y2,2)+pow(x3+y3,2))-2*pow(nu,2)*(x3+y3)*(pow(x2-y2,
       2)+pow(x3+y3,2))-y3*(pow(x2-y2,2)+(x3+y3)*(2*x3+y3)))+
@@ -590,8 +590,8 @@ double s12::J2213d1(double y1,double y2,double y3, double nu,double G,
       pow(y2,2)*y3-6*x3*pow(y3,2)-2*pow(y3,3)-2*pow(nu,2)*(x3+y3)*(
       pow(y1,2)+2*pow(y2,2)+2*pow(x3+y3,2))+nu*(x3+y3)*(5*pow(y1,2)+6*pow(y2,2)+6*pow(
       x3+y3,2)))+pow(x2,2)*(-x3*pow(y1,2)+4*pow(x3,2)*y3+2*pow(y1,2)*y3+6*
-      pow(y2,2)*y3+6*x3*pow(y3,2)+2*pow(y3,3)+2*pow(nu,2)*(x3+y3)(pow(y1,2)+6*
-      poow(y2,2)+2*pow(x3+y3,2))-nu*(x3+y3)*(5*pow(y1,2)+18*pow(y2,2)+6*pow(
+      pow(y2,2)*y3+6*x3*pow(y3,2)+2*pow(y3,3)+2*pow(nu,2)*(x3+y3)*(pow(y1,2)+6*
+      pow(y2,2)+2*pow(x3+y3,2))-nu*(x3+y3)*(5*pow(y1,2)+18*pow(y2,2)+6*pow(
       x3+y3,2)))+pow(x1,2)*(-pow(x2,2)*x3+2*x2*x3*y2-x3*pow(y2,2)+
       2*pow(x2,2)*y3+6*pow(x3,2)*y3-4*x2*y2*y3+2*pow(y2,2)*y3+9*x3*
       pow(y3,2)+3*pow(y3,3)+2*pow(nu,2)*(x3+y3)*(pow(x2-y2,2)+3*pow(x3+y3,2))
