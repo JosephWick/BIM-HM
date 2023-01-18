@@ -110,6 +110,7 @@ public:
 #include "GreensFnShear1313.cpp"
 #include "GreensFnShear1212.cpp"
 #include "GreensFnTiming.cpp"
+#include "GreensFnTimeML.cpp"
 
 ImplGreensFn* NewGreensFn (const string& id, const KeyValueFile* kvf)
   throw (Exception)
