@@ -23,12 +23,15 @@ inline double GreensFnTiming::Eval (UInt i, UInt j) const {
   // i is the receiver, j is the source; both start at 1
   // i is row, j column
 
+  return sqrt(i*i + j*j);
+
+/*
   return s12::stressVertShear_s12( _x(1,i),_x(2,i),_x(3,i),
                                    _y(1,j),_y(2,j),_y(3,j),
-                                   _L(1,j), _L(2,j), _L(3,j), 0,
+                                   _L(1,j),_L(2,j),_L(3,j), 0,
                                    0, 1, 0, 0, 0, 0,
                                    30*10*10*10, 0.25);
-
+*/
 }
 
 void GreensFnTiming::Init (const KeyValueFile* kvf) throw (Exception) {
