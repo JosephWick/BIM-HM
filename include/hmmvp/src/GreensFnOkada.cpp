@@ -49,14 +49,12 @@ private:
 
   double Eval(UInt i, UInt j) const;
 
-  extern "C"{
-  void dc3d0_(char* SPACE, double* ALPHA, double* X, double* Y, double* Z,
+  extern void dc3d0(char* SPACE, double* ALPHA, double* X, double* Y, double* Z,
                 double* DEPTH, double* DIP, double* AL1, double* AL2, double* AW1,
                 double* AW2, double* DISL1, double* DISL2, double* DISL3, double* UX,
                 double* UY, double* UZ, double* UXX, double* UYX, double* UZX,
                 double* UXY, double* UYY, double* UZY, double* UXZ, double* UYZ,
                 double* UZZ);
-  }
 
 };
 
@@ -111,7 +109,7 @@ inline double GreensFnOkada::Eval (UInt i, UInt j) const {
   //printf("d1: %f, d2: %f, d3: %f\n", *pD1, *pD2, *pD3);
   //printf("================\n");
 
-  dc3d0_(ph, pAlpha,
+  dc3d0(ph, pAlpha,
         &obsx, &obsy, &obsz,
         &srcdepth, pDip,
         &zL, pL, &zW, pW,
