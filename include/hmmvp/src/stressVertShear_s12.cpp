@@ -113,7 +113,7 @@ double s12::S = [](x){
 
 // displacement gradient
 double s12::J1112d2(double y1,double y2,double y3, double nu,double G,
-    double x1,double x2,doube x3){
+    double x1,double x2,double x3){
   double lr1 = s12::r1(x1,x2,x3, y1,y2,y3);
   double lr2 = s12::r2(x1,x2,x3, y1,y2,y3);
 
