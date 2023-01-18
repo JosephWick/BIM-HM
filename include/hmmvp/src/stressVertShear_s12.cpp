@@ -544,7 +544,7 @@ double s12::J2213d1(double y1,double y2,double y3, double nu,double G,
       2)+pow(x2-y2,2),-1)*pow(pow(x2-y2,2)+pow(x3+y3,2),-1)*
       (((-1)+2*nu)*lr2*pow(x2-y2,2)*(x3+y3)-((-1)+nu)*y3*
       (2*x3+y3)*(pow(x2-y2,2)+pow(x3+y3,2)))-4*pow(lr2,-1)*pow(x1+(
-      -1)*y1,2)*pow(pow(x1-y1,2)+pow(x2-y2,2)-2)*pow(pow(x2+(-1)
+      -1)*y1,2)*pow(pow(x1-y1,2)+pow(x2-y2,2),-2)*pow(pow(x2+(-1)
       *y2,2)+pow(x3+y3,2),-1)*(pow(x2,4)*y3+4*pow(x2,2)*pow(x3,2)*y3+2*
       pow(x3,4)*y3+pow(x2,2)*pow(y1,2)*y3+2*pow(x3,2)*pow(y1,2)*y3-4*pow(x2,3)*y2*
       y3-8*x2*pow(x3,2)*y2*y3-2*x2*pow(y1,2)*y2*y3+6*pow(x2,2)*
