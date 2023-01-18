@@ -101,8 +101,8 @@ double s12::IU2d1(double y1,double y2, double y3, double lambda,double epsvkk, d
 }
 double s12::IU1d2(double y1,double y2,double y3, double lambda,double epsvkk, double nu,double G,
   double epsv11p,double epsv12p,double epsv13p,double epsv22p,double epsv23p,double epsv33p,
-  double x1,double x3,double x3){
-  doubld s1 = (lambda*epsvkk + 2*G*epsv11p)*s12::J2123d1(y1,y2,y3, nu,G, x1,x2,x3);
+  double x1,double x2,double x3){
+  double s1 = (lambda*epsvkk + 2*G*epsv11p)*s12::J2123d1(y1,y2,y3, nu,G, x1,x2,x3);
   double s2 = 2*G*epsv12p*(s12::J2223d1(y1,y2,y3, nu,G, x1,x2,x3)
               + s12::J2113d1(y1,y2,y3, nu,G, x1,x2,x3));
   double s3 = 2*G*epsv13p*(s12::J2323d1(y1,y2,y3, nu,G, x1,x2,x3)
