@@ -3,14 +3,15 @@
 class GreensFnTiming : public ImplGreensFn {
 public:
   virtual void Init(const KeyValueFile* kvf) throw (Exception);
-  virtual Hd* ComputeHd (double eta) { return NewHd(_k, _k, NULL, eta); }
+  virtual Hd* ComputeHd (double eta) { return NewHd(_x, _x, NULL, eta); }
   virtual bool Call(const CompressBlockInfo& cbi, const vector<UInt>& rs,
                     const vector<UInt>& cs, double* B) const;
 
 private:
 
-  //kernel
-  Matd _k;
+  // src and receiver
+  Matd _x;
+  Matd _y
 
   double Eval(UInt i, UInt j) const;
 };
@@ -23,10 +24,10 @@ inline double GreensFnTiming::Eval (UInt i, UInt j) const {
   // printf("%f\n", _k(i,j));
   return _k(i,j);
 
-  //return stressVertShear_s12( _x(1,i),_x(2,i),_x(3,i), _q(1,j),_q(2,j),_q(3,j),
-    //      L(j), T(j), W(j), 0,
-      //    0, 1, 0, 0, 0, 0,
-        //  30*10*10*10, 0.25);
+  return stressVertShear_s12( _x(1,i),_x(2,i),_x(3,i), _y(1,j),_y(2,j),_y(3,j),
+          L(j), T(j), W(j), 0,
+          0, 1, 0, 0, 0, 0,
+          30*10*10*10, 0.25);
 
 }
 
@@ -37,9 +38,13 @@ void GreensFnTiming::Init (const KeyValueFile* kvf) throw (Exception) {
   const Matd* l;
   const Matd* w;
 
-  if (!kvf->GetMatd("K", m)) throw Exception("Missing K.");
-  _k = *m;
+  if (!kvf->GetMatd("X", m)) throw Exception("Missing X.");
+  _x = m;
+  if (_x.size(1) != 3) throw Exception("X must be 3xN.");
 
+  if (!kvf->GetMatd("Y", n)) throw Exception("Missing Y.");
+  _y = n;
+  if (_y.size(1) != 3) throw Exception("Y must be 3xN.");
 
 }
 

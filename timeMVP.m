@@ -61,6 +61,7 @@ function r = build()
   Xc = Xc(:)';
   Yc = Yc(:)';
   Zc = Zc(:)';
+  c.Y = [Xc; Yc; Zc];
 
   [L3f, L2f, L1f] = ndgrid(L3, L2, L1);
   L1f = L1f(:)';
@@ -73,33 +74,11 @@ function r = build()
   % theta is zero
   % eps12 can be 1; others zero
 
-  disp('mesh done, making kernel')
-
-  % src is upper left, rec is center
-  kernel = zeros(N^3, N^3);
-  for i = 1:N^3
-    for j = 1:N^3
-      kernel(i,j) = computeStressVerticalShearZone_s12(...
-      Xc(i), Yc(i), Zc(i), ...
-      X(j), Y(j), Z(j), L1f(j), L2f(j), L3f(j), 0, ...
-      0, 1, 0, 0, 0, 0, ...
-      G, nu);
-    end
-  end
-
-  disp('kernel done')
-
   % general things
   c.command = 'compress';
-  c.greens_fn = 'timing';
+  c.greens_fn = 'time';
   c.err_method = 'mrem-fro';
   c.allow_overwrite = 1;
-
-  csvwrite('K.csv', kernel);
-  K = real(kernel);
-  K(isnan(K)) = 0;
-  c.K = K;
-  r.K = K;
 
   c.Bfro = 1e-8;
 
