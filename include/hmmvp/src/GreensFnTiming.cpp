@@ -11,7 +11,7 @@ private:
 
   // src and receiver
   Matd _x;
-  Matd _y
+  Matd _y;
 
   // mesh sizing
   Matd _L;
@@ -23,9 +23,6 @@ inline double GreensFnTiming::Eval (UInt i, UInt j) const {
   // i is the receiver, j is the source; both start at 1
   // i is row, j column
   // take the kernel passed in as a parameter
-
-  // printf("%f\n", _k(i,j));
-  return _k(i,j);
 
   return s12::stressVertShear_s12( _x(1,i),_x(2,i),_x(3,i), _y(1,j),_y(2,j),_y(3,j),
           _L(1,j), _L(2,j), _L(3,j), 0,
