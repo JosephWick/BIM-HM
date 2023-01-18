@@ -25,22 +25,38 @@ double stressVertShear_s12(double x1, double x2, double x3,
   x1 = t1;
 
   // Displacement gradient
-  double u12 = s12::IU1d2(L,T/2,y3+W, lambda,epsvkk,nu,G,epsv11p,epsv12p,epsv13p,epsv22p,epsv23p,epsv33p)
-              -s12::IU1d2(L,-T/2,y3+W, lambda,epsvkk,nu,G,epsv11p,epsv12p,epsv13p,epsv22p,epsv23p,epsv33p)
-              +s12::IU1d2(L,-T/2,y3, lambda,epsvkk,nu,G,epsv11p,epsv12p,epsv13p,epsv22p,epsv23p,epsv33p)
-              -s12::IU1d2(L,T/2,y3, lambda,epsvkk,nu,G,epsv11p,epsv12p,epsv13p,epsv22p,epsv23p,epsv33p)
-              -s12::IU1d2(0,T/2,y3+W, lambda,epsvkk,nu,G,epsv11p,epsv12p,epsv13p,epsv22p,epsv23p,epsv33p)
-              +s12::IU1d2(0,-T/2,y3+W, lambda,epsvkk,nu,G,epsv11p,epsv12p,epsv13p,epsv22p,epsv23p,epsv33p)
-              -s12::IU1d2(0,-T/2,y3, lambda,epsvkk,nu,G,epsv11p,epsv12p,epsv13p,epsv22p,epsv23p,epsv33p)
-              +s12::IU1d2(0,T/2,y3, lambda,epsvkk,nu,G,epsv11p,epsv12p,epsv13p,epsv22p,epsv23p,epsv33p);
-  double u21 = s12::IU2d1(L,T/2,y3+W, lambda,epsvkk,nu,G,epsv11p,epsv12p,epsv13p,epsv22p,epsv23p,epsv33p)
-              -s12::IU2d1(L,-T/2,y3+W, lambda,epsvkk,nu,G,epsv11p,epsv12p,epsv13p,epsv22p,epsv23p,epsv33p)
-              +s12::IU2d1(L,-T/2,y3, lambda,epsvkk,nu,G,epsv11p,epsv12p,epsv13p,epsv22p,epsv23p,epsv33p)
-              -s12::IU2d1(L,T/2,y3, lambda,epsvkk,nu,G,epsv11p,epsv12p,epsv13p,epsv22p,epsv23p,epsv33p)
-              -s12::IU2d1(0,T/2,y3+W, lambda,epsvkk,nu,G,epsv11p,epsv12p,epsv13p,epsv22p,epsv23p,epsv33p)
-              +s12::IU2d1(0,-T/2,y3+W, lambda,epsvkk,nu,G,epsv11p,epsv12p,epsv13p,epsv22p,epsv23p,epsv33p)
-              -s12::IU2d1(0,-T/2,y3, lambda,epsvkk,nu,G,epsv11p,epsv12p,epsv13p,epsv22p,epsv23p,epsv33p)
-              +s12::IU2d1(0,T/2,y3, lambda,epsvkk,nu,G,epsv11p,epsv12p,epsv13p,epsv22p,epsv23p,epsv33p);
+  double u12 = s12::IU1d2(L,T/2,y3+W, lambda,epsvkk,nu,G,epsv11p,epsv12p,epsv13p,epsv22p,epsv23p,epsv33p,
+                x1,x2,x3)
+              -s12::IU1d2(L,-T/2,y3+W, lambda,epsvkk,nu,G,epsv11p,epsv12p,epsv13p,epsv22p,epsv23p,epsv33p,
+                x1,x2,x3)
+              +s12::IU1d2(L,-T/2,y3, lambda,epsvkk,nu,G,epsv11p,epsv12p,epsv13p,epsv22p,epsv23p,epsv33p,
+                x1,x2,x3)
+              -s12::IU1d2(L,T/2,y3, lambda,epsvkk,nu,G,epsv11p,epsv12p,epsv13p,epsv22p,epsv23p,epsv33p,
+                x1,x2,x3)
+              -s12::IU1d2(0,T/2,y3+W, lambda,epsvkk,nu,G,epsv11p,epsv12p,epsv13p,epsv22p,epsv23p,epsv33p,
+                x1,x2,x3)
+              +s12::IU1d2(0,-T/2,y3+W, lambda,epsvkk,nu,G,epsv11p,epsv12p,epsv13p,epsv22p,epsv23p,epsv33p,
+                x1,x2,x3)
+              -s12::IU1d2(0,-T/2,y3, lambda,epsvkk,nu,G,epsv11p,epsv12p,epsv13p,epsv22p,epsv23p,epsv33p,
+                x1,x2,x3)
+              +s12::IU1d2(0,T/2,y3, lambda,epsvkk,nu,G,epsv11p,epsv12p,epsv13p,epsv22p,epsv23p,epsv33p,
+                x1,x2,x3);
+  double u21 = s12::IU2d1(L,T/2,y3+W, lambda,epsvkk,nu,G,epsv11p,epsv12p,epsv13p,epsv22p,epsv23p,epsv33p,
+                x1,x2,x3)
+              -s12::IU2d1(L,-T/2,y3+W, lambda,epsvkk,nu,G,epsv11p,epsv12p,epsv13p,epsv22p,epsv23p,epsv33p,
+                x1,x2,x3)
+              +s12::IU2d1(L,-T/2,y3, lambda,epsvkk,nu,G,epsv11p,epsv12p,epsv13p,epsv22p,epsv23p,epsv33p,
+                x1,x2,x3)
+              -s12::IU2d1(L,T/2,y3, lambda,epsvkk,nu,G,epsv11p,epsv12p,epsv13p,epsv22p,epsv23p,epsv33p,
+                x1,x2,x3)
+              -s12::IU2d1(0,T/2,y3+W, lambda,epsvkk,nu,G,epsv11p,epsv12p,epsv13p,epsv22p,epsv23p,epsv33p,
+                x1,x2,x3)
+              +s12::IU2d1(0,-T/2,y3+W, lambda,epsvkk,nu,G,epsv11p,epsv12p,epsv13p,epsv22p,epsv23p,epsv33p,
+                x1,x2,x3)
+              -s12::IU2d1(0,-T/2,y3, lambda,epsvkk,nu,G,epsv11p,epsv12p,epsv13p,epsv22p,epsv23p,epsv33p,
+                x1,x2,x3)
+              +s12::IU2d1(0,T/2,y3, lambda,epsvkk,nu,G,epsv11p,epsv12p,epsv13p,epsv22p,epsv23p,epsv33p,
+                x1,x2,x3);
 
   // strain
   double e12p = (u12+u21)/2;
@@ -67,7 +83,8 @@ double s12::r2(double x1, double x2, double x3, double y1, double y2, double y3)
 }
 
 double s12::IU2d1(double y1,double y2, double y3, double lambda,double epsvkk, double nu,double G,
-  double epsv11p,double epsv12p,double epsv13p,double epsv22p,double epsv23p,double epsv33p){
+  double epsv11p,double epsv12p,double epsv13p,double epsv22p,double epsv23p,double epsv33p,
+  double x1,double x2,double x3){
   double s1 = (lambda*epsvkk + 2*G*epsv11p)*s12::J1123d2(y1,y2,y3, nu,G, x1,x2,x3);
   double s2 = 2*G*epsv12p*(s12::J1223d2(y1,y2,y3, nu,G, x1,x2,x3)
               + s12::J1113d2(y1,y2,y3, nu,G, x1,x2,x3));
@@ -83,7 +100,8 @@ double s12::IU2d1(double y1,double y2, double y3, double lambda,double epsvkk, d
   return s1+s2+s3+s4+s5+s6;
 }
 double s12::IU1d2(double y1,double y2,double y3, double lambda,double epsvkk, double nu,double G,
-  double epsv11p,double epsv12p,double epsv13p,double epsv22p,double epsv23p,epsv33p){
+  double epsv11p,double epsv12p,double epsv13p,double epsv22p,double epsv23p,epsv33p,
+  double x1,double x3,double x3){
   doubld s1 = (lambda*epsvkk + 2*G*epsv11p)*s12::J2123d1(y1,y2,y3, nu,G, x1,x2,x3);
   double s2 = 2*G*epsv12p*(s12::J2223d1(y1,y2,y3, nu,G, x1,x2,x3)
               + s12::J2113d1(y1,y2,y3, nu,G, x1,x2,x3));

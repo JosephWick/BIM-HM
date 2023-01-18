@@ -20,9 +20,11 @@ namespace s12 {
   double r2(double x1,double x2,double x3, double y1,double y2,double y3);
 
   double IU1d2(double y1,double y2,double y3, double lambda,double epsvkk, double nu,double G,
-    double epsv11p,double epsv12p,double epsv13p,double epsv22p,double epsv23p,double epsv33p);
+    double epsv11p,double epsv12p,double epsv13p,double epsv22p,double epsv23p,double epsv33p,
+    double x1,double x2,double x3);
   double IU2d1(double y1,double y2, double y3, double lambda,double epsvkk, double nu,double G,
-    double epsv11p,double epsv12p,double epsv13p,double epsv22p,double epsv23p,double epsv33p);
+    double epsv11p,double epsv12p,double epsv13p,double epsv22p,double epsv23p,double epsv33p,
+    double x1,double x2,double x3);
 
   // remove inelastic eigenstrain
   int heaviside(double x);
