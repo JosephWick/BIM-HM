@@ -372,7 +372,7 @@ double s12::J2123d1(double y1,double y2,double y3, double nu,double G,
 double s12::J1212d2(double y1,double y2,double y3, double nu, double G,
     double x1,double x2,double x3){
   double lr1=s12::r1(x1,x2,x3, y1,y2,y3);
-  double lr2=r2(x1,x2,x3, y1,y2,y3);
+  double lr2=s12::r2(x1,x2,x3, y1,y2,y3);
 
   return (1/16)*pow(1-nu,-1)*pow(M_PI,-1)*((1+8*((-1)+nu)*nu)*pow(lr2,
       -1)*(x2-y2)+pow(lr1,-1)*(-x2+y2)-4*((-1)+nu)*((-1)+
@@ -515,6 +515,9 @@ double s12::J2212d1(double y1,double y2,double y3, double nu,double G,
 double s12::J2213d1(double y1,double y2,double y3, double nu,double G,
     double x1,double x2,double x3){
 
+  double lr1=s12::r1(x1,x2,x3, y1,y2,y3);
+  double lr2=s12::r2(x1,x2,x3, y1,y2,y3);
+
   return (1/16)*pow(1-nu,-1)*pow(M_PI,-1)*pow(G,-1)*(pow(x2,2)*pow(pow(x2,2)+pow(x1+
       (-1)*y1,2),-1)+9*pow(x2,2)*pow(9*pow(x2,2)+pow(x1-y1,2),-1)+
       4*pow(nu,2)*pow(x2,2)*pow(pow(nu,2)*pow(x2,2)+pow(x1-y1,2),-1)+2*x3*pow(lr2+
@@ -607,8 +610,8 @@ double s12::J2213d1(double y1,double y2,double y3, double nu,double G,
 
 double s12::J2223d1(double y1,double y2,double y3, double nu,double G,
     double x1,double x2,double x3) {
-  double s12::lr1=r1(x1,x2,x3, y1,y2,y3);
-  double s12::lr2=r2(x1,x2,x3, y1,y2,y3);
+  double lr1=s12::r1(x1,x2,x3, y1,y2,y3);
+  double lr2=s12::r2(x1,x2,x3, y1,y2,y3);
 
   return (1/16)*pow(1-nu,-1)*pow(M_PI,-1)*pow(G,-1)*(x1*pow(pow(x1,2)+pow(x2+(
       -1)*y2,2),-1)*(-x2+y2)+9*x1*pow(9*pow(x1,2)+pow(x2-y2,
@@ -675,8 +678,8 @@ double s12::J1312d2(double y1,double y2,double y3, double nu,double G,
 
 double s12::J1313d2(double y1,double y2,double y3, double nu,double G,
     double x1,double x2,double x3){
-  double s12::lr1=r1(x1,x2,x3, y1,y2,y3);
-  double s12::lr2=r2(x2,x2,x3, y1,y2,y3);
+  double lr1=s12::r1(x1,x2,x3, y1,y2,y3);
+  double lr2=s12::r2(x2,x2,x3, y1,y2,y3);
   return (-1/16)*pow(1-nu,-1)*pow(M_PI,-1)*(pow(lr1,-1)*(x2-y2)+2*
       (7+8*((-2)+nu)*nu)*pow(lr2,-1)*(x2-y2)-2*pow(lr2,-1)*(x2+
       (-1)*y2)*pow(lr2+x3+y3,-1)*(3*x3+2*y3-6*nu*(x3+y3)+4*
@@ -691,8 +694,8 @@ double s12::J1313d2(double y1,double y2,double y3, double nu,double G,
 
 double s12::J1323d2(double y1,double y2,double y3, double nu,double G,
     double x1,double x2,double x3){
-  double s12::lr1=r1(x1,x2,x3, y1,y2,y3);
-  double s12::lr2=r2(x1,x2,x3, y1,y2,y3);
+  double lr1=s12::r1(x1,x2,x3, y1,y2,y3);
+  double lr2=s12::r2(x1,x2,x3, y1,y2,y3);
   return (-1/16)*pow(1-nu,-1)*pow(M_PI,-1)*((x1-y1)*pow(lr1+x2+(-1)
       *y2,-1)+pow(lr1,-1)*(x1-y1)*(x2-y2)*pow(lr1+x2-
       y2,-1)+(7+8*((-2)+nu)*nu)*(x1-y1)*pow(lr2+x2-y2,
@@ -712,8 +715,8 @@ double s12::J1323d2(double y1,double y2,double y3, double nu,double G,
 
 double s12::J2312d1(double y1,double y2,double y3, double nu,double G,
     double x1,double x2,double x3){
-  double s12::lr1=r1(x1,x2,x3, y1,y2,y3);
-  double s12::lr2=r2(x1,x2,x3, y1,y2,y3);
+  double lr1=s12::r1(x1,x2,x3, y1,y2,y3);
+  double lr2=s12::r2(x1,x2,x3, y1,y2,y3);
   return (-1/16)*pow(1-nu,-1)*pow(M_PI,-1)*pow(G,-1)*(4*((-1)+nu)*((
       -1)+2*nu)*pow(pow(x1-y1,2)+pow(x2-y2,2),-1)*pow(x2-
       y2,2)+pow(lr1+x1-y1,-1)*(x3-y3)+pow(lr1,-1)*(x1-
@@ -734,8 +737,8 @@ double s12::J2312d1(double y1,double y2,double y3, double nu,double G,
 
 double s12::J2313d1(double y1,double y2,double y3, double nu,double G,
     double x1,double x2,double x3){
-  double s12::lr1=r1(x1,x2,x3, y1,y2,y3);
-  double s12::lr2=r2(x1,x2,x3, y1,y2,y3);
+  double lr1=s12::r1(x1,x2,x3, y1,y2,y3);
+  double lr2=s12::r2(x1,x2,x3, y1,y2,y3);
   return (-1/16)*pow(1-nu,-1)*pow(M_PI,-1)*(pow(lr1+x1-y1,-1)*(
       x2-y2)+pow(lr1,-1)*(x1-y1)*pow(lr1+x1-y1,-1)*(x2+
       (-1)*y2)+(7+8*((-2)+nu)*nu)*pow(lr2+x1-y1,-1)*(x2-
@@ -755,8 +758,8 @@ double s12::J2313d1(double y1,double y2,double y3, double nu,double G,
 
 double s12::J2323d1(double y1,double y2,double y3, double nu,double G,
     double x1,double x2, double x3){
-  double s12::lr1=r1(x1,x2,x3, y1,y2,y3);
-  double s12::lr2=r2(x1,x2,x3, y1,y2,y3);
+  double lr1=s12::r1(x1,x2,x3, y1,y2,y3);
+  double lr2=s12::r2(x1,x2,x3, y1,y2,y3);
   return (-1/16)*pow(1-nu,-1)*pow(M_PI,-1)*(pow(lr1,-1)*(x1-y1)+2*
       (7+8*((-2)+nu)*nu)*pow(lr2,-1)*(x1-y1)-2*pow(lr2,-1)*(x1+
       (-1)*y1)*pow(lr2+x3+y3,-1)*(3*x3+2*y3-6*nu*(x3+y3)+4*
