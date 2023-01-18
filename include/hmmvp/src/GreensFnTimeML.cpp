@@ -14,7 +14,7 @@ private:
   double Eval(UInt i, UInt j) const;
 };
 
-inline double GreensFnTiming::Eval (UInt i, UInt j) const {
+inline double GreensFnTimeML::Eval (UInt i, UInt j) const {
   // i is the receiver, j is the source; both start at 1
   // i is row, j column
   // take the kernel passed in as a parameter
