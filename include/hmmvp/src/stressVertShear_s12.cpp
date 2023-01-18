@@ -297,7 +297,7 @@ return p1*(s1+s2+s3+s4+s5+s6+s7+s8+s9+s10+s11+s12+s13+s14+s15+s16+s17+s18+s19
         +s20+s21+s22+s23+s24+s25);
 }
 
-double s12::J2112d1(double y1,double y2,double y3, double G,double nu,
+double s12::J2112d1(double y1,double y2,double y3, double nu,double G,
     double x1, double c2, double x3){
   double lr1 = s12::r1(x1,x2,x3, y1,y2,y3);
   double lr2 = s12::r2(x1,x2,x3, y1,y2,y3);
