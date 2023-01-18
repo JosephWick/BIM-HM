@@ -240,7 +240,7 @@ double s12::J1123d2(double y1,double y2,double y3, double nu,double G,
                 (x3+y3)*(2*x3+y3))-2*x2*y2*(pow(y1,2)+(x3+y3)*(2*x3+y3)))+
                 pow(x1,2)*y3*(pow(x2-y2,2)+2*(3*pow(y1,2)+(x3+y3)*(2*x3+y3))));
   double s22= -2*pow(pow(x1-y1,2)+pow(x2-y2,2),-1)*pow(x2-y2,2)*
-                pow(pow(x1-y1,2)_+pow(x3+y3,2),-1)*pow(pow(x1-y1,2)+pow(x2-y2,2)
+                pow(pow(x1-y1,2)+pow(x3+y3,2),-1)*pow(pow(x1-y1,2)+pow(x2-y2,2)
                 pow(x3+y3,2),-1.5)*(pow(x1,4)*(y3-3*nu*(x3+y3)+2*pow(nu,2)*(x3+y3))
                 -4*pow(x1,3)*y1*(y3-3*nu*(x3+y3)+2*pow(nu,2)*(x3+y3))
                 -3*nu*(pow(y1,2)+pow(x3+y3,2))*(pow(x3,3)+3*pow(x3,2)*y3+y3*(
@@ -261,7 +261,7 @@ double s12::J1123d2(double y1,double y2,double y3, double nu,double G,
                 pow(y1,2)+pow(y2,2)+2*(x3+y3)*(2*x3+y3)))+pow(x1,2)(-((-1)+nu)*((
                 -1)+2*nu)*lr2*y3*(2*x3+y3)+2*x2*y2*(-y3+3*nu*(x3+y3)
                 -2*pow(nu,2)*(x3+y3))+pow(x2,2)*(y3-3*nu*(x3+y3)+2*pow(nu,2)*(x3+
-                y3))-3*nu*(x3+y3)*(6*pow(y1,2)+pow(y2,2)+2*pow(x3+y3,2)+2*pow(nu,2)*(
+                y3))-3*nu*(x3+y3)*(6*pow(y1,2)+pow(y2,2)+2*pow(x3+y3,2))+2*pow(nu,2)*(
                 x3+y3)*(6*pow(y1,2)+pow(y2,2)+2*pow(x3+y3,2))+y3*(6*pow(y1,2)+pow(y2,2)
                 +2*(x3+y3)*(2*x3+y3))));
   double s23= 2*pow(lr2,-1)*pow(pow(x1-y1,2)+pow(x2-y2,2),-1)*
