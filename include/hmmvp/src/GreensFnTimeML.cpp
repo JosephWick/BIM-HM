@@ -1,4 +1,3 @@
-#include "stressVertShear_s12.h"
 
 class GreensFnTimeML : public ImplGreensFn {
 public:
