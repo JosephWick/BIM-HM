@@ -185,7 +185,7 @@ double s12::J1113d2(double y1,double y2,double y3, double nu,double G,
   double s16= 4*pow(lr2,-1)*(x1-y1)*pow(pow(x1-y1,2)+pow(x2-y2,2),-2)*(x2-y2)*(
                 -3*nu*(x3+y3)*(pow(x1-y1,2)+pow(x2-y2,2)+pow(x3+y3,2)) +2*nu*nu*
                 (x3+y3)*(pow(x1-y1,2)+pow(x2-y2,2)+pow(x3+y3,2)) +y3*(pow(x1-y1,2)+
-                pow(x2-y2,2)+(x3+y3)(2*x3+y3))
+                pow(x2-y2,2)+(x3+y3)*(2*x3+y3))
                 );
   double s17 = atan2(x1-y1,-x2);
   double s18 = -3*atan2(3*x2,x1-y1);
