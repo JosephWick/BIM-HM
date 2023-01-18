@@ -40,11 +40,11 @@ void GreensFnTiming::Init (const KeyValueFile* kvf) throw (Exception) {
 
   if (!kvf->GetMatd("X", m)) throw Exception("Missing X.");
   _x = m;
-  if (_x.size(1) != 3) throw Exception("X must be 3xN.");
+  if (_x.Size(1) != 3) throw Exception("X must be 3xN.");
 
   if (!kvf->GetMatd("Y", n)) throw Exception("Missing Y.");
   _y = n;
-  if (_y.size(1) != 3) throw Exception("Y must be 3xN.");
+  if (_y.Size(1) != 3) throw Exception("Y must be 3xN.");
 
 }
 
