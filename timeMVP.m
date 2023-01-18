@@ -70,6 +70,8 @@ function r = build()
   c.L = [L1f; L2f; L3f];
 
   disp(size(c.X))
+  disp(size(c.Y))
+  disp(size(c.L))
 
   %  create kernel based on mesh
   G = 30e3;
