@@ -20,8 +20,8 @@ double stressVertShear_s12(double x1, double x2, double x3,
   double epsvkk = epsv11p + epsv22p + epsv33p;
 
   // rotate observation points to the shear-zone-centric system of coords
-  double t1 =  (x1-q1)*cos(theta * M_PI/180) + (x2-q2)*sin(theta * M_PI/180);
-  double x2 = -(x1-q1)*sin(theta * M_PI/180) + (x2-q2)*cos(theta * M_PI/180);
+  double t1 =  (x1-y1)*cos(theta * M_PI/180) + (x2-y2)*sin(theta * M_PI/180);
+  x2 = -(x1-y1)*sin(theta * M_PI/180) + (x2-y2)*cos(theta * M_PI/180);
   double x1 = t1;
 
 
