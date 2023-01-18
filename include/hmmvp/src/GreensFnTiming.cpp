@@ -14,7 +14,7 @@ private:
   Matd _y
 
   // mesh sizing
-  Matd _L, _T, _W;
+  Matd _L;
 
   double Eval(UInt i, UInt j) const;
 };
@@ -28,7 +28,7 @@ inline double GreensFnTiming::Eval (UInt i, UInt j) const {
   return _k(i,j);
 
   return stressVertShear_s12( _x(1,i),_x(2,i),_x(3,i), _y(1,j),_y(2,j),_y(3,j),
-          L(j), T(j), W(j), 0,
+          L(1,j), T(2,j), W(3,j), 0,
           0, 1, 0, 0, 0, 0,
           30*10*10*10, 0.25);
 
@@ -39,8 +39,6 @@ void GreensFnTiming::Init (const KeyValueFile* kvf) throw (Exception) {
   const Matd* n;
 
   const Matd* l;
-  const Matd* w;
-  const Matd* t;
 
   // mesh
   if (!kvf->GetMatd("X", m)) throw Exception("Missing X.");
@@ -54,15 +52,7 @@ void GreensFnTiming::Init (const KeyValueFile* kvf) throw (Exception) {
   // sizing
   if (!kvf->GetMatd("L", l)) throw Exception("Missing L.");
   _L = *n;
-  if (_L.Size(1) != 3) throw Exception("L must be 3xN.");
-
-  if (!kvf->GetMatd("W", w)) throw Exception("Missing W.");
-  _W = *w;
-  if (_W.Size(1) != 3) throw Exception("W must be 3xN.");
-
-  if (!kvf->GetMatd("T", t)) throw Exception("Missing T.");
-  _T = *t;
-  if (_T.Size(1) != 3) throw Exception("T must be 3xN.");
+  if (_L.Size(1) != 1) throw Exception("L must be 3xN.");
 }
 
 bool GreensFnTiming::
