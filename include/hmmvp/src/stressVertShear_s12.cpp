@@ -413,38 +413,6 @@ double s12::J1213d2(double y1,double y2,double y3, double nu, double G,
       -1)*y3)+2*(1-2*nu)*nu*log(lr2+x3+y3));
 }
 
-double s12::J1213d2(double y1,double y2,double y3, double nu, double G,
-    double x1,double x2,double x3){
-  double lr1=s12::r1(x1,x2,x3, y1,y2,y3);
-  double lr2=s12::r2(x1,x2,x3, y1,y2,y3);
-
-  return (1/16)*pow(1-nu,-1)*pow(M_PI,-1)*pow(G,-1)*(-pow(lr1,-1)*pow(
-      x2-y2,2)*pow(lr1+x3-y3,-1)-((-1)-2*nu+4*
-      pow(nu,2))*pow(lr2,-1)*pow(x2-y2,2)*pow(lr2+x3+y3,-1)+2*((-1)+nu)
-      *((-1)+2*nu)*pow(pow(x1-y1,2)+pow(x2-y2,2),-1)*y3*(
-      2*x3+y3)-4*((-1)+nu)*((-1)+2*nu)*pow(pow(x1-y1,2)+pow(x2+(
-      -1)*y2,2),-2)*pow(x2-y2,2)*y3*(2*x3+y3)+2*((-1)+nu)
-      *((-1)+2*nu)*pow(lr2,-2)*pow(pow(x1-y1,2)+pow(x2-y2,2),-1)
-      *pow(x2-y2,2)*y3*(2*x3+y3)+2*pow(pow(x1-y1,2)+x2+(
-      -1)*pow(y2,2),-1)*pow(x2-y2,2)*pow(pow(x1-y1,2)+pow(x2-
-      y2,2)+pow(x3+y3,2),-3/2)*((-3)*nu*(x3*(pow(x3,2)+pow(x1-y1,
-      2)+pow(x2-y2,2))+(x3*((-2)*lr2+3*x3)+pow(x1-y1,2)+pow(x2+(
-      -1)*y2,2))*y3-(lr2-3*x3)*pow(y3,2)+pow(y3,3))+2*pow(nu,2)*(x3*
-      (pow(x3,2)+pow(x1-y1,2)+pow(x2-y2,2))+(x3*((-2)*lr2+3*x3)+pow(
-      x1-y1,2)+pow(x2-y2,2))*y3-(lr2-3*x3)*pow(y3,2)+
-      pow(y3,3))+y3*(pow(x1-y1,2)+pow(x2-y2,2)-(lr2-x3+(
-      -1)*y3)*(2*x3+y3)))+4*pow(lr2,-1)*pow(pow(x1-y1,2)+(x2-
-      y2,2),-2)*(x2-y2,2)*((-3)*nu*(x3+y3)*(pow(x1-
-      y1,2)+pow(x2-y2,2)+pow(x3+y3,2))+2*pow(nu,2)*(x3+y3)*(pow(x1-
-      y1,2)+pow(x2-y2,2)+pow(x3+y3,2))+y3*(pow(x1-y1,2)+pow(x2+(-1)
-      *y2,2)+(x3+y3)*(2*x3+y3)))+pow(lr2,-1)*pow(pow(x1-y1,2)+pow(x2+(
-      -1)*y2,2),-1)*(6*nu*(x3+y3)*(pow(x1-y1,2)+3*pow(x2+(-1)
-      *y2,2)+pow(x3+y3,2))-4*pow(nu,2)*(x3+y3)*(pow(x1-y1,2)+3*pow(
-      x2-y2,2)+pow(x3+y3,2))-2*y3*(pow(x1-y1,2)+3*pow(x2+(
-      -1)*y2,2)+(x3+y3)*(2*x3+y3)))+log(lr2+x3+y3)-log(lr1+x3+(
-      -1)*y3)+2*(1-2*nu)*nu*log(lr2+x3+y3));
-}
-
 double s12::J1223d2(double y1,double y2,double y3, double nu,double G,
     double x1,double x2,double x3){
   double lr1=s12::r1(x1,x2,x3, y1,y2,y3);
