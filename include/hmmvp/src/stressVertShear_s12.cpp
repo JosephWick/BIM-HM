@@ -204,7 +204,7 @@ double s12::J1123d2(double y1,double y2,double y3, double nu,double G,
   double p1 = (1/16)*pow(1-nu,-1)*pow(M_PI,-1)*pow(G,-1);
 
   double s1 = pow(x1,2)*pow(pow(x1,2)*pow(x2-y2,2),-1);
-  double s2 = 9*pow(x1,2)*pow(9*pow(x1,2)+pow(x-y2,2),-1);
+  double s2 = 9*pow(x1,2)*pow(9*pow(x1,2)+pow(x2-y2,2),-1);
   double s3 = 4*pow(nu,2)*pow(x1,2)*pow(pow(nu*x1,2)+pow(x2-y2,2),-1);
   double s4 = -2*(nu-1)*(2*nu-1)*pow(x1-y1,2)*pow(pow(x1-y1,2)+pow(x2-y2,2),-1);
   double s5 = pow(y1,2)*pow(pow(y1,2)+pow(x2-y2,2),-1);
@@ -258,7 +258,7 @@ double s12::J1123d2(double y1,double y2,double y3, double nu,double G,
                 -2*pow(nu,2)*(x3+y3))+2*x2*y2*(y3-3*nu*(x3+y3)+2*pow(nu,2)*
                 (x3+y3))+3*nu*(x3+y3)*(2*pow(y1,2)+pow(y2,2)+2*pow(x3+y3,2))-2*
                 pow(nu,2)*(x3+y3)*(2*pow(y1,2)+pow(y2,2)+2*pow(x3+y3,2))-y3*(2*
-                pow(y1,2)+pow(y2,2)+2*(x3+y3)*(2*x3+y3)))+pow(x1,2)(-((-1)+nu)*((
+                pow(y1,2)+pow(y2,2)+2*(x3+y3)*(2*x3+y3)))+pow(x1,2)*(-((-1)+nu)*((
                 -1)+2*nu)*lr2*y3*(2*x3+y3)+2*x2*y2*(-y3+3*nu*(x3+y3)
                 -2*pow(nu,2)*(x3+y3))+pow(x2,2)*(y3-3*nu*(x3+y3)+2*pow(nu,2)*(x3+
                 y3))-3*nu*(x3+y3)*(6*pow(y1,2)+pow(y2,2)+2*pow(x3+y3,2))+2*pow(nu,2)*(
