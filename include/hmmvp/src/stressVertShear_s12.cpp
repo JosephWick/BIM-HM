@@ -161,7 +161,7 @@ double s12::J1113d2(double y1,double y2,double y3, double nu,double G,
   double s5 = -4(nu-1)*lr1*(x1-y1)*pow(pow(x1-y1,2)+pow(x2-y2,2),-1)*(x2-y2)*
                 pow(pow(x2-y2,2)+pow(x3-y3,2),-1)*(x3-y3);
   double s6 = -4*(nu-1)*pow(lr1,-1)*(x1-y1)*pow(pow(x1-y1,2)+pow(x2-y2,2),-1)*
-                *pow(x2-y2,3)*pow(pow(x2-y2,2)+pow(x3-y3,2),-1)*(x3-y3);
+                pow(x2-y2,3)*pow(pow(x2-y2,2)+pow(x3-y3,2),-1)*(x3-y3);
   double s7 = (3-4*nu)*pow(lr1,-1)*(x1-y1)*(x2-y2)*pow(lr1+x3-y3,-1);
   double s8 = 4*(nu-1)*pow(lr2,-1)*pow(lr2+x1-y1,-1)*(x2-y2)*(x3+y3);
   double s9 = -(3-6*nu+4*nu*nu)*pow(lr2,-1)*(x1-y1)*(x2-y2)*pow(lr2+x3+y3,-1);
