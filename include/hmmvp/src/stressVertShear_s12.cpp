@@ -731,7 +731,7 @@ double s12::J2312d1(double y1,double y2,double y3, double nu,double G,
       2),-1)*pow(x2-y2,2)*(x3+y3)*pow(pow(x2-y2,2)+pow(x3+y3,
       2),-1)+2*pow(lr2,-1)*x3*y3*(x3+y3)*pow(pow(x2-y2,2)+pow(x3+y3,
       2),-1)-2*x3*pow(x1-y1,2)*y3*(x3+y3)*pow(pow(x2-y2,
-      ,2)+(x3+y3,2),-1)*pow(pow(x1-y1,2)+pow(x2-y2,2)+pow(x3+y3,
+      2)+(x3+y3,2),-1)*pow(pow(x1-y1,2)+pow(x2-y2,2)+pow(x3+y3,
       2),-3/2)+(4*((-1)+nu)*((-1)+2*nu))*log(lr2+x3+y3));
 }
 
