@@ -20,28 +20,27 @@ double stressVertShear_s12(double x1, double x2, double x3,
   double epsvkk = epsv11p + epsv22p + epsv33p;
 
   // rotate observation points to the shear-zone-centric system of coords
-  double t1 =  (x1-y1)*cos(theta * M_PI/180) + (x2-y2)*sin(theta * M_PI/180);
+  double t1 = (x1-y1)*cos(theta * M_PI/180) + (x2-y2)*sin(theta * M_PI/180);
   x2 = -(x1-y1)*sin(theta * M_PI/180) + (x2-y2)*cos(theta * M_PI/180);
-  double x1 = t1;
-
+  x1 = t1;
 
   // Displacement gradient
-  double u12 = s12::IU1d2(L,T/2,q3+W, lambda,epsvkk,G,epsv11p,epsv12p,epsv13p,epsv22p,epsv23p,epsv33p)
-              -s12::IU1d2(L,-T/2,q3+W, lambda,epsvkk,G,epsv11p,epsv12p,epsv13p,epsv22p,epsv23p,epsv33p)
-              +s12::IU1d2(L,-T/2,q3, lambda,epsvkk,G,epsv11p,epsv12p,epsv13p,epsv22p,epsv23p,epsv33p)
-              -s12::IU1d2(L,T/2,q3, lambda,epsvkk,G,epsv11p,epsv12p,epsv13p,epsv22p,epsv23p,epsv33p)
-              -s12::IU1d2(0,T/2,q3+W, lambda,epsvkk,G,epsv11p,epsv12p,epsv13p,epsv22p,epsv23p,epsv33p)
-              +s12::IU1d2(0,-T/2,q3+W, lambda,epsvkk,G,epsv11p,epsv12p,epsv13p,epsv22p,epsv23p,epsv33p)
-              -s12::IU1d2(0,-T/2,q3, lambda,epsvkk,G,epsv11p,epsv12p,epsv13p,epsv22p,epsv23p,epsv33p)
-              +s12::IU1d2(0,T/2,q3, lambda,epsvkk,G,epsv11p,epsv12p,epsv13p,epsv22p,epsv23p,epsv33p);
-  double u21 = s12::IU2d1(L,T/2,q3+W, lambda,epsvkk,G,epsv11p,epsv12p,epsv13p,epsv22p,epsv23p,epsv33p)
-              -s12::IU2d1(L,-T/2,q3+W, lambda,epsvkk,G,epsv11p,epsv12p,epsv13p,epsv22p,epsv23p,epsv33p)
-              +s12::IU2d1(L,-T/2,q3, lambda,epsvkk,G,epsv11p,epsv12p,epsv13p,epsv22p,epsv23p,epsv33p)
-              -s12::IU2d1(L,T/2,q3, lambda,epsvkk,G,epsv11p,epsv12p,epsv13p,epsv22p,epsv23p,epsv33p)
-              -s12::IU2d1(0,T/2,q3+W, lambda,epsvkk,G,epsv11p,epsv12p,epsv13p,epsv22p,epsv23p,epsv33p)
-              +s12::Iu2d1(0,-T/2,q3+W, lambda,epsvkk,G,epsv11p,epsv12p,epsv13p,epsv22p,epsv23p,epsv33p)
-              -s12::IU2d1(0,-T/2,q3, lambda,epsvkk,G,epsv11p,epsv12p,epsv13p,epsv22p,epsv23p,epsv33p)
-              +s12::IU2d1(0,T/2,q3, lambda,epsvkk,G,epsv11p,epsv12p,epsv13p,epsv22p,epsv23p,epsv33p);
+  double u12 = s12::IU1d2(L,T/2,y3+W, lambda,epsvkk,G,epsv11p,epsv12p,epsv13p,epsv22p,epsv23p,epsv33p)
+              -s12::IU1d2(L,-T/2,y3+W, lambda,epsvkk,G,epsv11p,epsv12p,epsv13p,epsv22p,epsv23p,epsv33p)
+              +s12::IU1d2(L,-T/2,y3, lambda,epsvkk,G,epsv11p,epsv12p,epsv13p,epsv22p,epsv23p,epsv33p)
+              -s12::IU1d2(L,T/2,y3, lambda,epsvkk,G,epsv11p,epsv12p,epsv13p,epsv22p,epsv23p,epsv33p)
+              -s12::IU1d2(0,T/2,y3+W, lambda,epsvkk,G,epsv11p,epsv12p,epsv13p,epsv22p,epsv23p,epsv33p)
+              +s12::IU1d2(0,-T/2,y3+W, lambda,epsvkk,G,epsv11p,epsv12p,epsv13p,epsv22p,epsv23p,epsv33p)
+              -s12::IU1d2(0,-T/2,y3, lambda,epsvkk,G,epsv11p,epsv12p,epsv13p,epsv22p,epsv23p,epsv33p)
+              +s12::IU1d2(0,T/2,y3, lambda,epsvkk,G,epsv11p,epsv12p,epsv13p,epsv22p,epsv23p,epsv33p);
+  double u21 = s12::IU2d1(L,T/2,y3+W, lambda,epsvkk,G,epsv11p,epsv12p,epsv13p,epsv22p,epsv23p,epsv33p)
+              -s12::IU2d1(L,-T/2,y3+W, lambda,epsvkk,G,epsv11p,epsv12p,epsv13p,epsv22p,epsv23p,epsv33p)
+              +s12::IU2d1(L,-T/2,y3, lambda,epsvkk,G,epsv11p,epsv12p,epsv13p,epsv22p,epsv23p,epsv33p)
+              -s12::IU2d1(L,T/2,y3, lambda,epsvkk,G,epsv11p,epsv12p,epsv13p,epsv22p,epsv23p,epsv33p)
+              -s12::IU2d1(0,T/2,y3+W, lambda,epsvkk,G,epsv11p,epsv12p,epsv13p,epsv22p,epsv23p,epsv33p)
+              +s12::Iu2d1(0,-T/2,y3+W, lambda,epsvkk,G,epsv11p,epsv12p,epsv13p,epsv22p,epsv23p,epsv33p)
+              -s12::IU2d1(0,-T/2,y3, lambda,epsvkk,G,epsv11p,epsv12p,epsv13p,epsv22p,epsv23p,epsv33p)
+              +s12::IU2d1(0,T/2,y3, lambda,epsvkk,G,epsv11p,epsv12p,epsv13p,epsv22p,epsv23p,epsv33p);
 
   // strain
   double e12p = (u12+u21)/2;
@@ -51,7 +50,7 @@ double stressVertShear_s12(double x1, double x2, double x3,
 
   double epsv12 = epsv12p;
 
-  e12 - e12 - epsv12*S(x1/L)*Omega(x2/T)*S((x3-q3)/W);
+  e12 - e12 - epsv12*S(x1/L)*Omega(x2/T)*S((x3-y3)/W);
 
   // stress components
   double s12 = 2*G*e12;
