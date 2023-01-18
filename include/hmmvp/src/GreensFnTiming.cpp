@@ -24,10 +24,11 @@ inline double GreensFnTiming::Eval (UInt i, UInt j) const {
   // i is row, j column
   // take the kernel passed in as a parameter
 
-  return s12::stressVertShear_s12( _x(1,i),_x(2,i),_x(3,i), _y(1,j),_y(2,j),_y(3,j),
-          _L(1,j), _L(2,j), _L(3,j), 0,
-          0, 1, 0, 0, 0, 0,
-          30*10*10*10, 0.25);
+  return s12::stressVertShear_s12( _x(1,i),_x(2,i),_x(3,i),
+                                   _y(1,j),_y(2,j),_y(3,j),
+                                   _L(1,j), _L(2,j), _L(3,j), 0,
+                                   0, 1, 0, 0, 0, 0,
+                                   30*10*10*10, 0.25);
 
 }
 
