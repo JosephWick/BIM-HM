@@ -27,8 +27,8 @@ inline double GreensFnTiming::Eval (UInt i, UInt j) const {
   // printf("%f\n", _k(i,j));
   return _k(i,j);
 
-  return stressVertShear_s12( _x(1,i),_x(2,i),_x(3,i), _y(1,j),_y(2,j),_y(3,j),
-          L(1,j), T(2,j), W(3,j), 0,
+  return s12::stressVertShear_s12( _x(1,i),_x(2,i),_x(3,i), _y(1,j),_y(2,j),_y(3,j),
+          _L(1,j), _L(2,j), _L(3,j), 0,
           0, 1, 0, 0, 0, 0,
           30*10*10*10, 0.25);
 
