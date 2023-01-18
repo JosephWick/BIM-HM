@@ -111,6 +111,7 @@ inline double GreensFnOkada::Eval (UInt i, UInt j) const {
   //printf("d1: %f, d2: %f, d3: %f\n", *pD1, *pD2, *pD3);
   //printf("================\n");
 
+  /*
   dc3d0_(ph, pAlpha,
         &obsx, &obsy, &obsz,
         &srcdepth, pDip,
@@ -122,6 +123,8 @@ inline double GreensFnOkada::Eval (UInt i, UInt j) const {
   printf("out: %f\n", out);
 
   return out;
+  */
+  return 1;
 }
 
 void GreensFnOkada::Init(const KeyValueFile* kvf) throw (Exception) {

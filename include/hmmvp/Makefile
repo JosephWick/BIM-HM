@@ -13,7 +13,7 @@ MPICPP = mpic++
 FORTRAN = gfortran
 
 # Set the optimization level. I prefer '-O3'.
-#opt = 
+#opt =
 #opt = -g
 opt = -O3
 
@@ -60,7 +60,7 @@ LDFLAGS = $(MODE_FLAGS)
 
 CPPSRCS = src/Hd.cpp src/Compress.cpp src/Hmat.cpp src/HmatIo.cpp \
 src/KeyValueFile.cpp src/CodeAnalysis.cpp src/Mpi.cpp src/CHmat.cpp \
-src/SFHmat.cpp
+src/SFHmat.cpp src/stressVertShear_s12.cpp
 
 OBJECTS = $(patsubst %.cpp,%.o,$(CPPSRCS))
 
