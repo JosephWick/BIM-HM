@@ -275,7 +275,7 @@ double s12::J1123d2(double y1,double y2,double y3, double nu,double G,
   2*pow(y1,2)+3*pow(y2,2))*pow(y3,2)+12*x3*pow(y3,3)+3*pow(y3,4))+pow(x1,4)*
   (y3-3*nu*(x3+y3)+2*pow(nu,2)*(x3+y3))-4*pow(x1,3)*y1*(y3-3*nu*(x3+y3)+2
   *pow(nu,2)*(x3+y3))+2*pow(nu,2)*(x3+y3)*(pow(x3,4)+pow(y1,4)+4*pow(x3,3)
-  *y3+3*pow(y2,2)*pow(y3,2)+pow(y3,4)+pow(y,2)*(pow(y2,2)+2*pow(y3,2))+pow(x3,2)
+  *y3+3*pow(y2,2)*pow(y3,2)+pow(y3,4)+pow(y1,2)*(pow(y2,2)+2*pow(y3,2))+pow(x3,2)
   *(2*pow(y1,2)+3*pow(y2,2)+6*pow(y3,2))+x3*(4*pow(y1,2)*y3+6*pow(y2,2)*y3+4*
   pow(y3,3)))+pow(x2,2)*(-x3*pow(y1,2)+6*pow(x3,2)*y3+2*pow(y1,2)*y3+9*x3*
   pow(y3,2)+3*pow(y3,3)+2*pow(nu,2)*(x3+y3)*(pow(y1,2)+3*pow(x3+y3,2))-nu*
