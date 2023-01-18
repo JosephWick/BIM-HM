@@ -118,13 +118,13 @@ double s12::IU1d2(double y1,double y2,double y3, double lambda,double epsvkk, do
 }
 
 // remove inelastic eigenstrain
-int s12::heaviside = [](double x){
+int s12::heaviside(double x){
   return x>0;
 };
-double s12::Omega = [](double x){
+double s12::Omega(double x){
   return s12::heaviside(x+0.5) - s12::heaviside(x-0.5);
 };
-double s12::S = [](double x){
+double s12::S(double x){
   return s12::Omega(x-0.5);
 };
 
