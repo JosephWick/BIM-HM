@@ -79,7 +79,7 @@ function varargout = ode45_2(ode,tspan,y0,options,varargin)
 solver_name = 'ode45';
 
 % byte count param
-bcm = 3e2;
+bcm = 3e3;
 disp('byte ct max: ')
 disp(bcm)
 
