@@ -32,7 +32,7 @@ inline double GreensFnTiming::Eval (UInt i, UInt j) const {
 
 
   printf("%d, %d, %f\n", i,j,s);
-  nope;
+  break;
   return s;
 
 }
