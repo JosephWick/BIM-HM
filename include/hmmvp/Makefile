@@ -98,5 +98,8 @@ ifneq ($(ext),mpi)
 	$(FORTRAN) examples/fmvp_$(ext).f90 $(INCLUDE) $(LDFLAGS) lib/libhmmvp_$(mode).a $(LIBS) -lstdc++ -o examples/fmvp_$(mode)
 endif
 
+timetest: $(objects)
+	$(CPP) testGreensFnTiming.o stressVertShear_s12.o testGreenFnTiming 
+
 clean:
 	rm -f src/*.o lib/*.a bin/*
