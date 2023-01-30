@@ -99,7 +99,7 @@ ifneq ($(ext),mpi)
 endif
 
 timetest: src/testGreensFnTiming.o src/stressVertShear_s12.o
-	$(CPP) src/testGreensFnTiming.o src/stressVertShear_s12.o testGreenFnTiming
+	$(CPP) src/testGreensFnTiming.o src/stressVertShear_s12.o -o testGreenFnTiming
 
 clean:
 	rm -f src/*.o lib/*.a bin/*
