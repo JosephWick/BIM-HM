@@ -21,10 +21,10 @@ double s12::stressVertShear_s12(double x1, double x2, double x3,
 
   // Lame paramter
   double lambda = G*2*nu/(1-2*nu);
-  printf("lambda: %f", lambda);
+  printf("lambda: %f\n", lambda);
   // isotropic strain
   double epsvkk = epsv11p + epsv22p + epsv33p;
-  printf("epsvkk: %f", epsvkk);
+  printf("epsvkk: %f\n", epsvkk);
 
   // rotate observation points to the shear-zone-centric system of coords
   double t1 = (x1-y1)*cos(theta * M_PI/180) + (x2-y2)*sin(theta * M_PI/180);
