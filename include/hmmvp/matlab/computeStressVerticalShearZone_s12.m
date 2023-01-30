@@ -41,9 +41,11 @@ function [s12]=computeStressVerticalShearZone_s12( ...
 
 % Lame parameter
 lambda=G*2*nu/(1-2*nu);
+disp(lambda)
 
 % isotropic strain
 epsvkk=epsv11p+epsv22p+epsv33p;
+disp(epsvkk)
 
 % rotate observation points to the shear-zone-centric system of coordinates
 t1= (x1-q1)*cosd(theta)+(x2-q2)*sind(theta);

@@ -30,7 +30,9 @@ inline double GreensFnTiming::Eval (UInt i, UInt j) const {
                                    0, 1, 0, 0, 0, 0,
                                    30*10*10*10, 0.25);
 
+
   printf("%d, %d, %f\n", i,j,s);
+  nope;
   return s;
 
 }
