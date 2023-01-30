@@ -29,10 +29,10 @@ int main(){
 
   // r1 and r2
   double r1_out = s12::r1(x1,x2,x3, y1,y2,y3);
-  printf("r1: %f\n", r1);
+  printf("r1: %f\n", r1_out);
 
   double r2_out = s12::r2(x1,x2,x3, y1,y2,y3);
-  printf("r1: %f\n", r2);
+  printf("r1: %f\n", r2_out);
 
 
 
