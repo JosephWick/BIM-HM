@@ -66,7 +66,7 @@ double s12::stressVertShear_s12(double x1, double x2, double x3,
 
   double epsv12 = epsv12p;
 
-  e12 - e12 - epsv12*s12::S(x1/L)*s12::Omega(x2/T)*s12::S((x3-y3)/W);
+  e12 = e12 - epsv12*s12::S(x1/L)*s12::Omega(x2/T)*s12::S((x3-y3)/W);
 
   // stress components
   double s12 = 2*G*e12;
