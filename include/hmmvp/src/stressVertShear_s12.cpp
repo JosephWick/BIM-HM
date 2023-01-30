@@ -1,5 +1,5 @@
 #define _USE_MATH_DEFINES
-#include <stdio>
+#include <iostream>
 #include <cmath>
 
 #include "stressVertShear_s12.h"
