@@ -11,7 +11,7 @@ int main(){
   epsvkk: 0.000000
   */
 
-  double x1 = 200000.000000;
+  double x1 = 200000.0;
   double x2 = 50423.931519;
   double x3 = 51745.059718;
 

@@ -40,7 +40,7 @@ function [s12]=computeStressVerticalShearZone_s12( ...
 % Author: Sylvain Barbot (sbarbot@usc.edu) - 11 July 2016.
 
 % Lame parameter
-lambda=G*2*nu/(1-2*nu);
+lambda = G*2*nu/(1-2*nu);
 
 % isotropic strain
 epsvkk=epsv11p+epsv22p+epsv33p;
@@ -54,6 +54,8 @@ x1=t1;
 
 r1=@(y1,y2,y3) sqrt((x1-y1).^2+(x2-y2).^2+(x3-y3).^2);
 r2=@(y1,y2,y3) sqrt((x1-y1).^2+(x2-y2).^2+(x3+y3).^2);
+disp(r1)
+disp(r2)
 
 IU1d2=@(y1,y2,y3) ...
      (lambda*epsvkk+2*G*epsv11p)*J1123d2(y1,y2,y3) ...
