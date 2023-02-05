@@ -44,12 +44,16 @@ lambda = G*2*nu/(1-2*nu);
 
 % isotropic strain
 epsvkk=epsv11p+epsv22p+epsv33p;
-disp(epsvkk)
 
 % rotate observation points to the shear-zone-centric system of coordinates
 t1= (x1-q1)*cosd(theta)+(x2-q2)*sind(theta);
 x2=-(x1-q1)*sind(theta)+(x2-q2)*cosd(theta);
 x1=t1;
+
+disp('new Xs')
+disp(x1)
+disp(x2)
+disp(x3)
 
 % Green's functions
 
@@ -80,6 +84,7 @@ u12 = IU1d2(L,T/2,q3+W)-IU1d2(L,-T/2,q3+W)+IU1d2(L,-T/2,q3)-IU1d2(L,T/2,q3) ...
 u21 = IU2d1(L,T/2,q3+W)-IU2d1(L,-T/2,q3+W)+IU2d1(L,-T/2,q3)-IU2d1(L,T/2,q3) ...
      -IU2d1(0,T/2,q3+W)+IU2d1(0,-T/2,q3+W)-IU2d1(0,-T/2,q3)+IU2d1(0,T/2,q3);
 
+disp('u12 and u21')
 disp(u12)
 disp(u21)
 
