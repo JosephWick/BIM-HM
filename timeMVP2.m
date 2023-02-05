@@ -111,6 +111,7 @@ end
 
 function measure(b)
   N = b.N;
+  disp(N)
 
   t_3d_6 = -1;
   t_3d_8 = -1;
