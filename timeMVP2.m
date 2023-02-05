@@ -118,8 +118,8 @@ function measure(b)
 
   rng('default');
   v = zeros(N,N,N);
-  ia = N/4;
-  ib = 3*N/4;
+  ia = floor(N/4);
+  ib = floor(3*N/4);
   v(ia:ib,ia:ib,ia:ib) = 1.0;
   numIter = 5
 
