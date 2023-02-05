@@ -51,6 +51,7 @@ x2=-(x1-q1)*sind(theta)+(x2-q2)*cosd(theta);
 x1=t1;
 
 disp('new Xs')
+disp(t1)
 disp(x1)
 disp(x2)
 disp(x3)

@@ -29,6 +29,7 @@ double s12::stressVertShear_s12(double x1, double x2, double x3,
   x2 = -(x1-y1)*sin(theta * M_PI/180) + (x2-y2)*cos(theta * M_PI/180);
   x1 = t1;
 
+  printf("t1: %f\n",t1);
   printf("x1: %f\n",x1);
   printf("x2: %f\n",x2);
   printf("x3: %f\n",x3);
