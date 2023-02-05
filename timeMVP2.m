@@ -121,7 +121,10 @@ function measure(b)
   ia = floor(N/4);
   ib = floor(3*N/4);
   v(ia:ib,ia:ib,ia:ib) = 1.0;
+  v = v(:);
+
   numIter = 5;
+
 
   disp('timing e6...')
   t6 = [];
