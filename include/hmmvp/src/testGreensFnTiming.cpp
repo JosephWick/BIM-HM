@@ -23,7 +23,7 @@ int main(){
   double T = 26392.960684;
   double W = 37124.434120;
 
-  double lambda = 30000.0;
+  double G = 30000.0;
 
   double nu = 0.25;
 

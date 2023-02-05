@@ -65,6 +65,10 @@ double s12::stressVertShear_s12(double x1, double x2, double x3,
               +s12::IU2d1(0,T/2,y3, lambda,epsvkk,nu,G,epsv11p,epsv12p,epsv13p,epsv22p,epsv23p,epsv33p,
                 x1,x2,x3);
 
+  // TEST
+  printf("u12: %f\n",u12);
+  printf("u21: %f\n",u21);
+
   // strain
   double e12p = (u12+u21)/2;
 

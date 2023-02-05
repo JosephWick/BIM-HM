@@ -54,8 +54,6 @@ x1=t1;
 
 r1=@(y1,y2,y3) sqrt((x1-y1).^2+(x2-y2).^2+(x3-y3).^2);
 r2=@(y1,y2,y3) sqrt((x1-y1).^2+(x2-y2).^2+(x3+y3).^2);
-disp(r1(q1,q2,q3))
-disp(r2(q1,q2,q3))
 
 IU1d2=@(y1,y2,y3) ...
      (lambda*epsvkk+2*G*epsv11p)*J1123d2(y1,y2,y3) ...
@@ -80,6 +78,9 @@ u12 = IU1d2(L,T/2,q3+W)-IU1d2(L,-T/2,q3+W)+IU1d2(L,-T/2,q3)-IU1d2(L,T/2,q3) ...
      -IU1d2(0,T/2,q3+W)+IU1d2(0,-T/2,q3+W)-IU1d2(0,-T/2,q3)+IU1d2(0,T/2,q3);
 u21 = IU2d1(L,T/2,q3+W)-IU2d1(L,-T/2,q3+W)+IU2d1(L,-T/2,q3)-IU2d1(L,T/2,q3) ...
      -IU2d1(0,T/2,q3+W)+IU2d1(0,-T/2,q3+W)-IU2d1(0,-T/2,q3)+IU2d1(0,T/2,q3);
+
+disp(u12)
+disp(u21)
 
 % strain
 e12p=(u12+u21)/2;
