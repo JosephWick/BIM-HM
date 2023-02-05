@@ -117,11 +117,15 @@ function measure(b)
   t_dense = -1;
 
   rng('default');
-  v = rand(N*N*N,1);
+  v = zeros(N,N,N);
+  ia = N/4;
+  ib = 3*N/4;
+  v(ia:ib,ia:ib,ia:ib) = 1.0;
+  numIter = 5
 
   disp('timing e6...')
   t6 = [];
-  for j=1:3
+  for j=1:5
     hme6 = hmmvp('init', b.kvfe6);
     now = tic();
     x = hmmvp('mvp', hme6, v);
@@ -132,7 +136,7 @@ function measure(b)
 
   disp('timing e8...')
   t8 = [];
-  for j=1:3
+  for j=1:5
     hme8 = hmmvp('init', b.kvfe8);
     now = tic();
     x = hmmvp('mvp', hme8, v);
@@ -143,7 +147,7 @@ function measure(b)
 
   disp('timing dense...')
   td = [];
-  for j = 1:3
+  for j = 1:5
     dense = hmmvp('extract', hme8, 1:1:N*N*N, 1:1:N*N*N);
     now = tic();
     x = dense*v;
