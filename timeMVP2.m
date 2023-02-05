@@ -32,7 +32,7 @@ function r = build()
   L2 = zeros(1,N);
   L3 = zeros(1,N);
 
-  Xchat = Xhat+L1(1);
+  Xchat = Xhat+(L1(1)/2);
   Ychat = zeros(1,N);
   Zchat = zeros(1,N);
   for idx=(1:length(Zhat)-1)
