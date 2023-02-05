@@ -27,12 +27,8 @@ int main(){
 
   double nu = 0.25;
 
-  // r1 and r2
-  double r1_out = s12::r1(x1,x2,x3, y1,y2,y3);
-  printf("r1: %f\n", r1_out);
-
-  double r2_out = s12::r2(x1,x2,x3, y1,y2,y3);
-  printf("r2: %f\n", r2_out);
+  // test
+  s12::stressVertShear_s12(x1,x1,x3, y1,y2,y3, L,T,W, 0, 0,1,0,0,0,0, G,nu);
 
 
 
