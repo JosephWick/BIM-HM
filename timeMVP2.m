@@ -119,6 +119,7 @@ function measure(b)
   rng('default');
   v = rand(N*N*N,1);
 
+  disp('timing e6...')
   t6 = [];
   for j=1:3
     hme6 = hmmvp('init', b.kvfe6);
@@ -129,6 +130,7 @@ function measure(b)
   end
   t_3d_6 = mean(t6);
 
+  disp('timing e8...')
   t8 = [];
   for j=1:3
     hme8 = hmmvp('init', b.kvfe8);
@@ -139,6 +141,7 @@ function measure(b)
   end
   t_3d_8 = mean(t8);
 
+  disp('timing dense...')
   td = [];
   for j = 1:3
     dense = hmmvp('extract', hme8, 1:1:N*N*N, 1:1:N*N*N);
@@ -149,6 +152,7 @@ function measure(b)
   end
   t_dense = mean(td);
 
+disp('RESULTS:')
 disp('dense: ')
 t_dense
 disp('e6')
