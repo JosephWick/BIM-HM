@@ -69,9 +69,9 @@ function r = build()
   L3f = L3f(:)';
   c.L = [L1f; L2f; L3f];
 
-  disp(size(c.X))
-  disp(size(c.Y))
-  disp(size(c.L))
+  %disp(size(c.X))
+  %disp(size(c.Y))
+  %disp(size(c.L))
 
   %  create kernel based on mesh
   G = 30e3;
@@ -124,7 +124,7 @@ function measure(b)
   v(ia:ib,ia:ib,ia:ib) = 1.0;
   v = v(:);
 
-  numIter = 5;
+  numIter = 100;
 
 
   disp('timing e6...')
