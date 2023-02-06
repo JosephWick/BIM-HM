@@ -10,14 +10,14 @@ end
 function r = build()
   addpaths();
 
-  Ns = [5, 10, 20, 30, 40, 50];
+  Ns = [10, 20, 30, 40, 50];
   % total elems in mesh: [125, 1000, 15625, 125000, 1000000]
   probDim = 200e3; %200km
   transition = 40e3;
 
   disp('Run the following commands in a shell to build all HMs')
 
-  i = 1;
+  i = 3;
   N = Ns(i);
   r.N = N;
 
