@@ -124,7 +124,7 @@ function measure(b)
   v(ia:ib,ia:ib,ia:ib) = 1.0;
   v = v(:);
 
-  numIter = 100;
+  numIter = 500;
 
 
   disp('timing e6...')
