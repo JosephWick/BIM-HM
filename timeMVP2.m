@@ -10,7 +10,7 @@ end
 function r = build()
   addpaths();
 
-  Ns = [10, 20, 30, 40, 46];
+  Ns = [10, 20, 30, 40, 45];
   % total elems in mesh: [125, 1000, 15625, 125000, 1000000]
   probDim = 200e3; %200km
   transition = 40e3;
