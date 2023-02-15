@@ -10,8 +10,8 @@ end
 function r = build()
   addpaths();
 
-  Ns = [10, 20, 30, 40, 42];
-  % total elems in mesh: [1000, 8000, 27000, 64000, 74000]
+  Ns = [30, 90, 164, 250, 275];
+  % total elems in mesh: [900, 8100, 27000, 62500, 75,600]
   probDim = 200e3; %200km
   transition = 40e3;
 
@@ -24,15 +24,15 @@ function r = build()
   eps = 1e-12;
   nc = (-N/2:N/2);
 
-  Xhat = linspace(0, probDim, N);
   Yhat = tan(nc*pi/(2.5*max(nc)))*32e3;
   Zhat = transition+tan((0:N)'*pi/(2.2*(N+eps)))*transition;
+  Xhat = zeros(sze(Yhat));
 
-  L1 = abs(Xhat(1)-Xhat(2))*ones(1,N); % xhat direction is uniform meshing
+  L1 = zeros(1,N); % xhat direction is uniform meshing
   L2 = zeros(1,N);
   L3 = zeros(1,N);
 
-  Xchat = Xhat+(L1(1)/2);
+  Xchat = zeros(size(L3));
   Ychat = zeros(1,N);
   Zchat = zeros(1,N);
   for idx=(1:length(Zhat)-1)
@@ -81,7 +81,7 @@ function r = build()
 
   % general things
   c.command = 'compress';
-  c.greens_fn = 'time';
+  c.greens_fn = 'shear1212';
   c.err_method = 'mrem-fro';
   c.allow_overwrite = 1;
 
@@ -89,8 +89,8 @@ function r = build()
 
   % tolerance 1e-6;
   c.tol = 1e-6;
-  c.write_hmat_filename = './tmp/t3d_e6';
-  c.write_hd_filename = './tmp/t3d_e6-hd';
+  c.write_hmat_filename = './tmp/t2d_e6';
+  c.write_hd_filename = './tmp/t2d_e6-hd';
   c.kvf = [c.write_hmat_filename '.kvf'];
   kvf('Write', c.kvf, c, 4);
   cmd = ['    include/hmmvp/bin/hmmvpbuild_omp ' c.kvf];
@@ -99,8 +99,8 @@ function r = build()
 
   % tolerance 1e-8;
   c.tol = 1e-8;
-  c.write_hmat_filename = './tmp/t3d_e8';
-  c.write_hd_filename = './tmp/t3d_e8-hd';
+  c.write_hmat_filename = './tmp/t2d_e8';
+  c.write_hd_filename = './tmp/t2d_e8-hd';
   c.kvf = [c.write_hmat_filename '.kvf'];
   kvf('Write', c.kvf, c, 4);
   cmd = ['    include/hmmvp/bin/hmmvpbuild_omp ' c.kvf];
@@ -118,10 +118,10 @@ function measure(b)
   t_dense = -1;
 
   rng('default');
-  v = zeros(N,N,N);
+  v = zeros(N,N);
   ia = floor(N/4);
   ib = floor(3*N/4);
-  v(ia:ib,ia:ib,ia:ib) = 1.0;
+  v(ia:ib,ia:ib) = 1.0;
   v = v(:);
 
   numIter = 500;

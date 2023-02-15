@@ -42,7 +42,7 @@ function r = build()
   ss.probL = 200e3; % left/right; ie yhat
   ss.probW = 100e3; % up/down; ie zhat
 
-  param1 = 3.1 %3.1 for 100e3 probW, 2.3 for 200e3 probW
+  param1 = 3.1; %3.1 for 100e3 probW, 2.3 for 200e3 probW
 
   ss.lambdaZ = 40e3; % fault depth extent
   ss.M = 1600; % number of fault cells, this is 25m patches
