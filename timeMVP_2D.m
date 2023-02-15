@@ -28,49 +28,41 @@ function r = build()
   Zhat = transition+tan((0:N)'*pi/(2.2*(N+eps)))*transition;
   Xhat = zeros(size(Yhat));
 
-  L1 = zeros(1,N); % xhat direction is uniform meshing
-  L2 = zeros(1,N);
-  L3 = zeros(1,N);
+  L = zeros(1,N);
+  W = zeros(1,N);
 
-  Xchat = zeros(size(L3));
+  Xchat = zeros(1,N);
   Ychat = zeros(1,N);
   Zchat = zeros(1,N);
   for idx=(1:length(Zhat)-1)
-    L2(idx) = abs(Yhat(idx) - Yhat(idx+1));
-    L3(idx) = abs(Zhat(idx) - Zhat(idx+1));
+    L(idx) = abs(Yhat(idx) - Yhat(idx+1));
+    W(idx) = abs(Zhat(idx) - Zhat(idx+1));
 
     Ychat(idx) = Yhat(idx) - abs(Yhat(idx) - Yhat(idx+1))/2;
     Zchat(idx) = Zhat(idx) - abs(Zhat(idx) - Zhat(idx+1))/2;
   end
-  L2(end) = L2(1);
-  L3(end) = abs(Zhat(end-1) - Zhat(end));
+  L(end) = L(1);
+  W(end) = abs(Zhat(end-1) - Zhat(end));
   Yhat(end)=[]; Zhat(end)=[];
 
   length(Xhat);
   length(Yhat);
   length(Zhat);
 
-  % --- 3D Mesh ---
-  [Z, Y, X] = ndgrid(Zhat, Yhat, Xhat);
-  X = X(:)';
-  Y = Y(:)';
-  Z = Z(:)';
-  c.X = [X; Y; Z];
+  % --- Package for KVFs ---
+  [shearY shearZ] = ndgrid(Yhat, Zhat);
+  [shearY_c shearZ_c] = ndgrid(Ychat, Zchat);
 
-  [Zc,Yc,Xc] = ndgrid(Zchat, Ychat, Xchat);
-  Xc = Xc(:)';
-  Yc = Yc(:)';
-  Zc = Zc(:)';
-  c.Y = [Xc; Yc; Zc];
+  shearX = zeros(size(shearY));
+  shearX_c = zeros(size(shearY_c));
 
-  c.Z = c.X;
+  c.L = L;
+  c.W = W;
 
-  C.L = L1;
-  C.W = L2;
+  c.X = [shearX_c(:)'; shearY(:)''; shearZ(:)'];
+  c.Y = [Xhat'; Ychat'; Zchat'];
 
-  %disp(size(c.X))
-  %disp(size(c.Y))
-  %disp(size(c.L))
+  c.Z = [shearX(:)'; sharY(:)'; shearZ(:)'];
 
   %  create kernel based on mesh
   G = 30e3;
