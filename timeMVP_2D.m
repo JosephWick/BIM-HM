@@ -63,6 +63,8 @@ function r = build()
   Zc = Zc(:)';
   c.Y = [Xc; Yc; Zc];
 
+  c.Z = c.X;
+
   [L3f, L2f, L1f] = ndgrid(L3, L2, L1);
   L1f = L1f(:)';
   L2f = L2f(:)';
