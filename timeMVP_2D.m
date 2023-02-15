@@ -67,8 +67,8 @@ function r = build()
   c.Z = [shearX(:)'; shearY(:)'; shearZ(:)'];
 
   %  create kernel based on mesh
-  G = 30e3;
-  nu = 0.25; % this is fine
+  c.G = 30e3;
+  c.nu = 0.25; % this is fine
   % theta is zero
   % eps12 can be 1; others zero
 
