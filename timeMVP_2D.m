@@ -62,7 +62,7 @@ function r = build()
   c.X = [shearX_c(:)'; shearY(:)'; shearZ(:)'];
   c.Y = [Xhat'; Ychat'; Zchat'];
 
-  c.Z = [shearX(:)'; sharY(:)'; shearZ(:)'];
+  c.Z = [shearX(:)'; shearY(:)'; shearZ(:)'];
 
   %  create kernel based on mesh
   G = 30e3;
