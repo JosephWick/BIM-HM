@@ -62,7 +62,7 @@ function r = build()
   c.X = [shearX_c(:)'; shearY(:)'; shearZ(:)'];
   c.Y = [Xhat'; Ychat'; Zchat'];
 
-  size(Y)
+  size(c.Y)
 
   c.Z = [shearX(:)'; shearY(:)'; shearZ(:)'];
 
