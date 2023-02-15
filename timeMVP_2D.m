@@ -59,7 +59,7 @@ function r = build()
   c.L = L;
   c.W = W;
 
-  c.X = [shearX_c(:)'; shearY(:)''; shearZ(:)'];
+  c.X = [shearX_c(:)'; shearY(:)'; shearZ(:)'];
   c.Y = [Xhat'; Ychat'; Zchat'];
 
   c.Z = [shearX(:)'; sharY(:)'; shearZ(:)'];
