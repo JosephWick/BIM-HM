@@ -43,7 +43,7 @@ function r = build()
   end
   L(end) = L(1);
   W(end) = abs(Zhat(end-1) - Zhat(end));
-  Yhat(end)=[]; Zhat(end)=[];
+  Yhat(end)=[]; Zhat(end)=[]; Xhat(end)=[];
 
   length(Xhat);
   length(Yhat);
@@ -60,7 +60,7 @@ function r = build()
   c.W = W;
 
   c.X = [shearX_c(:)'; shearY(:)'; shearZ(:)'];
-  c.Y = [Xhat'; Ychat'; Zchat'];
+  c.Y = [Xhat; Ychat; Zchat];
 
   size(c.Y)
 
