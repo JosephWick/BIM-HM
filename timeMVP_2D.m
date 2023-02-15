@@ -65,11 +65,8 @@ function r = build()
 
   c.Z = c.X;
 
-  [L3f, L2f, L1f] = ndgrid(L3, L2, L1);
-  L1f = L1f(:)';
-  L2f = L2f(:)';
-  L3f = L3f(:)';
-  c.L = [L1f; L2f; L3f];
+  C.L = L1;
+  C.W = L2;
 
   %disp(size(c.X))
   %disp(size(c.Y))
