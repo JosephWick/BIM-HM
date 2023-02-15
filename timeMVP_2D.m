@@ -26,7 +26,7 @@ function r = build()
 
   Yhat = tan(nc*pi/(2.5*max(nc)))*32e3;
   Zhat = transition+tan((0:N)'*pi/(2.2*(N+eps)))*transition;
-  Xhat = zeros(sze(Yhat));
+  Xhat = zeros(size(Yhat));
 
   L1 = zeros(1,N); % xhat direction is uniform meshing
   L2 = zeros(1,N);
