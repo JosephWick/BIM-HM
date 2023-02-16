@@ -431,6 +431,9 @@ while ~done
             file_i=file_i+1;
             yOUT=fopen(sprintf('%s/yOUT_%d.dat',oDir,file_i),'wt');
             byteCount=0;
+            % does this break things?
+            ynew = [];
+            tnew = [];
         end
      end
 %   end
