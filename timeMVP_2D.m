@@ -124,7 +124,7 @@ function measure(b)
   disp('timing e6...')
   t6 = [];
   for j=1:5
-    hme6 = hmmvp('init', b.kvfe6);
+    hme6 = hmmvp('init', b.kvfe6, 1);
     now = tic();
     x = hmmvp('mvp', hme6, v);
     t = toc(now);
@@ -135,7 +135,7 @@ function measure(b)
   disp('timing e8...')
   t8 = [];
   for j=1:5
-    hme8 = hmmvp('init', b.kvfe8);
+    hme8 = hmmvp('init', b.kvfe8, 1);
     now = tic();
     x = hmmvp('mvp', hme8, v);
     t = toc(now);
