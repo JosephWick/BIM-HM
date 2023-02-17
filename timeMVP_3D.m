@@ -17,7 +17,7 @@ function r = build()
 
   disp('Run the following commands in a shell to build all HMs')
 
-  i = 4;
+  i = 3;
   N = Ns(i);
   r.N = N;
 
