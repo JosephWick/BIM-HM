@@ -295,7 +295,7 @@ ss.Tprof  = 300+1380*erf(ss.x3c/(sqrt(4* Kappa * Age_plate)));  % Kelvin
 % equations 6 and 7 in the overleaf
 % add factor of plate rate out front
 Df = ss.lambdaZ;
-Dv = ss.probW-ss.lambdaZ;
+Dv = probW-ss.lambdaZ;
 w = 10;
 
 % Power-Law Exponent
