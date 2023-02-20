@@ -76,7 +76,7 @@ function r = build()
   shearYhat = tan(nc*pi/(2.5*max(nc)))*(160*ss.probL/1000); %32000
   shearXhat = zeros(size(shearZhat));
 
-  disp(shearZhat');
+  %disp(shearZhat')
 
   % shear patch centers
   shearX_c = zeros(ss.Ny,ss.Nz);
