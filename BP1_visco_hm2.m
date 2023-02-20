@@ -356,12 +356,12 @@ function out = run(b)
   x3p = (x3-Df)/Dv;
 
   m=1;
-  sum12 = 0.0;
-  sum13 = 0.0;
+  sum12 = zeros(size(x2p));
+  sum13 = zeros(size(x2p));
   sterm12 = e12Terms(x2p,x3p,m, n_scalar, w);
   sterm13 = e13Terms(x2p,x3p,m, n_scalar, w);
 
-  while sterm12 >= sum12*0.001 || sterm13 >= sum13*0.001
+  while min(sterm12) >= min(sum12)*0.001 || min(sterm13) >= min(sum13)*0.001
     sum12 = sum12 + sterm12;
     sum13 = sum13 + sterm13;
     m=m+1;
