@@ -330,6 +330,19 @@ function out = run(b)
   fprintf('QS Cohesive zone = %.2f (m)\n',coh);
   fprintf('Est. Recurrence time = %.2f (yr)\n\n', Ti/3.15e7);
 
+  % - OLD/2F
+  % Confining pressure (MPa) and Temperature (K)
+  k  = 3.138; % thermal conductivity (W/m/K)
+  Cp = 1171 ; % specific heat (J/kg/K)
+  Rm = 3330 ; % mantle density (kg/m^3)
+
+  Pconf       = Rm*9.8*ss.x3c/1e6;  % Shear zones
+  Pconf_fault = Rm*9.8*(ss.y3f+dz); % Faults
+
+  Kappa     = k / (Rm * Cp); % Thermal diffusivity (m^2/s)
+  Age_plate = 2e15; % seconds
+  ss.Tprof  = 300+1380*erf(ss.x3c/(sqrt(4* Kappa * Age_plate)));  % Kelvin
+
   %% % % % % % % % % % % % % % % % % % % % % % % % % % % %
   %                                                      %
   %                   R H E O L O G Y                    %
