@@ -354,7 +354,7 @@ function out = run(b)
   x2p = ss.shearY_c./Dv;
   x3p = (ss.shearZ_c-Df)./Dv;
 
-  for i=1:1:ss.Ny*ss.Nz
+  for i=1:1:ss.Ny*ss.Nz;
     ss.e12p_plate(i) = ss.Vpl_scalar*getE12(x2p(i),x3p(i),n_scalar, w);
     ss.e13p_plate(i) = ss.Vpl_scalar*getE13(x2p(i),x3p(i),n_scalar, w);
   end
