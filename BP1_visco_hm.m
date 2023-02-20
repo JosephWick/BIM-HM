@@ -354,6 +354,9 @@ function out = run(b)
   x2p = ss.shearY_c./Dv;
   x3p = (ss.shearZ_c-Df)./Dv;
 
+  csvwrite('x2p.csv',x2p);
+  csvwrite('x3p.csv',x3p);
+
   for i=1:1:ss.Ny*ss.Nz;
     ss.e12p_plate(i) = ss.Vpl_scalar*getE12(x2p(i),x3p(i),n_scalar, w);
     ss.e13p_plate(i) = ss.Vpl_scalar*getE13(x2p(i),x3p(i),n_scalar, w);
@@ -375,9 +378,9 @@ function out = run(b)
   e120 = zeros(size(s120));
   e130 = zeros(size(s130));
 
-  %csvwrite('e12p.csv', ss.e12p_plate);
-  %csvwrite('s120.csv', s120);
-  %csvwrite('s130.csv', s130);
+  csvwrite('e12p.csv', ss.e12p_plate);
+  csvwrite('s120.csv', s120);
+  csvwrite('s130.csv', s130);
 
   %% % % % % % % % % % % % % % % % % % % % % % % % % % % %
   %                                                       %
