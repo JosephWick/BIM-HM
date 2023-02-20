@@ -355,13 +355,13 @@ function out = run(b)
   x2p = x2/Dv;
   x3p = (x3-Df)/Dv;
 
-  m=1
+  m=1;
   sum12 = 0.0;
   sum13 = 0.0;
   sterm12 = e12Terms(x2p,x3p,m, n_scalar, w);
   sterm13 = e13Terms(x2p,x3p,m, n_scalar, w);
 
-  while sterm12 >= summ12*0.001 || sterm13 >= summ13*0.001
+  while sterm12 >= sum12*0.001 || sterm13 >= sum13*0.001
     sum12 = sum12 + sterm12;
     sum13 = sum13 + sterm13;
     m=m+1;
