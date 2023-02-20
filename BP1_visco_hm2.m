@@ -440,7 +440,7 @@ function out = run(b)
 
   % initialize the function handle with
   % set constitutive parameters
-  yp=@(t,y) odeBP1v_hm(t,y,ss, hm);
+  yp=@(t,y) odeBP1v_hm2(t,y,ss, hm);
   disp('begin solving...')
   tic
   % Solve the system
