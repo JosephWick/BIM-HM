@@ -338,7 +338,7 @@ function out = run(b)
   % Values taken for wet olivine - Hirth, G. and D. Kohlstedt (2003)
 
   % Driving strain rate (1/s)
-  ss.e12p_plate = 1e-14*ones(length(ss.x2c)*length(ss.x3c),1);
+  ss.e12p_plate = 1e-14*ones(length(ss.shearY_chat)*length(ss.shearZ_chat),1);
   ss.e13p_plate =      zeros(length(ss.x2c)*length(ss.x3c),1);
 
   % Rheological Parameters
