@@ -342,7 +342,7 @@ function out = run(b)
   % add factor of plate rate out front
   Df = ss.lambdaZ;
   Dv = ss.probW-ss.lambdaZ;
-  w = 10;
+  w = 10.0;
 
   % Power-Law Exponent
   ss.n = 3.0*ones(ss.Nz*ss.Ny,1);
@@ -350,38 +350,13 @@ function out = run(b)
 
   ss.e12p_plate = zeros(ss.Nz*ss.Ny, 1);
   ss.e13p_plate = zeros(ss.Nz*ss.Ny, 1);
-  for i=1:1:ss.Ny
-    for j = 1:1:ss.Nz
-      x2 = ss.shearY_chat(i); % centers
-      x3 = ss.shearZ_chat(j);
-      x2p = x2/Dv;
-      x3p = (x3-Df)/Dv;
 
-      summ12 = 0.0;
-      summ13 = 0.0;
-      m = 1;
+  x2p = ss.shearY_c./Dv;
+  x3p = (ss.shearZ_c-Df)./Dv;
 
-      % also consider term as percentage of the total
-      sterm12 = e12Terms(x2p, x3p, m, n_scalar, w);
-      sterm13 = e13Terms(x2p, x3p, m, n_scalar, w);
-      while sterm12 >= summ12*0.001 || sterm13 >= summ13*0.001
-        summ12 = summ12 + sterm12;
-        summ13 = summ13 + sterm13;
-        m = m + 1;
-        sterm12 = e12Terms(x2p, x3p, m, n_scalar, w);
-        sterm13 = e13Terms(x2p, x3p, m, n_scalar, w);
-        if imag(sterm12) ~= 0 || imag(sterm13) ~= 0
-          %disp(sterm12)
-          %disp(sterm13)
-        end
-      end
-      ss.e12p_plate((j-1)*ss.Ny+i) = ss.Vpl_scalar * ( 1/(2*w) + (1/w)*summ12);
-      ss.e13p_plate((j-1)*ss.Ny+i) = ss.Vpl_scalar * ( (-1/(w*(n_scalar^0.5))) * summ13 );
-
-      if ss.e12p_plate((j-1)*ss.Ny+i) > 1e-2 || ss.e13p_plate((j-1)*ss.Ny+i) > 1e-2
-        disp([i,j])
-      end
-    end
+  for i=1:1:ss.Ny*ss.Nz
+    ss.e12p_plate(i) = getE12(x2p(i),x3p(i),n_scalar, w);
+    ss.e13p_plate(i) = getE13(x2p(i),x3p(i),n_scalar, w);
   end
 
   %ss.e12p_plate = 1e-14*ones(length(ss.shearY_chat)*length(ss.shearZ_chat),1);
