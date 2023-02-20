@@ -4,7 +4,6 @@ function y = getE13(x2p, x3p, n, w)
   sum = 0.0;
 
   sterm = e13Terms(x2p,x3p, m, n, w);
-  disp(sterm)
   while m < 1000
     sum = sum + sterm;
     m = m+1;

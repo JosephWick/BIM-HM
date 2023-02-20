@@ -394,7 +394,7 @@ function out = run(b)
 
   % Strengh profile
   s120 = (ss.e12p_plate./ss.Const_dis).^(1./ss.n);
-  s130 = 0.001*ones(size(s120));
+  s130 = 0.0*ones(size(s120));
   e120 = zeros(size(s120));
   e130 = zeros(size(s120));
 
