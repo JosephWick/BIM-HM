@@ -394,25 +394,25 @@ end
 
 % save entire Y vector
 disp(size(Y))
-mat2np(Y, 'pickles/BP1vD2_Y.pkl', 'float64');
+mat2np(Y, 'pickles/BP1vD_Y.pkl', 'float64');
 
 % Strain rate at center
 Ep=sqrt(Yp(:,ss.M*ss.dgfF+floor(length(ss.x2c)/2)*ss.dgfS+3:ss.dgfS* ...
           length(ss.x2c):end)'.^2 +...
         Yp(:,ss.M*ss.dgfF+floor(length(ss.x2c)/2)*ss.dgfS+4:ss.dgfS* ...
           length(ss.x2c):end)'.^2);
-mat2np(Ep, 'pickles/BP1vD2_strainCenter.pkl', 'float64');
+mat2np(Ep, 'pickles/BP1vD_strainCenter.pkl', 'float64');
 
 % strain rate over whole ductile area
 Epall = sqrt( Yp(:,ss.M*ss.dgfF+3:ss.dgfS:end)'.^2 +...
              Yp(:,ss.M*ss.dgfF+4:ss.dgfS:end)'.^2);
-mat2np(Epall, 'pickles/BP1vD2_strainAll.pkl', 'float64');
+mat2np(Epall, 'pickles/BP1vD_strainAll.pkl', 'float64');
 
 % Velocity
 y.V = Yp(:,1:ss.dgfF:ss.M*ss.dgfF); % Slip rate (m/s)
 y.V = y.V';
 y.tau = Y(:,2:ss.dgfF:ss.M*ss.dgfF);            % Shear stress (MPa)
-mat2np(y.V, 'pickles/BP1vD2_V.pkl', 'float64');
+mat2np(y.V, 'pickles/BP1vD_V.pkl', 'float64');
 
 % fault slip figure
 clf;
@@ -420,7 +420,7 @@ imagesc(log10(y.V)); colorbar;
 title('Slip Rate')
 xlabel('time steps')
 ylabel('fault mesh block')
-saveas(gcf, 'figures/BP1vD2_slip.png')
+saveas(gcf, 'figures/BP1vD_slip.png')
 
 % strain rate at center of ductile region
 clf;
@@ -428,7 +428,7 @@ imagesc(log10(Ep)); colorbar;
 title('Strain Rate of Center of Ductile Region')
 xlabel('Time Steps')
 ylabel('Block')
-saveas(gcf, 'figures/BP1vD2_strainCenter.png')
+saveas(gcf, 'figures/BP1vD_strainCenter.png')
 
 % ---         Movies        ---
 Smovie=true;
@@ -436,7 +436,7 @@ if Smovie
   disp('begin shear movie')
   clf;
   fig = figure;
-  fname = 'figures/BP1vD2_strain.gif';
+  fname = 'figures/BP1vD_strain.gif';
   for idx = 1:size(Epall, 2)
     oneE = Epall(:,idx);
     oneEsq = reshape(oneE, [ss.Ny, ss.Nz]);
@@ -464,7 +464,7 @@ if Fmovie
   disp('begin fault movie')
   clf;
   fig = figure;
-  fname='figures/BP1vD2_slip.gif';
+  fname='figures/BP1vD_slip.gif';
   for idx = 1:size(y.V,1)
     oneV = y.V(idx,:)';
     imagesc(oneV); colorbar; caxis([1e-15 5e-14]);
