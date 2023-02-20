@@ -357,8 +357,8 @@ function out = run(b)
       x2p = x2/Dv;
       x3p = (x3-Df)/Dv;
 
-      summ12 = 0;
-      summ13 = 0;
+      summ12 = 0.0;
+      summ13 = 0.0;
       m = 1;
 
       % also consider term as percentage of the total
