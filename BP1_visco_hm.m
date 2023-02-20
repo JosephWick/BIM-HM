@@ -378,11 +378,11 @@ function out = run(b)
   e120 = zeros(size(s120));
   e130 = zeros(size(s130));
 
-  s120 = csvread('s120.csv');
-
   csvwrite('e12p.csv', ss.e12p_plate);
   csvwrite('s120.csv', s120);
   csvwrite('s130.csv', s130);
+
+  s120 = csvread('s120.csv');
 
   %% % % % % % % % % % % % % % % % % % % % % % % % % % % %
   %                                                       %
