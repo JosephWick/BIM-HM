@@ -397,7 +397,7 @@ function out = run(b)
   s130 = csvread('s130.csv');
 
   %s120 = (ss.e12p_plate./ss.Const_dis).^(1./ss.n);
-  s120 = 0.01*ones(size(s130));
+  s120 = 1*ones(size(s130));
   %s130 = 0.0*ones(size(s120));
   e120 = zeros(size(s120));
   e130 = zeros(size(s120));
