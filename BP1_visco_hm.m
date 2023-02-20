@@ -337,8 +337,6 @@ function out = run(b)
   % % % % % % % % % % % % % % % % % % % % % % % % % % % %%
   % Values taken for wet olivine - Hirth, G. and D. Kohlstedt (2003)
 
-  % Driving strain rate (1/s)
-
   % solve for using the epsilon dot
   % equations 6 and 7 in the overleaf
   % add factor of plate rate out front
