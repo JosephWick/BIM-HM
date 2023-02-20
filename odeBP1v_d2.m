@@ -48,7 +48,7 @@ V = ss.Vo.* exp(Y(4:ss.dgfF:ss.M*ss.dgfF));
 % Shear stress in zones of distributed deformation
 tau12=Y(ss.M*ss.dgfF+1:ss.dgfS:end);
 tau13=Y(ss.M*ss.dgfF+2:ss.dgfS:end);
-tau=sqrt(tau12.^2+tau13.^2);
+tau_mag=sqrt(tau12.^2+tau13.^2);
 
 % Dislocation strain rate
 e_mag = ss.A.*(tau_mag.^ss.n);
