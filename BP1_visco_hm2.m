@@ -353,7 +353,7 @@ function out = run(b)
 
   [x2,x3] = meshgrid(ss.shearY_chat, ss.shearZ_chat);
   x2p = x2/Dv;
-  x3p = (x3-Df)/Dv
+  x3p = (x3-Df)/Dv;
 
   m=1
   sum12 = 0.0;
@@ -369,8 +369,8 @@ function out = run(b)
     sterm13 = e13Terms(x2p,x3p,m, n_scalar, w);
   end
 
-  ss.e12p_plate = ss.Vpl_scalar * ( 1/(2*w) + (1/w)*summ12(:));
-  ss.e13p_plate = ss.Vpl_scalar * ( (-1/(w*(n_scalar^0.5))) * summ13(:) );
+  ss.e12p_plate = ss.Vpl_scalar * ( 1/(2*w) + (1/w)*sum12(:));
+  ss.e13p_plate = ss.Vpl_scalar * ( (-1/(w*(n_scalar^0.5))) * sum13(:) );
 
   %ss.e12p_plate = 1e-14*ones(length(ss.shearY_chat)*length(ss.shearZ_chat),1);
   %ss.e13p_plate =      zeros(length(ss.shearY_chat)*length(ss.shearZ_chat),1);
