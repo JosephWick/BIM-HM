@@ -393,7 +393,7 @@ function out = run(b)
     ss.COH.^(ss.r).*ss.d.^(-ss.pexp);
 
   % Strengh profile
-  s120 = csvread('s120.csv');
+  %s120 = csvread('s120.csv');
   s130 = csvread('s130.csv');
 
   s120 = (ss.e12p_plate./ss.Const_dis).^(1./ss.n);
