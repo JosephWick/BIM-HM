@@ -337,61 +337,53 @@ function out = run(b)
   % % % % % % % % % % % % % % % % % % % % % % % % % % % %%
   % Values taken for wet olivine - Hirth, G. and D. Kohlstedt (2003)
 
-  % solve for using the epsilon dot
-  % equations 6 and 7 in the overleaf
-  % add factor of plate rate out front
-  Df = ss.lambdaZ;
-  Dv = ss.probW-ss.lambdaZ;
-  w = 10;
+  % Driving strain rate (1/s)
+  ss.e12p_plate = 1e-14*ones(length(ss.x2c)*length(ss.x3c),1);
+  ss.e13p_plate =      zeros(length(ss.x2c)*length(ss.x3c),1);
+
+  % Rheological Parameters
+  % Reference Strain Rate (for stress in MPa)
+  ss.Adif = 1e6*ones(length(ss.x3c)*length(ss.x2c),1);
+  ss.Adis = 90 *ones(length(ss.x3c)*length(ss.x2c),1);
 
   % Power-Law Exponent
-  ss.n = 3.0*ones(ss.Nz*ss.Ny,1);
-  n_scalar = 3.0;
+  ss.n = 3.5*ones(length(ss.x3c)*length(ss.x2c),1);
 
-  ss.e12p_plate = zeros(ss.Nz*ss.Ny, 1);
-  ss.e13p_plate = zeros(ss.Nz*ss.Ny, 1);
+  % Activation Energy Wet Oliving (J/mol)
+  ss.Qdif = 335e3*ones(length(ss.x3c)*length(ss.x2c),1);
+  ss.Qdis = 480e3*ones(length(ss.x3c)*length(ss.x2c),1);
 
-  [x2,x3] = meshgrid(ss.shearY_chat, ss.shearZ_chat);
-  x2 = x2(:); x3 = x3(:);
-  x2p = x2/Dv;
-  x3p = (x3-Df)/Dv;
+  % Activation Volume (m^3/mol)
+  ss.Voldif = 4e-6*ones(length(ss.x3c)*length(ss.x2c),1);
+  ss.Voldis = 11e-6*ones(length(ss.x3c)*length(ss.x2c),1);
 
-  m=1;
-  sum12 = zeros(size(x2p));
-  sum13 = zeros(size(x2p));
-  sterm12 = e12Terms(x2p,x3p,m, n_scalar, w);
-  sterm13 = e13Terms(x2p,x3p,m, n_scalar, w);
+  % Grain size (m)
+  ss.d    = 1e-2*ones(length(ss.x3c)*length(ss.x2c),1);
+  ss.pexp = 3*ones(length(ss.x3c)*length(ss.x2c),1);
 
-  while min(sterm12) >= min(sum12)*0.001 || min(sterm13) >= min(sum13)*0.001
-    sum12 = sum12 + sterm12;
-    sum13 = sum13 + sterm13;
-    m=m+1;
-    sterm12 = e12Terms(x2p,x3p,m, n_scalar, w);
-    sterm13 = e13Terms(x2p,x3p,m, n_scalar, w);
-  end
+  % Water fugacity (H/10^6 Si)
+  ss.COH = 1000*ones(length(ss.x3c)*length(ss.x2c),1);
+  ss.r   = 1.2*ones(length(ss.x3c)*length(ss.x2c),1);
 
-  ss.e12p_plate = ss.Vpl_scalar * ( 1/(2*w) + (1/w)*sum12 );
-  ss.e13p_plate = ss.Vpl_scalar * ( (-1/(w*(n_scalar^0.5))) * sum13 );
+  % Pressure (Pa)
+  ss.P = repmat(1e6*Pconf',length(ss.x2c),1);
+  ss.P = reshape(ss.P,[length(ss.x2c)*length(ss.x3c),1]);
 
-  %ss.e12p_plate = 1e-14*ones(length(ss.shearY_chat)*length(ss.shearZ_chat),1);
-  %ss.e13p_plate =      zeros(length(ss.shearY_chat)*length(ss.shearZ_chat),1);
+  % Temperature (K)
+  Te0 = repmat(ss.Tprof',length(ss.x2c),1);
+  Te0 = reshape(Te0,[length(ss.x2c)*length(ss.x3c),1]);
 
-  % Strength profile
-  ss.A = 1e-1;
+  % Coefficients for dislocation and diffusion creep
+  ss.Const_dis = ss.Adis.*exp(-(ss.Qdis+ss.P.*ss.Voldis)./(8.314.*Te0)).* ...
+    ss.COH.^(ss.r);
+  ss.Const_diff = ss.Adif.*exp(-(ss.Qdif+ss.P.*ss.Voldif)./(8.314.*Te0)).* ...
+    ss.COH.^(ss.r).*ss.d.^(-ss.pexp);
 
-  e_mag_plate = sqrt(ss.e12p_plate.^2 + ss.e13p_plate.^2);
-  tau0_mag = nthroot(e_mag_plate./ss.A, n_scalar);
-
-  s120 = (ss.e12p_plate./e_mag_plate).*tau0_mag;
-  s130 = (ss.e13p_plate./e_mag_plate).*tau0_mag;
-  %s120 = (ss.e12p_plate./ss.A).^(1./ss.n);
-  %s130 = (ss.e13p_plate./ss.A).^(1./ss.n);
+  % Strengh profile
+  s120 = (ss.e12p_plate./ss.Const_dis).^(1./ss.n);
+  s130 = zeros(size(s120));
   e120 = zeros(size(s120));
-  e130 = zeros(size(s130));
-
-  csvwrite('e12p.csv', ss.e12p_plate);
-  csvwrite('s120.csv', s120);
-  csvwrite('s130.csv', s130);
+  e130 = zeros(size(s120));
 
   %% % % % % % % % % % % % % % % % % % % % % % % % % % % %
   %                                                       %
