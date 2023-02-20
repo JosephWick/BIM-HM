@@ -4,7 +4,7 @@ function y = getE12(x2p, x3p, n, w)
   sum = 0.0;
 
   sterm = e12Terms(x2p,x3p, m, n, w);
-  while m <= 1000
+  while m <= 5000
     sum = sum + sterm;
     m = m+1;
     sterm = e12Terms(x2p,x3p, m, n, w);
