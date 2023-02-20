@@ -394,9 +394,9 @@ function out = run(b)
 
   % Strengh profile
   %s120 = (ss.e12p_plate./ss.Const_dis).^(1./ss.n);
-  %s130 = 0.0*ones(size(s120));
+  s130 = 0.0*ones(size(s120));
   s120 = csvread('s120.csv');
-  s130 = csvread('s130.csv');
+  %s130 = csvread('s130.csv');
   e120 = zeros(size(s120));
   e130 = zeros(size(s120));
 
@@ -426,8 +426,6 @@ function out = run(b)
   Y0(ss.M*ss.dgfF+2:ss.dgfS:end)=s130;
   Y0(ss.M*ss.dgfF+3:ss.dgfS:end)=e120;
   Y0(ss.M*ss.dgfF+4:ss.dgfS:end)=e130;
-
-  disp(size(Y0))
 
   % load kernels using hmmvp
   hm.ff12 = hmmvp('init', b.ff12, 4);
