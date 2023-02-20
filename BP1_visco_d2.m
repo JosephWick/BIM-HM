@@ -243,6 +243,7 @@ ss.Drs=8e-3*ones(size(ss.y3f));
 
 % plate rate (m/s)
 ss.Vpl=1e-9*ones(size(ss.y3f));
+ss.Vpl_scalar = 1e-9;
 
 % reference slip rate (m/s)
 ss.Vo=1e-6*ones(size(ss.y3f));
