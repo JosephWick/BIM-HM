@@ -352,6 +352,7 @@ function out = run(b)
   ss.e13p_plate = zeros(ss.Nz*ss.Ny, 1);
 
   [x2,x3] = meshgrid(ss.shearY_chat, ss.shearZ_chat);
+  x2 = x2(:); x3 = x3(:);
   x2p = x2/Dv;
   x3p = (x3-Df)/Dv;
 
