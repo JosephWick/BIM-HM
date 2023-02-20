@@ -5,7 +5,7 @@ function y = getE12(x2p, x3p, n, w)
 
   sterm = e12Terms(x2p,x3p, m, n, w);
   disp(sterm)
-  while sterm >= sum*0.001
+  while abs(sterm) >= abs(sum*0.001)
     sum = sum + sterm;
     m = m+1;
     sterm = e12Terms(x2p,x3p, m, n, w);
