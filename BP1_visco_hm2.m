@@ -394,7 +394,7 @@ function out = run(b)
 
   % Strengh profile
   s120 = (ss.e12p_plate./ss.Const_dis).^(1./ss.n);
-  s130 = zeros(size(s120));
+  s130 = 0.001*ones(size(s120));
   e120 = zeros(size(s120));
   e130 = zeros(size(s120));
 
@@ -445,7 +445,7 @@ function out = run(b)
   tic
   % Solve the system
   options=odeset('Refine',1,'RelTol',3e-7,'InitialStep',1e-3,'MaxStep',3e6);
-  [t,Y]=ode45_2(yp,[0 500*3.15e7],Y0,options);
+  [t,Y]=ode45_2(yp,[0 100*3.15e7],Y0,options);
   disp('done solving.')
   toc
   %%
