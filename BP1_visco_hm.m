@@ -431,6 +431,8 @@ function out = run(b)
   Y0(ss.M*ss.dgfF+3:ss.dgfS:end)=e120;
   Y0(ss.M*ss.dgfF+4:ss.dgfS:end)=e130;
 
+  disp(size(Y0))
+
   % load kernels using hmmvp
   hm.ff12 = hmmvp('init', b.ff12, 4);
   hm.ss1212 = hmmvp('init', b.ss1212, 32);
