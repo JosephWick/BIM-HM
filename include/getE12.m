@@ -9,5 +9,5 @@ function y = getE12(x2p, x3p, n, w)
     m = m+1;
     sterm = e12Terms(x2p,x3p, m, n, w);
 
-  y = (1/w)*sum;
+  y = 1/(2*w) + (1/w)*sum;
 end
