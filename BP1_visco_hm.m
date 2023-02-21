@@ -539,6 +539,7 @@ function out = run(b)
   end
 
   out.hm = hm;
+  out.Y = Y;
 
 end
 
