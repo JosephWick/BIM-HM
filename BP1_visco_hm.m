@@ -366,7 +366,7 @@ function out = run(b)
   %ss.e13p_plate =      zeros(length(ss.shearY_chat)*length(ss.shearZ_chat),1);
 
   % Strength profile
-  ss.A = 1e-1;
+  ss.A = 1e-4;
 
   e_mag_plate = sqrt(ss.e12p_plate.^2 + ss.e13p_plate.^2);
   tau0_mag = nthroot(e_mag_plate./ss.A, n_scalar);
@@ -429,7 +429,7 @@ function out = run(b)
   tic
   % Solve the system
   options=odeset('Refine',1,'RelTol',3e-7,'InitialStep',1e-3,'MaxStep',3e6);
-  [t,Y]=ode45_2(yp,[0 1*3.15e7],Y0,options);
+  [t,Y]=ode45_2(yp,[0 100],Y0,options);
   disp('done solving.')
   toc
   %%
