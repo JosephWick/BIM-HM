@@ -433,6 +433,7 @@ function out = run(b)
   %%
 
   Y = Y'; % Y has slip and shear stress
+  disp(size(Y))
 
   % Compute the instantaneous derivative
   Yp=zeros(length(t)-1,size(Y,2));
