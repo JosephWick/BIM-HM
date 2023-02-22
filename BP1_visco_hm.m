@@ -357,10 +357,8 @@ function out = run(b)
   csvwrite('x2p.csv',x2p);
   csvwrite('x3p.csv',x3p);
 
-  for i=1:1:ss.Ny*ss.Nz;
-    ss.e12p_plate(i) = ss.Vpl_scalar*getE12(x2p(i),x3p(i),n_scalar, w);
-    ss.e13p_plate(i) = ss.Vpl_scalar*getE13(x2p(i),x3p(i),n_scalar, w);
-  end
+  ss.e12p_plate(i) = ss.Vpl_scalar.*getE12(x2p,x3p, n_scalar, w);
+  ss.e13p_plate(i) = ss.Vpl_scalar.*getE13(x2p,x3p, n_scalar, w);
 
   %ss.e12p_plate = 1e-14*ones(length(ss.shearY_chat)*length(ss.shearZ_chat),1);
   %ss.e13p_plate =      zeros(length(ss.shearY_chat)*length(ss.shearZ_chat),1);
