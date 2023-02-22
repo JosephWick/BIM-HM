@@ -351,8 +351,8 @@ function out = run(b)
   ss.e12p_plate = zeros(ss.Nz*ss.Ny, 1);
   ss.e13p_plate = zeros(ss.Nz*ss.Ny, 1);
 
-  x2p = ss.shearY_c(:)' ./ Dv;
-  x3p = (ss.shearZ_c(:)' - Df)./Dv;
+  x2p = ss.shearY_c(:) ./ Dv;
+  x3p = (ss.shearZ_c(:) - Df)./Dv;
 
   csvwrite('x2p.csv',x2p);
   csvwrite('x3p.csv',x3p);
