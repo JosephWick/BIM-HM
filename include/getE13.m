@@ -1,9 +1,9 @@
 % terms in the summation for e13
 function y = getE13(x2p, x3p, n, w)
   m=1;
-  sum = zeros(size(x2p);
+  sum = zeros(size(x2p));
 
-  while m < 3900
+  while m <= 3900
     sterm = e13Terms(x2p,x3p, m, n, w);
     sum = sum + sterm;
     m = m+1;
