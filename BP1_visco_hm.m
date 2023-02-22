@@ -351,16 +351,14 @@ function out = run(b)
   ss.e12p_plate = zeros(ss.Nz*ss.Ny, 1);
   ss.e13p_plate = zeros(ss.Nz*ss.Ny, 1);
 
-  x2p = ss.shearY_c./Dv;
-  x3p = (ss.shearZ_c-Df)./Dv;
+  x2p = ss.shearY_c(:)' ./ Dv;
+  x3p = (ss.shearZ_c(:)' - Df)./Dv;
 
   csvwrite('x2p.csv',x2p);
   csvwrite('x3p.csv',x3p);
 
   ss.e12p_plate = ss.Vpl_scalar.*getE12(x2p,x3p, n_scalar, w);
   ss.e13p_plate = ss.Vpl_scalar.*getE13(x2p,x3p, n_scalar, w);
-
-  disp(size(ss.e12p_plate))
 
   %ss.e12p_plate = 1e-14*ones(length(ss.shearY_chat)*length(ss.shearZ_chat),1);
   %ss.e13p_plate =      zeros(length(ss.shearY_chat)*length(ss.shearZ_chat),1);
