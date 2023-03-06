@@ -373,12 +373,13 @@ disp('begin solving...')
 tic
 % Solve the system
 options=odeset('Refine',1,'RelTol',3e-7,'InitialStep',1e-3,'MaxStep',3e6);
-[t,Y]=ode45_2(yp,[0 500*3.15e7],Y0,options);
+[t,Y]=ode45_2(yp,[0 100],Y0,options);
 disp('done solving.')
 toc
 %%
 
 Y = Y';
+disp(size(Y))
 
 % Compute the instantaneous derivative
 Yp=zeros(length(t)-1,size(Y,2));
