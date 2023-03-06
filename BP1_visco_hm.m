@@ -342,7 +342,7 @@ function out = run(b)
   % add factor of plate rate out front
   Df = ss.lambdaZ;
   Dv = ss.probW-ss.lambdaZ;
-  w = 5/3; % from d/xmax 
+  w = 5/3; % from d/xmax
 
   % Power-Law Exponent
   ss.n = 3.0*ones(ss.Nz*ss.Ny,1);
@@ -427,7 +427,7 @@ function out = run(b)
   tic
   % Solve the system
   options=odeset('Refine',1,'RelTol',3e-7,'InitialStep',1e-3,'MaxStep',3e6);
-  [t,Y]=ode45_2(yp,[0 500*3.15e7],Y0,options);
+  [t,Y]=ode45_2(yp,[0 1],Y0,options);
   disp('done solving.')
   toc
   %%
