@@ -342,7 +342,7 @@ function out = run(b)
   % add factor of plate rate out front
   Df = ss.lambdaZ;
   Dv = ss.probW-ss.lambdaZ;
-  w = 5/3; % from d/xmax
+  w = (ss.probL/2)/(ss.probW-ss.lambdaZ)); % from d/xmax
 
   % Power-Law Exponent
   ss.n = 3.0*ones(ss.Nz*ss.Ny,1);
@@ -364,7 +364,7 @@ function out = run(b)
   %ss.e13p_plate =      zeros(length(ss.shearY_chat)*length(ss.shearZ_chat),1);
 
   % Strength profile
-  ss.A = 1;
+  ss.A = 1e-9;
 
   e_mag_plate = sqrt(ss.e12p_plate.^2 + ss.e13p_plate.^2);
   tau0_mag = nthroot(e_mag_plate./ss.A, n_scalar);
