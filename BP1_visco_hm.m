@@ -342,7 +342,7 @@ function out = run(b)
   % add factor of plate rate out front
   Df = ss.lambdaZ;
   Dv = ss.probW-ss.lambdaZ;
-  w = (ss.probL/2)/(ss.probW-ss.lambdaZ)); % from d/xmax
+  w = (ss.probL/2)/(ss.probW-ss.lambdaZ); % from d/xmax
 
   % Power-Law Exponent
   ss.n = 3.0*ones(ss.Nz*ss.Ny,1);
