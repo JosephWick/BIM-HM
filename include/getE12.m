@@ -3,7 +3,7 @@ function y = getE12(x2p, x3p, n, w)
   m=1;
   sum = zeros(size(x2p));
 
-  while m <= 3900
+  while m <= 657
     sterm = e12Terms(x2p,x3p, m, n, w);
     sum = sum + sterm;
     m = m+1;
