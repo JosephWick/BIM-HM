@@ -46,6 +46,7 @@ function r = build()
   % 3.1 for 100e3 probW
   % 2.3 for 200e3 probW
   % 0.301 for 50e3 probW
+  % https://www.desmos.com/calculator/qaiwea9e8w 
 
   ss.lambdaZ = 40e3; % fault depth extent
   ss.M = 1600; % number of fault cells, this is 25m patches
