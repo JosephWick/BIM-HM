@@ -46,7 +46,7 @@ function r = build()
   % 3.1 for 100e3 probW
   % 2.3 for 200e3 probW
   % 0.301 for 50e3 probW
-  % https://www.desmos.com/calculator/qaiwea9e8w 
+  % https://www.desmos.com/calculator/qaiwea9e8w
 
   ss.lambdaZ = 40e3; % fault depth extent
   ss.M = 1600; % number of fault cells, this is 25m patches
@@ -479,7 +479,7 @@ function out = run(b)
   title('Slip Rate')
   xlabel('time steps')
   ylabel('fault mesh block')
-  saveas(gcf, 'figures/BP1vHM2_slip.png')
+  saveas(gcf, 'figures/BP1vHM_slip.png')
 
   % strain rate at center of ductile region
   clf;
@@ -487,7 +487,7 @@ function out = run(b)
   title('Strain Rate of Center of Ductile Region')
   xlabel('Time Steps')
   ylabel('Block')
-  saveas(gcf, 'figures/BP1vHM2_strainCenter.png')
+  saveas(gcf, 'figures/BP1vHM_strainCenter.png')
 
   % ---         Movies        ---
   Smovie=false;
