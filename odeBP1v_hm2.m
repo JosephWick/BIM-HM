@@ -37,8 +37,6 @@ function [Yp]= odeBP1v_hm2(~,Y,ss,hm)
 %  and the latter portion considering strain in finite volumes with (s12,s13)
 %  and (e12,e13) being the 2D antiplane stress and strain components.
 
-G=30e3; % MPa
-
 % Shear stress on faults
 tauF = Y(2:ss.dgfF:ss.M*ss.dgfF);
 
@@ -50,12 +48,10 @@ tau12=Y(ss.M*ss.dgfF+1:ss.dgfS:end);
 tau13=Y(ss.M*ss.dgfF+2:ss.dgfS:end);
 tau_mag=sqrt(tau12.^2+tau13.^2);
 
-ss.A = 1e-1;
-
 % Dislocation strain rate
-e_mag = ss.A.*(tau_mag.^ss.n);
-e12p = (tau12./tau_mag).*e_mag;
-e13p = (tau13./tau_mag).*e_mag;
+Aeff = ss.Const_dis.* (tau).^(ss.n-1);
+e12p = tau12 .* Aeff;
+e13p = tau13 .* Aeff;
 
 % magnitudes ^ here again
 % directions of strain should be same as stress

@@ -40,9 +40,9 @@ function r = build()
 
   % Fault Meshes
   ss.probL = 200e3; % left/right; ie yhat
-  ss.probW = 200e3; % up/down; ie zhat
+  ss.probW = 100e3; % up/down; ie zhat
 
-  param1 = 2.3; %3.1 for 100e3 probW, 2.3 for 200e3 probW
+  param1 = 3.1; %3.1 for 100e3 probW, 2.3 for 200e3 probW
 
   ss.lambdaZ = 40e3; % fault depth extent
   ss.M = 1600; % number of fault cells, this is 25m patches
@@ -162,7 +162,6 @@ function r = build()
   c.Z = [shearX(:)'; shearY(:)'; shearZ(:)']; % for sizing purposes only
   % for some kernels, I found it easier to pass in the *_hat arrays rather than
   % the longer flattened arrays such as shearX_c(:)
-
 
   c.L = L;
   c.W = W;

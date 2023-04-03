@@ -43,9 +43,9 @@ function r = build()
   ss.probW = 100e3; % up/down; ie zhat
 
   param1 = 3.1;
-  % 3.1 for 100e3 probW
-  % 2.3 for 200e3 probW
-  % 0.301 for 50e3 probW
+  % 3.1 for 100e3 probW (40,000m transition)
+  % 2.3 for 200e3 probW (40,000m transition)
+  % 0.301 for 50e3 probW (20,000m transition)
   % https://www.desmos.com/calculator/qaiwea9e8w
 
   ss.lambdaZ = 40e3; % fault depth extent

@@ -37,8 +37,6 @@ function [Yp]= odeBP1v_hm2(~,Y,ss,hm)
 %  and the latter portion considering strain in finite volumes with (s12,s13)
 %  and (e12,e13) being the 2D antiplane stress and strain components.
 
-G=30e3; % MPa
-
 % Shear stress on faults
 tauF = Y(2:ss.dgfF:ss.M*ss.dgfF);
 
