@@ -431,9 +431,7 @@ function out = run(b)
   tic
   % Solve the system
   options=odeset('Refine',1,'RelTol',3e-7,'InitialStep',1e-3,'MaxStep',3e6);
-  tmax = 100;
-  disp(tmax)
-  [t,Y]=ode45_2(yp,[0 tmax],Y0,options);
+  [t,Y]=ode45_2(yp,[0 100],Y0,options);
   disp('done solving.')
   toc
   %%
