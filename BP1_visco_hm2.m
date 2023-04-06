@@ -266,7 +266,7 @@ end
 function out = run(b)
   addpaths();
 
-  ss = b.ss
+  ss = b.ss;
 
   % these are QDBIM style defns
   % shear wave speed (m/s)
