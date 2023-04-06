@@ -79,7 +79,7 @@ function varargout = ode45_2(ode,tspan,y0,options,varargin)
 solver_name = 'ode45';
 
 % byte count parameter
-bcm = 3e8;
+bcm = 3e7;
 disp(bcm)
 
 % Check inputs
