@@ -8,6 +8,7 @@ function y = getE12(x2p, x3p, n, w)
     if sterm ~= sterm
       break
     end
+    disp(sterm)
     sum = sum + sterm;
     m = m+1;
 
