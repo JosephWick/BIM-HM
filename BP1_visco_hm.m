@@ -363,7 +363,7 @@ function out = run(b)
 
   for i=1:length(x2p)
     ss.e12p_plate(i) = ss.Vpl_scalar.*getE12(x2p(i),x3p(i), n_scalar, w);
-    ss.e13p_plate(i) = ss.Vpl_scalar.*getE13(x2p(ii),x3p(i), n_scalar, w);
+    ss.e13p_plate(i) = ss.Vpl_scalar.*getE13(x2p(i),x3p(i), n_scalar, w);
   end
 
   %ss.e12p_plate = 1e-14*ones(length(ss.shearY_chat)*length(ss.shearZ_chat),1);
