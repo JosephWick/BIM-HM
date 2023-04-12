@@ -8,6 +8,5 @@ function y = getE13(x2p, x3p, n, w)
     sum = sum + sterm;
     m = m+1;
 
-  %y = (-1/(w*sqrt(n))) .* sum;
-  y = sum;
+  y = (-1/(w*sqrt(n))) .* sum;
 end
