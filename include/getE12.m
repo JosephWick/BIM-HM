@@ -8,5 +8,6 @@ function y = getE12(x2p, x3p, n, w)
     sum = sum + sterm;
     m = m+1;
 
-  y = 1/(2*w) + (1/w).*sum;
+  %y = 1/(2*w) + (1/w).*sum;
+  y = sum;
 end
