@@ -5,8 +5,8 @@ function y = getE13(x2p, x3p, n, w)
 
   while true
     sterm = e13Terms(x2p,x3p, m, n, w);
-    if anynan(sterm)
-      break 
+    if sterm ~= sterm
+      break
     end
     sum = sum + sterm;
     m = m+1;

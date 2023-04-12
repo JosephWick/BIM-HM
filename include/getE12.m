@@ -5,7 +5,7 @@ function y = getE12(x2p, x3p, n, w)
 
   while true
     sterm = e12Terms(x2p,x3p, m, n, w);
-    if anynan(sterm) == 1
+    if sterm ~= sterm
       break
     end
     sum = sum + sterm;
