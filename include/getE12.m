@@ -3,8 +3,11 @@ function y = getE12(x2p, x3p, n, w)
   m=1;
   sum = zeros(size(x2p));
 
-  while m <= 3936
+  while true
     sterm = e12Terms(x2p,x3p, m, n, w);
+    if anynam(sterm) == 1
+      break
+    end 
     sum = sum + sterm;
     m = m+1;
 
