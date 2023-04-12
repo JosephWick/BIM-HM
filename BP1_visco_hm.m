@@ -361,7 +361,7 @@ function out = run(b)
   csvwrite('x2p.csv',x2p);
   csvwrite('x3p.csv',x3p);
 
-  ss.e12p_plate = getE12(x2p,x3p, n_scalar, w);
+  ss.e12p_plate = ss.Vpl_scalar.*getE12(x2p,x3p, n_scalar, w);
   ss.e13p_plate = ss.Vpl_scalar.*getE13(x2p,x3p, n_scalar, w);
 
   %ss.e12p_plate = 1e-14*ones(length(ss.shearY_chat)*length(ss.shearZ_chat),1);
