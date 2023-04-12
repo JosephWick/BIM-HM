@@ -381,6 +381,7 @@ function out = run(b)
   e130 = zeros(size(s130));
 
   csvwrite('e12p.csv', ss.e12p_plate);
+  csvwrite('e13p.csv', ss.e13p_plate);
   csvwrite('s120.csv', s120);
   csvwrite('s130.csv', s130);
 
