@@ -362,8 +362,8 @@ function out = run(b)
   csvwrite('x3p.csv',x3p);
 
   for i=1:length(x2p)
-    ss.e12p_plate(i) = ss.Vpl_scalar.*getE12(x2p(i),x3p(i), n_scalar, w);
-    ss.e13p_plate(i) = ss.Vpl_scalar.*getE13(x2p(i),x3p(i), n_scalar, w);
+    ss.e12p_plate(i) = (ss.Vpl_scalar/(2*Dv)).*getE12(x2p(i),x3p(i), n_scalar, w);
+    ss.e13p_plate(i) = (ss.Vpl_scalar/(2*Dv)).*getE13(x2p(i),x3p(i), n_scalar, w);
   end
 
   %ss.e12p_plate = 1e-14*ones(length(ss.shearY_chat)*length(ss.shearZ_chat),1);
@@ -434,7 +434,7 @@ function out = run(b)
   tic
   % Solve the system
   options=odeset('Refine',1,'RelTol',3e-7,'InitialStep',1e-3,'MaxStep',3e6);
-  [t,Y]=ode45_2(yp,[0 500*3.15e7],Y0,options);
+  [t,Y]=ode45_2(yp,[0 100*3.15e7],Y0,options);
   disp('done solving.')
   toc
   %%
