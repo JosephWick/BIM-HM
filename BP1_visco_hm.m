@@ -375,9 +375,6 @@ function out = run(b)
   e_mag_plate = sqrt(ss.e12p_plate.^2 + ss.e13p_plate.^2);
   tau0_mag = nthroot(e_mag_plate./ss.A, n_scalar);
 
-  disp(size(e_mag_plate))
-  aaaa
-
   s120 = (ss.e12p_plate./e_mag_plate).*tau0_mag;
   s130 = (ss.e13p_plate./e_mag_plate).*tau0_mag;
   %s120 = (ss.e12p_plate./ss.A).^(1./ss.n);
@@ -437,7 +434,7 @@ function out = run(b)
   tic
   % Solve the system
   options=odeset('Refine',1,'RelTol',3e-7,'InitialStep',1e-3,'MaxStep',3e6);
-  [t,Y]=ode45_2(yp,[0 500*3.15e7],Y0,options);
+  [t,Y]=ode45_2(yp,[0 1*3.15e7],Y0,options);
   disp('done solving.')
   toc
   %%
@@ -468,7 +465,8 @@ function out = run(b)
   mat2np(Ep, 'pickles/BP1vHM_strainCenter.pkl', 'float64');
 
   % center strain rate minus steady state loading
-  Ep_subt = Ep - e_mag_plate()
+  Ep_subt = Ep - reshape(e_mag_plate,[51,51])(:,26);
+  disp(size(Ep_subt))
 
   % strain rate over whole ductile area
   Epall = sqrt( Yp(:,ss.M*ss.dgfF+3:ss.dgfS:end)'.^2 +...
