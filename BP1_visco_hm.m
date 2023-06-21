@@ -467,7 +467,7 @@ function out = run(b)
   % center strain rate minus steady state loading
   e_mag_plate_sq = reshape(e_mag_plate,[51,51]);
   Ep_subt = Ep - e_mag_plate_sq(:,26);
-  mat2np(Ep_subt, 'pickles/BP1vHM_strainCenterSubt.pkl');
+  mat2np(Ep_subt, 'pickles/BP1vHM_strainCenterSubt.pkl', 'float64');
 
   % strain rate over whole ductile area
   Epall = sqrt( Yp(:,ss.M*ss.dgfF+3:ss.dgfS:end)'.^2 +...
