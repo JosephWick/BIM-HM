@@ -464,7 +464,7 @@ function out = run(b)
             length(ss.shearY_chat):end)'.^2);
   mat2np(Ep, 'pickles/BP1vHM_strainCenter.pkl', 'float64');
 
-  % center strain rate minus steady state loading
+  % center strain rate minus steady state loading rate
   e_mag_plate_sq = reshape(e_mag_plate,[51,51]);
   Ep_subt = Ep - e_mag_plate_sq(:,26);
   mat2np(Ep_subt, 'pickles/BP1vHM_strainCenterSubt.pkl', 'float64');
@@ -473,6 +473,9 @@ function out = run(b)
   Epall = sqrt( Yp(:,ss.M*ss.dgfF+3:ss.dgfS:end)'.^2 +...
                Yp(:,ss.M*ss.dgfF+4:ss.dgfS:end)'.^2);
   mat2np(Epall, 'pickles/BP1vHM_strainAll.pkl', 'float64');
+
+  % save steady state loading rate
+  mat2np(e_mag_plate, 'pickles/BP1vHM_steadyLoadRate.pkl', 'float64');
 
   % Velocity
   y.V = Yp(:,1:ss.dgfF:ss.M*ss.dgfF); % Slip rate (m/s)
